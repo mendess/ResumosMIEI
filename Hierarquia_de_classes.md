@@ -206,10 +206,13 @@ public abstract class Pessoa {
 	public abstract irParaAula(Aula a);
 }
 ```
-Um metodo abstracto é declarado na classe abstracta e implementado nas subclasses da mesma. Isto é, na classe abstracta dizemos que todas as suas subclasses vão ter
-aquele comportamento (leia-se metodo) mas cada subclasse é que escolhe como o implementa. Agora todas as classes que extendem `Pessoa` são obrigadas a implementar o
-metodo. *Um metodo abstracto é obrigatorio implementar*. Isto é util quando faz sentido que todas a subclasses implementem um certo comportamento mas este depende
-de fatores que não conhecemos na superclasse.
+Agora todas as classes que extendem `Pessoa` são obrigadas a implementar o metodo `irParaAula`.
+
+Um metodo abstracto é declarado na classe abstracta e implementado nas subclasses da mesma. Isto é, na classe abstracta dizemos que todas as suas subclasses vão ter aquele comportamento (leia-se metodo) mas cada subclasse é que escolhe como o implementa. 
+
+**Um metodo abstracto é obrigatorio implementar**
+
+Isto é util quando faz sentido que todas a subclasses implementem um certo comportamento mas este depende de fatores que não conhecemos na superclasse, por exemplo.
 
 Em Java cada classe pode apenas extender uma superclasse. (C++, por exemplo, permite
  herança multipla)
