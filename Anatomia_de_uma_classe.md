@@ -216,3 +216,5 @@ O clone deve ser implementado porque o Nestor diz que sim. Objectos imutaveis n√
 		return new MyClass(this);
 	}
 ```
+
+Todo o codigo pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)
