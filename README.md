@@ -8,10 +8,12 @@ Se algo não estiver claro estejam a vontade para submeter um [issue](https://gi
 Para guardarem este repositorio podem fazer `star`.
 
 # Indice
+## Primeiro ano
+ * [PI](PI-C/README.md)
 
- 1. [Java](POO-Java/README.md)
- 2. [SO](SO/README.md)
- 3. [PI](PI-C/README.md)
+## Segundo ano
+  * [Java](POO-Java/README.md)
+  * [SO](SO/README.md)
 
 # Contribuidores
 
