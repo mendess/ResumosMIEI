@@ -6,7 +6,38 @@ Este capitulo tem como objectivos principais *resumir o contexto histórico* e *
 
 # Contexto Histórico
 
+Os primeiros sistemas informáticos não tinham sistema operativo, nem nada semelhante, apenas quando o hardware começou a melhorar se começou a pensar em optimizações a nível do software. Foram criados os primeiros programas que simplificaram as operações do computador.
+
+Estes programas, chamados de `monitores de controlo` permitem ao utilizador carregar programas para a memória, editá-los e verificar a sua execução.
+
+Cada utilizador tem um determinado tempo atribuído só para si, podem utilizar o computador exclusivamente.
+
+**Durante maior parte do tempo o computador está parado a espera do input do utilizador ou de operações Input/Output.**
+
+
+Seguiram-se então os sistemas de `tratamento em batch`. Sendo que **maior parte do tempo de processador era gasto em operações I/O (espera activa)**, a solução foi separar os periférico de I/O.
+Começaram também a surgir os primeiros dispositivos de memória secundária.
+
+Um computador auxiliar lia para a banda magnética os programas a executar, quando o trabalho em curso terminasse o sistema operativo ia a lista de trabalho e seleccionava o próximo a executar. Alem disso, em vez de imprimir o resultado dos programas, os ficheiros são enviados para uma impressora quando acabam de executar.
+
+Os periféricos avisam o processador no fim da sua exeução, através de interrupções.
+
+## Escalonamento
+
+Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução.
+
+## Multiprogramação
+
+O mecanismo de interrupções permite multiplexar o processador.
+A capacidade de alternar a execução **não** é limitada a `um programa e periféricos I/O` mas pode ser estendida a **vários programas em memória**.
+
+Um programa que queira aceder a um ficheiro em disco fica bloqueada enquanto o controlador de disco actua. Durante este tempo outro programa pode ser executado pelo processador.
+Desta forma conseguimos optimizar a utilização do processador.
+
+## Memória virtual
+
 //TODO
+
 
 # Papel do Sistema Operativo
 
