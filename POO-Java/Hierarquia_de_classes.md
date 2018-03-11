@@ -278,8 +278,8 @@ public class MyMusic implements Musica{
 #### Collections
 Nas `Collections` do Java temos varias interfaces que podemos utilizar.
 Alguns exemplos
- * [List](link.to/list)
- * [Map](link.to/map)
+ * [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
+ * [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
 
 Podemos utlizar estas interfaces para fazer o nosso codigo mais genérico.
 ```Java
