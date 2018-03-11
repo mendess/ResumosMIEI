@@ -1,13 +1,13 @@
 # Resumos de MIEI
-Este projecto tem por objectivo ajudar os alunos de MIEI (e de outra universidades/escolas) a entender os conceitos
- estudados nas varias cadeiras do curso para que não *"percam o comboio"*
+Este projecto tem por objectivo ajudar os alunos de MIEI (e de outras universidades/escolas) a entender os conceitos
+ estudados nas várias cadeiras do curso para que não *"percam o comboio"*.
 
-Se algo não estiver claro estejam a vontade para submeter um [issue](https://github.com/Mendess2526/ResumosMIEI/issues)
+Se algo não estiver claro estejam à vontade para submeter um [issue](https://github.com/Mendess2526/ResumosMIEI/issues)
  ou até uma [pull-request](https://github.com/Mendess2526/ResumosMIEI/pulls)!
 
-Para guardarem este repositorio podem fazer `star`.
+Para guardarem este repositório podem fazer `star`.
 
-# Indice
+# Índice
 ## Primeiro ano
  * [PI](PI-C/README.md)
 
