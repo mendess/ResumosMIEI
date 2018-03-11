@@ -11,16 +11,17 @@ Para guardarem este repositorio podem fazer `star`.
 
  1. [Java](POO-Java/README.md)
  2. [SO](SO/README.md)
+ 3. [PI](PI-C/README.md)
 
 # Contribuidores
 
- * [Mendes2526](https://github.com/Mendess2526)  
+ * [Mendes2526](https://github.com/Mendess2526)
     Criador do primeiro resumo, da ideia.
- * [Herulume](https://github.com/herulume)  
+ * [Herulume](https://github.com/herulume)
     Quem teve a iniciativa de expandir o conceito para outras cadeiras.
 
 # Mais ajuda
- * [Discord](https://discord.gg/Pqbzrcv)  
+ * [Discord](https://discord.gg/Pqbzrcv)
     Podem vir tirar duvidas comigo neste discord do curso. (`@Mendess`)
 
 # Disclaimer
