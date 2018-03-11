@@ -9,11 +9,12 @@ Para guardarem este repositorio podem fazer `star`.
 
 # Indice
 
- 1. [Java](POO-Java/Index.md)
+ 1. [Java](POO-Java/README.md)
+ 2. [SO](SO/README.md)
 
 # Contribuidores
 
- * [Mendes2526](https://github.com/Mendess2526)  
+ * [Mendes2526](https://github.com/Mendess2526)
     Criador do primeiro resumo, da ideia.
- * [Herulume](https://github.com/herulume)  
+ * [Herulume](https://github.com/herulume)
     Quem teve a iniciativa de expandir o conceito para outras cadeiras.
