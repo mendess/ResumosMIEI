@@ -42,7 +42,7 @@ A resposta é simples, documentação.
 Portanto `#include <stdio.h>` importa várias funções, sendo uma delas a `printf`, podemos então usar livremente esta função.
 
 
-## Main e introdução as funções
+## Main e introdução às funções
 
 A próxima linha de código é uma função muito importante, a função `main`.
 
