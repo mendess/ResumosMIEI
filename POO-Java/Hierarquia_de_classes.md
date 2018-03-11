@@ -208,7 +208,7 @@ public abstract class Pessoa {
 ```
 Agora todas as classes que extendem `Pessoa` são obrigadas a implementar o metodo `irParaAula`.
 
-Um metodo abstracto é declarado na classe abstracta e implementado nas subclasses da mesma. Isto é, na classe abstracta dizemos que todas as suas subclasses vão ter aquele comportamento (leia-se metodo) mas cada subclasse é que escolhe como o implementa. 
+Um metodo abstracto é declarado na classe abstracta e implementado nas subclasses da mesma. Isto é, na classe abstracta dizemos que todas as suas subclasses vão ter aquele comportamento (leia-se metodo) mas cada subclasse é que escolhe como o implementa.
 
 **Um metodo abstracto é obrigatorio implementar**
 
@@ -219,4 +219,86 @@ Em Java cada classe pode apenas extender uma superclasse. (C++, por exemplo, per
 
 
 ## Interfaces
-Finalmente temos as interfaces.
+Finalmente temos as interfaces. Estas servem para resolver o problema de Java não permitir herança multipla.
+
+Interfaces podem ser vistas como contratos, ou seja, uma classe que implementa uma interface compromete-se a implementar os metodos descritos na interface.
+
+### Situação exemplo
+Estamos a desenvolver uma api para reproduzir musica.
+```Java
+public class Radio {
+    private ArrayList<Musica> musicas;
+    public Radio(){
+        this.musicas = new ArrayList<>();
+    }
+
+    public void queue(Musica musica){
+        this.musica.add(musica);
+    }
+
+    public void play(){
+        this.musicas.get(0).start();
+        this.musicas.remove(0);
+    }
+}
+```
+Mas não queremos que restringir aos utilizadores da nossa api (outros programadores) a uma classe `Musica` definida por nós.
+
+### Solução
+Podemos então definir uma interface, um contrato. E as condições deste contrato são muito simples:
+ * *"Se implementares estes metodos, eu posso reproduzir a tua musica"*
+
+Definimos a interface então da seguinte forma:
+```Java
+public interface Musica{
+    void start();
+}
+```
+De notar que não coloquei um *access modifier* (`public`, `private`, etc.). Isto é porque todos os metodos definidos numa interface
+ são `public` por defeito.
+
+Assim um programador que queria usar a nossa api pode definir a sua classe de musica e utlizar o radio que nós já definimos.
+```Java
+public class MyMusic implements Musica{
+    private byte[] song;
+
+    public MyMusic(byte[] song){
+        this.song = song;
+    }
+
+    public void start(){
+        /*
+        Reproduzir a musica
+        */
+    }
+}
+```
+
+### Interfaces mais comuns
+#### Collections
+Nas `Collections` do Java temos varias interfaces que podemos utilizar.
+Alguns exemplos
+ * [List](link.to/list)
+ * [Map](link.to/map)
+
+Podemos utlizar estas interfaces para fazer o nosso codigo mais genérico.
+```Java
+public class MyClass{
+    private List<String> nomes;
+
+    public MyClass(){
+        this.nomes = new ArrayList<>();
+    }
+
+    public MyClass(List<String> nomes){
+        this.nomes = nomes;
+    }
+}
+```
+Esta classe aceita qualquer tipo de lista.
+
+E este sistema permite-nos também implementar as nossa proprias implementações de listas/maps/etc
+```Java
+public class DBMap implements Map<String,Cena>{
+}
+```
