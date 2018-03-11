@@ -16,7 +16,7 @@ O papel do sistema operativo pode ser visto de várias ópticas.
   * O sistema operativo gere recursos lógicos, mapeando-os para os seus correspondentes físicos;
     * Ficheiros <-> Espaço em disco;
     * Processos <-> Processador;
-    * Periféricos <-> virtuais Periféricos físicos.
+    * Periféricos virtuais <-> Periféricos físicos.
   * Desta forma o sistema operativo torna os recursos lógicos **genéricos** e reutilizáveis;
   * Lista de recursos lógicos geridos pelo sistema operativo;
     1. Processos (estudados detalhadamente nos próximos capitulos);
