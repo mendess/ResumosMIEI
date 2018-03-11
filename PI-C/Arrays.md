@@ -29,7 +29,7 @@ Em `C` podemos declarar e inicializar um array de inteiros estático (iremos fal
 ```
 Todos este exemplos produzem um array de 4 posições todas a 0.
 
-The notar que todos estes metodos são equivalentes em termos de eficiência. De qualquer forma o PC tem
+De notar que todos estes metodos são equivalentes em termos de eficiência. De qualquer forma o PC tem
  de ir a todas as celulas e alterar o valor. Quer esse comportamento seja declarado explicita ou implicitamente
 
 ## Aceder e alterar os valores de um array
