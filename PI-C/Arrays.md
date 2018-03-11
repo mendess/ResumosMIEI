@@ -6,20 +6,20 @@ Consistem numa lista de tamanho **estático** onde podemos guardar elementos de 
 ```C
     int array[10];
 ```
-Acima está declarado um array de inteiros com 10 posições. Tal como as variaveis tem valores *aleatorios* quando não são inicializadas
+Acima está declarado um array de inteiros com 10 posições. Tal como as variáveis têm valores *aleatórios* quando não são inicializadas
  os arrays seguem o mesmo padrão. Não sabemos portanto que valores estão no array.
 
 ## Declaração e inicialização
-Em `C` podemos declarar e inicializar um array de inteiros estático (iremos falar de arrays dinamicos mais a frente) de 3 maneiras:
- * Explicitamente declarar os seus conteudos
+Em `C` podemos declarar e inicializar um array de inteiros estático (iremos falar de arrays dinâmicos mais à frente) de 3 maneiras:
+ * Explicitamente declarar os seus conteúdos
 ```C
     int array[] = {0,0,0,0};
 ```
- * Declarar o seu tamanho e o conteudo de todas as posições
+ * Declarar o seu tamanho e o conteúdo de todas as posições
 ```C
     int array[4] = {0};
 ```
- * Declarar o seu tamanho e manualmente alterar o seu conteudo
+ * Declarar o seu tamanho e manualmente alterar o seu conteúdo
 ```C
     int array[4];
     int i;
@@ -29,21 +29,21 @@ Em `C` podemos declarar e inicializar um array de inteiros estático (iremos fal
 ```
 Todos este exemplos produzem um array de 4 posições todas a 0.
 
-De notar que todos estes metodos são equivalentes em termos de eficiência. De qualquer forma o PC tem
- de ir a todas as celulas e alterar o valor. Quer esse comportamento seja declarado explicita ou implicitamente
+De notar que todos estes métodos são equivalentes em termos de eficiência. De qualquer forma o PC tem
+ de ir a todas as células e alterar o valor. Quer esse comportamento seja declarado explícita ou implicitamente
 
 ## Aceder e alterar os valores de um array
 Isto é bastante simples, aliás já fiz uso desta syntax na secção anterior.
 
-`int x = array[0];` guarda na variavel `x` o valor que está na posição `0` do array.
+`int x = array[0];` guarda na variável `x` o valor que está na posição `0` do array.
 
 `array[0] = x;` guarda na posicão `0` do array o valor do `x`
 
-Os indices validos de um array são o conjunto dos números inteiros desde `0` até ao seu tamanho menos 1, ou seja,
- para o array da secção anterior (`int array[4]`) os indices validos são 0,1,2,3.
+Os índices válidos de um array são o conjunto dos números inteiros desde `0` até ao seu tamanho menos 1, ou seja,
+ para o array da secção anterior (`int array[4]`) os índices válidos são 0,1,2,3.
 
-Apesar da simplicidade desta funcionalidade, é no uso desta que são causados a maior parte dos erros! Se acedermos
- a um indice maior ou igual ao tamanho do array ou negativo estamos a aceder a memória para a qual não temos autorização
+Apesar da simplicidade desta funcionalidade, é no uso desta que acontece a maior parte dos erros! Se acedermos
+ a um índice maior ou igual ao tamanho do array ou negativo estamos a aceder a memória para a qual não temos autorização
  e o programa "crasha" indicando o famoso `segmentation fault`.
 
 ## Arrays e funções
@@ -59,13 +59,13 @@ int main(){
     func(array,4);
 }
 ```
-Nota que passei também o tamanho do array. Isto é bastante habitual visto que em C não é possivel saber o tamanho de um
+Nota que passei também o tamanho do array. Isto é bastante habitual visto que em C não é possível saber o tamanho de um
 array apenas percorrendo-o, temos então que "tomar conta" deste valor para evitar incorrer numa `segmentation fault`.
 
-Outro promenor importantissimo é que, ao contrario de variaveis de tipos primitivos, alterar um array dentro de uma função
+Outro promenor importantíssimo é que, ao contrário de variáveis de tipos primitivos, alterar um array dentro de uma função
  tambem o altera fora da função.
 
-Por exemplo, o seguinte codigo,
+Por exemplo, o seguinte código,
 ```C
 void func(int array[], int N){
     array[0] = 1;
@@ -87,15 +87,15 @@ Before: array[0] == 0 and n == 4
 After:  array[0] == 1 and n == 4
 ```
 
-Isto deve se ao facto de o array ser na verdade um apontador para memória. Conceito que será aborado mais à frente.
+Isto deve-se ao facto de o array ser na verdade um apontador para memória. Conceito que será abordado mais à frente.
 
 ## Strings
-As strings em C são um caso particular dos arrays. Tem todas as propriedades de um array mas acrescentam algumas.
+As strings em C são um caso particular dos arrays. Têm todas as propriedades de um array mas acrescentam algumas.
 ```C
     char string[] = "Hello World\n";
 ```
 Podem ser declaradas desta forma (similar à primeira que vimos para o array de inteiros), no entanto, este array (ou string) é
-*null terminated*. Ou seja, o ultimo caracter da string é um '\0'.
+*null terminated*. Ou seja, o último caracter da string é um '\0'.
 
 Isto permite-nos saber o comprimento da string "apenas olhando para ela"
 ```C
