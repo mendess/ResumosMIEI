@@ -23,7 +23,7 @@ Este é o clássico programa HelloWorld escrito em C.
 
 ## Comentários
 
-Tudo o que vem a seguir a // é um comentário em C. Tudo o que se encontra entre /* */ é um comentário também.
+Tudo o que vem a seguir a `//` é um comentário em C. Tudo o que se encontra entre `/* */` é um comentário também.
   * `// Comment` Comentários de uma linha;
   * `/* Comment2.0 */` Comentários de várias linhas.
 
@@ -32,9 +32,9 @@ Tudo o que vem a seguir a // é um comentário em C. Tudo o que se encontra entr
 Várias funções em C ja estão definidas, para as utilizarmos temos apenas que as importar.
 
 Em C isso é feito utilizando a diretiva, de pre-processamento, `#include` seguida do ficheiro que contém a função pretendida entre  `<  >`.
-Os ficheiros .h, header files, são os ficheiros importados que contêm todas as assinaturas das nossas funções (aprofundado mais a frente).
+Os ficheiros `.h`, header files, são os ficheiros importados que contêm todas as assinaturas das nossas funções (aprofundado mais a frente).
 
-Visto que pretendemos escrever "Hello, World" no ecra, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função ja existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` enconta-se no ficheiro `stdio.h`. Stdio é uma sigla para Standard Input Output.
+Visto que pretendemos escrever "Hello, World" no ecra, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função ja existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` enconta-se no ficheiro `stdio.h`. Stdio é uma abreviatura para Standard Input Output.
 
 Mas como sabemos onde se encontram as funções que queremos usar e como usa-las?
 A resposta é simples, documentação.
