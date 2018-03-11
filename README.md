@@ -32,4 +32,4 @@ Estes resumos **não** servem para substituir as aulas ou os slides.
 
 Servem apenas para condensar a informação que achamos mais importante.
 
-Como tudo o mais importante é praticar e fazer as fichas que os professores disponiblizam.
+O mais importante é praticar e fazer as fichas que os professores disponiblizam.
