@@ -24,7 +24,7 @@ Para guardarem este repositório podem fazer `star`.
 
 # Mais ajuda
  * [Discord](https://discord.gg/Pqbzrcv)
-    Podem vir tirar duvidas comigo neste discord do curso. (`@Mendess`)
+    Podem vir tirar dúvidas comigo neste discord do curso. (`@Mendess`)
 
 # Disclaimer
 
