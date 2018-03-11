@@ -115,9 +115,8 @@ int x = 5;
 
 x++; // x tem o valor de 6 agora
 
-/* equivalente a fazer
- x = x + 1;
-*/
+// equivalente a fazer
+x = x + 1;
 ```
 Por analogia
 ```c
@@ -125,10 +124,8 @@ int x = 5;
 
 x--; // x tem o valor de 4 agora
 
-
-/* equivalente a fazer
- x = x - 1;
-*/
+// equivalente a fazer
+x = x - 1;
 ```
 
 Podemos utilizar estes operadores antes da variavel, mas o aumento ou decrescimo é feito antes de avaliar a variavel.
@@ -136,7 +133,7 @@ Podemos utilizar estes operadores antes da variavel, mas o aumento ou decrescimo
 int x = 5;
 int y = 3;
 
-x = y++ +
+x = y++;
 // x tem valor 3
 // y tem valor 4
 ```
@@ -145,7 +142,7 @@ Mas...
 int x = 5;
 int y = 3;
 
-x = ++y +
+x = ++y;
 // x tem valor 4
 // y tem valor 4
 ```
