@@ -13,7 +13,7 @@
   comentário
   */
 
-int main(int argc, char *argv[]) {
+int main() {
     printf("Hello, World!\n");
 
     return 0;
@@ -57,19 +57,16 @@ Isto leva-nos a mais duas definições:
 
 A assinatura de uma função é o que a caracteriza, o caso da nossa `main` a sua assinatura é:
 ```c
-int main(int argc, char *argv[])
+int main()
+/* o mesmo que
+int main(null)
+*/
 ```
-Daqui podemos inferir que a função main devolve um `int` e recebe dois argumentos, um deles do tipo `int` e o outro de um tipo não vamos analisar por agora.
+Daqui podemos inferir que a função main devolve um `int` e não recebe argumentos.
 
 De facto todas as assinaturas de funções seguem este esquema:
 ```c
 tipo nome(tipo1 argumento1, tipo2 argumento2, tipo2 argumento3, [etc]);
-```
-**Atenção que uma função em C não tem que levar argumentos!**
-
-A nossa função `main` poderia ter sido escrita assim:
-```c
-int main();
 ```
 
 ### Corpo de uma função
@@ -83,6 +80,11 @@ No caso da nossa função `main` apenas chama a função `printf` e retorna 0.
 Como podemos ver pelo nosso programa, chamamos uma função simplesmente usando o seu nome e passando os argumentos necessários.
 ```c
 printf("Hello, World!\n");
+
+/*
+Aqui a função printf recebe um argumento:
+ "Hello, World!\n"
+*/
 ```
 
 ## Return
