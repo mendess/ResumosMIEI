@@ -159,6 +159,7 @@ public class Cartao{
 	public Cartao(Pessoa p){
 		this.p = p;
 	}
+}
 ```
 Esta classe pode ter, na sua variavel de instancia, uma `Pessoa`, um `Aluno` ou um
  `Prof`.
