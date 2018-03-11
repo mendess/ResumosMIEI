@@ -34,7 +34,7 @@ Várias funções em C ja estão definidas, para as utilizarmos temos apenas que
 Em C isso é feito utilizando a diretiva, de pre-processamento, `#include` seguida do ficheiro que contém a função pretendida entre  `<  >`.
 Os ficheiros .h, header files, são os ficheiros importados que contêm todas as assinaturas das nossas funções (aprofundado mais a frente).
 
-Visto que pretendemos escrever "Hello, World" no ecra, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função ja existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` enconta-se no ficheiro `stdio.h`. Stdio é um sigla para Standard Input Output.
+Visto que pretendemos escrever "Hello, World" no ecra, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função ja existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` enconta-se no ficheiro `stdio.h`. Stdio é uma sigla para Standard Input Output.
 
 Mas como sabemos onde se encontram as funções que queremos usar e como usa-las?
 A resposta é simples, documentação.
@@ -47,7 +47,7 @@ Portanto `#include <stdio.h>` importa várias funções, sendo uma delas a `prin
 A próxima linha de código é uma função muito importante, a função `main`.
 
 A função `main` tem a particularidade de ser sempre executada quando corremos os nossos programas, além do mais é sempre a primeira!
-Mas que raio é uma função em C ?!?! Uma função em C é um conjunto de codigo C que é executado quando a função é chamada. Podemos pensar que sempre que a função `main` é chamada, tudo o que está entre chavetas é executado.
+Mas que raio é uma função em C?!?! Uma função em C é um conjunto de codigo C que é executado quando a função é chamada. Podemos pensar que sempre que a função `main` é chamada, tudo o que está entre chavetas é executado.
 
 Isto leva-nos a mais duas definições:
   * Assinatura da função;
@@ -66,6 +66,7 @@ De facto todas as assinaturas de funções seguem este esquema:
 tipo nome(tipo1 argumento1, tipo2 argumento2, tipo2 argumento3, [etc]);
 ```
 **Atenção que uma função em C não tem que levar argumentos!**
+
 A nossa função `main` poderia ter sido escrita assim:
 ```c
 int main();
