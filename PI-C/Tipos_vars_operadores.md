@@ -28,9 +28,9 @@ Podem também reparar que não falamos do tamanho de cada tipo. Na verdade o C a
 
 Variaveis são 'caixas' que guardam valores.
 A declaração de uma variavel, reserva e da um nome a uma area na memoria, que vai guardar um valor de um tipo especifico.
-C é uma linguagem fortemente tipada. Isto é, cada variavel tem um tipo declarado e bem defenido.
+C é uma linguagem fortemente tipada. Isto é, cada variavel tem um tipo declarado e bem definido.
 
-A forma de declara umar variavel em C é:
+A forma de declarar uma variavel em C é:
 ```c
 tipo nome;
 ```
