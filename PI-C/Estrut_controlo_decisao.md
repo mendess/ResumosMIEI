@@ -77,7 +77,8 @@ y--; // y = y - 1
 ```
 
 Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia. Se não colocarmos chavetas e mais tarde alterarmos
- o codigo, podemos nos esquecer destas e o codigo não faz o que esperamos. É um dos tipos de erros mais dificil de detetar (falo por experiência!).
+ adicionarmos codigo dentro do `if`, podemos nos esquecer destas e o codigo não faz o que esperamos. É um dos tipos de erros mais dificil de detetar
+ (falo por experiência!).
 
 ### Else
 
