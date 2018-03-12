@@ -151,8 +151,8 @@ void menu(char opcao){
     }
 }
 ```
-Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tiver 10 opções diferentes o ultimo `if` irá ser gigantesco.
+Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tenha 10 opções diferentes a condição do ultimo `if` irá ser gigantesca.
 
-Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se o primeiro `if`
- der `True` apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de fazer todas as
- outras comparações.
+Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se a condição do
+ primeiro `if` for verdadeira apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de
+ fazer todas as outras comparações.
