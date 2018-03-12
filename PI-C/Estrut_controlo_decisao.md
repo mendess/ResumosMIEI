@@ -156,3 +156,27 @@ Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tenha 10 
 Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se a condição do
  primeiro `if` for verdadeira apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de
  fazer todas as outras comparações.
+
+ ### Operador ternário
+
+Existe uma forma de escrever um `if else` de forma mais concisa mas à custa de perda de ligivelidade.
+
+```c
+condição ? operaçãoCasoSejaVerdade : operaçãoCasoSejaFalso;
+```
+Vamos tentar entender melhor com um exemplo
+```c
+int x = 4;
+x > 4 ? x = 1 : x = 0;
+
+/* É o equivalente a fazer
+
+if(x > 4){
+  x = 1;
+}else{
+  x = 0;
+}
+
+*/
+```
+
