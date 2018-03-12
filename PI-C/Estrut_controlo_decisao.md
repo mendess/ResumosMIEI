@@ -82,7 +82,7 @@ Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca 
 
 ### Else
 
-Vamos acrescentar o `else` agora.
+Vamos acrescentar o `else` agora. Este indica um bloco de codigo que irá executar sempre que a condição do `if` for falsa.
 ```C
 int x = 4;
 int y = 0;
