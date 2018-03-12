@@ -1,7 +1,7 @@
 # Estruturas de controlo e decisão
 
 ## If e If else
-O `if` (bem como o `if else`) é usado para executar código, ou não, com base numa condição lógica.
+O `if` (bem como o `if else`) é usado para executar código com base numa condição lógica.
 
 Tanto como `if` e o `if else` estão presentes em `C`.
 
@@ -12,6 +12,13 @@ Separamos o `if` nestes dois casos pois, ao contrário do Haskell por exemplo, u
 O `if` em si tem dois casos.
 1. Segundo de chavetas: Executa um bloco de código caso a condição do `if` se verifique;
 2. Sem chavetas: Executa apenas a primeira linha de código caso a condição do `if` se verifique.
+
+```C
+if(condição){
+  linhaDeCodigo1;
+  linhaDeCodigo2;
+}
+```
 
 Vamos ver alguns exemplos:
 ```C
@@ -45,7 +52,7 @@ X tem valor 4
 Y tem valor -1
 ```
 Como o `if` não tem chavetas a unica linha de código condicionada pelo `if` é `x += 3;`.
-Visto que `x != 0` a condição do `if` é falsa e `x += 3;` nunca corre!
+Visto que `x == 0`é falso, `x += 3;` nunca corre!
 
 De facto, o código como está escrito não é muito simpático para a leitura. Podia, E DEVIA, ser melhorado atravez de identação e/ou `{  }`, apesar destas não serem precisas.
 ```C
@@ -63,13 +70,13 @@ int x = 4;
 int y = 0;
 
 if(x==0){
-  x += 3; // não fica mais obvio que é afectado pelo if?
+  x += 3; 
 }
 
 y--; // y = y - 1
 ```
 
-Recomendamos então usarem sempre chavetas mesmo sendo estas redundante. Nunca fase incial é a melhor estratégia.
+Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia.
 
 ### Else
 
@@ -83,14 +90,13 @@ if(x==0)
 else
   y--; // y = y - 1
 
-Valor do x e y?
-X
-
 Qual é o valor do x e do y?
 X tem valor 4
 Y tem valor -1
 ```
-Tal como o `if`, o `else` pode, ou não ser seguido de chavetas e as mesma regras se aplicam.
+Tal como o `if`, o `else` pode ser seguido de chavetas e as mesma regras se aplicam.
+Quando é seguido de chavetas, corre esse block do cógido. 
+Quadno nao é seguido de chavetas corre apenas uma linha.
 ```C
 int x = 4;
 int y = 0;
