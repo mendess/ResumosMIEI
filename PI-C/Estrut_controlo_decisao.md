@@ -10,7 +10,7 @@ Separamos o `if` nestes dois casos pois, ao contrário do Haskell por exemplo, u
 ### Estrutura do If
 
 O `if` em si tem dois casos.
-1. Segundo de chavetas: Executa um bloco de código caso a condição do `if` se verifique;
+1. Seguido de chavetas: Executa um bloco de código caso a condição do `if` se verifique;
 2. Sem chavetas: Executa apenas a primeira linha de código caso a condição do `if` se verifique.
 
 ```C
@@ -41,8 +41,8 @@ Sem chavetas:
 int x = 4;
 int y = 0;
 
-if(x==0) // mudou a condição!
-// não temos {  }
+if(x==4) // mudou a condição!
+        // não temos {  }
 x += 3; // x = x + 3
 y--; // y = y - 1
 
@@ -70,13 +70,14 @@ int x = 4;
 int y = 0;
 
 if(x==0){
-  x += 3; 
+  x += 3;
 }
 
 y--; // y = y - 1
 ```
 
-Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia.
+Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia. Se não colocarmos chavetas e mais tarde alterarmos
+ o codigo, podemos nos esquecer destas e o codigo não faz o que esperamos. É um dos tipos de erros mais dificil de detetar (falo por experiência!).
 
 ### Else
 
@@ -95,8 +96,8 @@ X tem valor 4
 Y tem valor -1
 ```
 Tal como o `if`, o `else` pode ser seguido de chavetas e as mesma regras se aplicam.
-Quando é seguido de chavetas, corre esse block do cógido. 
-Quadno nao é seguido de chavetas corre apenas uma linha.
+Quando é seguido de chavetas, corre esse bloco do cógido.
+Quando não é seguido de chavetas corre apenas uma linha.
 ```C
 int x = 4;
 int y = 0;
@@ -119,3 +120,38 @@ else{
 }
 ```
 O estilo das chavetas é puramente pessoal, dentro dos limites da sanidade mental.
+
+### Else if
+Uma estrutura de controlo que resulta da composição das duas anteriores é o `else if`.
+
+Se quisermos implementar um menu teremos de tomar uma decisão diferente conforme a opção que o utilizador escolher.
+```C
+void menu(char opcao){
+    if(opcao == 'Y'){
+        yes();
+    }else if(opcao == 'N'){
+        nao();
+    }else{
+        reset();
+    }
+}
+```
+Este codigo é equivalente ao seguinte.
+```C
+void menu(char opcao){
+    if(opcao == 'Y'){
+        yes();
+    }
+    if(opcao == 'N'){
+        nao();
+    }
+    if(opcao != 'Y' && opcao != 'N'){
+        reset();
+    }
+}
+```
+Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tiver 10 opções diferentes o ultimo `if` irá ser gigantesco.
+
+Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se o primeiro `if`
+ der `True` apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de fazer todas as
+ outras comparações.
