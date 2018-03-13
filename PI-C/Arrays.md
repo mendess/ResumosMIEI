@@ -1,5 +1,5 @@
 # Arrays
-Arrays são umas das estruturas de dados mais simples (a seguir a tipos primitivos) a que temos acesso em C e muitas outras
+Arrays as estruturas de dados mais simples (a seguir a tipos primitivos) a que temos acesso em C e muitas outras
  linguagens imperativas.
 
 Consistem numa lista de tamanho **estático** onde podemos guardar elementos de um determinado tipo.
@@ -60,10 +60,10 @@ int main(){
 }
 ```
 Nota que passei também o tamanho do array. Isto é bastante habitual visto que em C não é possível saber o tamanho de um
-array apenas percorrendo-o, temos então que "tomar conta" deste valor para evitar incorrer numa `segmentation fault`.
+ array apenas percorrendo-o, temos então que "tomar conta" deste valor para evitar incorrer numa `segmentation fault`.
 
 Outro promenor importantíssimo é que, ao contrário de variáveis de tipos primitivos, alterar um array dentro de uma função
- tambem o altera fora da função.
+ também o altera fora da função.
 
 Por exemplo, o seguinte código,
 ```C
@@ -92,11 +92,21 @@ Isto deve-se ao facto de o array ser na verdade um apontador para memória. Conc
 ## Strings
 As strings em C são um caso particular dos arrays. Têm todas as propriedades de um array mas acrescentam algumas.
 ```C
-    char string[] = "Hello World\n";
+    char string[] = "Hello\n";
 ```
-Podem ser declaradas desta forma (similar à primeira que vimos para o array de inteiros), no entanto, este array (ou string) é
-*null terminated*. Ou seja, o último caracter da string é um '\0'.
+Podem ser declaradas desta forma (similar à primeira que vimos para o array de inteiros) inicializado-o com uma string estática,
+ no entanto, este array (ou string) é *null terminated*. Ou seja, o último caracter da string é um '\0'.
 
+**Conteudo da string/array**
+```C
+string[0] == 'H';
+string[1] == 'e';
+string[2] == 'l';
+string[3] == 'l';
+string[4] == 'o';
+string[5] == '\n';
+string[6] == '\0';
+```
 Isto permite-nos saber o comprimento da string "apenas olhando para ela"
 ```C
     int strlen(char string[]){
@@ -104,7 +114,7 @@ Isto permite-nos saber o comprimento da string "apenas olhando para ela"
         while(string[i]!='\0'){
             i++;
         }
-        return 0;
+        return i;
     }
 ```
 Temos então aqui uma definição da `strlen`. Uma função que retorna o comprimento de uma string.
