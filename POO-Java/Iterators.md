@@ -21,13 +21,14 @@ Isto esta muito bem e tal mas é muito entediante, para além de que assume muit
 da estrutura.
 
 # Açucar sintatico
-Collections que implementem [Iterable][iterable] podem ser iteradas com este `for`.
+Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
 
 ```Java
 for(ListElem l: list){
     l.doStuff();
 }
 ```
+Pode até ser lido, em liguagem natural, "For each ListElem l in list do this"
 
 Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
  visto que não temos a condição de paragem explicita"_. [1][extraNotes]
