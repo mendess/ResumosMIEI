@@ -97,8 +97,8 @@ Lembram-se de Haskell? Isto é parecido. As Collections implementam todas (desde
    fora do ambito do que é esperado de aprender nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
 
 [extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#extra-notes
-[iterable]: https://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html
-[iterator]: https://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html
+[iterable]: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
+[iterator]: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 [interfaceMD]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Hierarquia_de_classes.md#interfaces
 [streamMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--
 [streamDocs]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
