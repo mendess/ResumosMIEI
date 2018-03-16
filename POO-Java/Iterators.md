@@ -20,7 +20,7 @@ for(int i=0; i<list.size(); i++){
 Isto esta muito bem e tal mas é muito entediante, para além de que assume muito sobre o funcionamento
 da estrutura.
 
-# Açucar sintatico
+# Foreach
 Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
 
 ```Java
@@ -79,6 +79,9 @@ while(flag && it.hasNext()){
     }
 }
 ```
+
+Como cada classe `Iterable` implementa o seu proprio metodo `iterator` podemos ter a certeza que estamos a
+iterar de forma correcta sobre a `Collecion` (O foreach também garante isto).
 
 # Iteradores Internos
 Lembram-se de Haskell? Isto é parecido. As Collections implementam todas (desde o Java 8) o metodo [stream][streamMethod]
