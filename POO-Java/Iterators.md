@@ -49,7 +49,7 @@ Que retorna um elemento da lista onde o iterador se encontra e avança o iterado
 ```Java
 void remove()
 ```
-Que remove da lista o elemento em que o iterador se encontra.
+Que remove da lista o ultimo elemento que o `next()` retornou.
 
 Vamos então por isto em pratica.
 ```Java
@@ -57,6 +57,9 @@ Iterator<ListElem> it = list.iterator();
 while(it.hasNext()){
     ListElem l = it.next();
     l.doStuff();
+    if(l.isSomething()){
+        it.remove();
+    }
 }
 ```
 
@@ -67,6 +70,9 @@ Iterator<ListElem> it = list.iterator();
 while(flag && it.hasNext()){
     ListElem l = it.next();
     l.doStuff();
+    if(l.isSomething()){
+        it.remove();
+    }
     if(someCondition){
         flag = false;
     }
