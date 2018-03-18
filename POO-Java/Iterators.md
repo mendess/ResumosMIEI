@@ -1,5 +1,6 @@
 # Iterators
-Então achas que sabes usar [Collections](Collections.md). Mas será que sabes manipula-las a sério!
+Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes. Cabe nos a nós encontrar a mais indicada
+ para o nosso problema.
 
 ---
 
@@ -17,8 +18,8 @@ for(int i=0; i<list.size(); i++){
     l.doStuff();
 }
 ```
-Isto esta muito bem e tal mas é muito entediante, para além de que assume muito sobre o funcionamento
-da estrutura.
+Este metodo funciona para a maior parte dos casos quando temos de iterar por um array (ArrayList), mas assume muito
+sobre o funcionamento da estrutura/classe.
 
 # Foreach
 Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
@@ -28,10 +29,10 @@ for(ListElem l: list){
     l.doStuff();
 }
 ```
-Pode até ser lido, em liguagem natural, "For each ListElem l in list do this"
+Pode até ser lido, em liguagem natural, "For each `ListElem l` in list do \<this\>"
 
 Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
- visto que não temos a condição de paragem explicita"_. [1][extraNotes]
+ visto que não temos a condição de paragem explicita"_. [<sup>\[1\]</sup>][extraNotes]
 
 # Iteradores externos
 Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
@@ -46,7 +47,7 @@ Que retorna `true` se o iterador não chegou ao fim da lista.
 ```Java
 E next()
 ```
-Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o proximo elemento. [2][extraNotes]
+Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o proximo elemento. [<sup>\[2\]</sup>][extraNotes]
 ```Java
 void remove()
 ```
@@ -80,18 +81,57 @@ while(flag && it.hasNext()){
 }
 ```
 
-Como cada classe `Iterable` implementa o seu proprio metodo `iterator` podemos ter a certeza que estamos a
-iterar de forma correcta sobre a `Collecion` (O foreach também garante isto).
+Como cada classe `Iterable` implementa o seu proprio metodo `iterator()` podemos ter a certeza que estamos a
+iterar de forma correcta sobre a `Collecion` (O `foreach` também garante isto).
 
 # Iteradores Internos
-Lembram-se de Haskell? Isto é parecido. As Collections implementam todas (desde o Java 8) o metodo [stream][streamMethod]
- que retorna um [Stream][streamDocs] e sobre este podemos fazer uma imensidão de coisas.
+Os iteradoes internos tentam emular programação funcional para iterar sobre as `Collections`.
+
+Estas implementam (desde o Java 8) o metodo [stream][streamMethod] que retorna um [Stream][streamDocs]
+ da `Collection` e sobre este podemos fazer uma imensas operações.
+
+Importante notar que, como acontece em Programação Funcional, os streams apresentam Imutabilidade, ou seja,
+ equanto que nos [iteradores externos][iteradoresExternos] podiamos remover elementos da `Collection` enquanto
+ iteravamos sobre estes, com streams isto não é possivel. Podemos, no entanto, criar uma lista sem os elementos
+ que queremos remover e substituimos a lista antiga com a nova.
+
+*(Nota: A lista é "imutavel" apenas no sentido em não é possivel alterar que elementos que a lista original tem,
+ mas podemos alterar os objectos nela contidos e isto vai afetar a lista original, bem como todas as instacias do
+ objecto em questão. Vou tentar explicar isto melhor com alguns exemplos mais a frente)*
+
+A estrutura usual de uma iteração usando `stream` é a seguinte:
+```Java
+    list.stream()
+        .operacões_sobre_a_estrutura()
+        .converter_de_Stream_para_o_tipo_necessário();
+```
+Não vale a pena listar todas as operações mas vou apresentar alguns exemplos.
+
+## Exemplo 1: map
+Um caso muito frequente é querermos transformar uma lista de `A`s numa lista de `B`s.
+
+Assumindo que `ListElem` implementa `int getId()`, podemos converter uma lista de `ListElem` numa lista de `Integer`.
+```Java
+    List<Integer> ids = list.stream()
+   /*1*/.map(l -> l.getId())
+   /*2*/.collect(Collectors.toList);
+```
+Analisando passo a passo:
+ 1. [map][mapMethod] transforma os elementos da lista de acordo com a função que lhe é passada. Em geral, esta função
+ será um lambda. Lambdas são relativamente simples, este `l -> l.getId()`, por exemplo, quer dizer: "para cada `l`
+ chama e guarda o resultado de `getId()` como elemento da lista", no contexto do `map`.
+ 2. [collect][collectMethod] *coleciona* o resultado numa lista, visto que o resultado das nossas operações é um
+ `Stream<Integer>` e nós precisamos de uma `List<Integer>`. Para chamar o metodo `collect()` temos de lhe passar
+  o [Collector][collectors] que este deve usar. [<sup>\[3\]</sup>][extraNotes]
+
+Ficamos assim com uma lista com os Ids, esta nova lista independente da original.
 
 ---
 **TO BE CONTINUED**
 
 ---
 
+---
 
 # Extra Notes
 1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a precorrer toda
@@ -102,9 +142,11 @@ Lembram-se de Haskell? Isto é parecido. As Collections implementam todas (desde
             l.doStuff();
         }
     ```
-2. Aquele `E` no tipo de retorno de `next()` é porque depende do tipo de iterator quando este é declarado.
-   Por exemplo, o `next()` de um `Iterator<String>` vai retornar `String`. Isto chamam-se genéricos e saem muito
-   fora do ambito do que é esperado de aprender nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
+2. O `E` no tipo de retorno do `next()` deve-se a este depender do tipo de `Iterator` quando este é declarado.
+   Por exemplo, o `next()` de um `Iterator<String>` vai retornar `String`. A isto chamam-se genéricos e saem muito
+   fora do ambito do que é esperado nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
+3. A Api dos `Collectors` e dos `Streams` é muito extensa e depende de muitas classes. No entanto está cheia de
+   exemplos que ajudam a sua compreensão
 
 [extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#extra-notes
 [iterable]: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
@@ -112,3 +154,7 @@ Lembram-se de Haskell? Isto é parecido. As Collections implementam todas (desde
 [interfaceMD]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Hierarquia_de_classes.md#interfaces
 [streamMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--
 [streamDocs]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+[iteradoresExternos]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#iteradores-externos
+[mapMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-
+[collectMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.stream.Collector-
+[collectors]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html
