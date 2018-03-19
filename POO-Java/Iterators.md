@@ -2,13 +2,14 @@
 Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes. Cabe nos a nós encontrar a mais indicada
  para o nosso problema.
 
+Relembro que ler a documentação começa a ser, cada vez mais, crucial para escrever bom código. A maior parte das operações
+ que são necessárias já estão definidas, não vale a pena *"reinventar a roda"*.
+
 ---
 
 Ao longo deste documento:
  * `list` é um objecto do tipo `List<ListElem>`
  * `ListElem` é um elemento da lista
- * `map` é um objecto do tipo `Map<String, MapElem>`
- * `MapElem` é um valor do map.
 
 # O 'for' que todos conhecemos
 De certeza já viste/escreveste um `for` assim.
@@ -107,7 +108,7 @@ A estrutura usual de uma iteração usando `stream` é a seguinte:
 ```
 Não vale a pena listar todas as operações mas vou apresentar alguns exemplos.
 
-## Exemplo 1: map
+### Exemplo 1: map
 Um caso muito frequente é querermos transformar uma lista de `A`s numa lista de `B`s.
 
 Assumindo que `ListElem` implementa `int getId()`, podemos converter uma lista de `ListElem` numa lista de `Integer`.
@@ -119,20 +120,52 @@ Assumindo que `ListElem` implementa `int getId()`, podemos converter uma lista d
 Analisando passo a passo:
  1. [map][mapMethod] transforma os elementos da lista de acordo com a função que lhe é passada. Em geral, esta função
  será um lambda. Lambdas são relativamente simples, este `l -> l.getId()`, por exemplo, quer dizer: "para cada `l`
- chama e guarda o resultado de `getId()` como elemento da lista", no contexto do `map`.
+ chama e guarda o resultado de `getId()` como elemento da lista", no contexto do `map`. [<sup>\[3\]</sup>][extraNotes]
  2. [collect][collectMethod] *coleciona* o resultado numa lista, visto que o resultado das nossas operações é um
  `Stream<Integer>` e nós precisamos de uma `List<Integer>`. Para chamar o metodo `collect()` temos de lhe passar
-  o [Collector][collectors] que este deve usar. [<sup>\[3\]</sup>][extraNotes]
+  o [Collector][collectors] que este deve usar. [<sup>\[4\]</sup>][extraNotes]
 
 Ficamos assim com uma lista com os Ids, esta nova lista independente da original.
 
----
-**TO BE CONTINUED**
+### Exemplo 2: filter
+Outra das aplicações mais frequentes de streams é a filtragem de uma lista.
+
+Assumindo que `ListElem` implementa `int getValue()`, podemos então filtrar todos os elementos com valor inferior
+ a `x`.
+
+```Java
+public List<ListElem> getAbove(int x){
+    return this.list.stream()
+        .filter(l -> l.getValue() > x)
+        .collect(Collectors.toList());
+}
+```
+
+Este metodo irá então retornar uma lista dos `ListElem` com valor superior a `x` mas **atenção!**, pode, se `ListElem` não for
+ imutavel, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este metodo.
+ Podemos, no entanto, resolver este problema facilmente, usando o `map`.
+
+```Java
+public List<ListElem> getAbove(int x){
+    return this.list.stream()
+        .filter(l -> l.getValue() > x)
+        .map(l -> l.clone())
+        .collect(Collectors.toList());
+}
+```
+
+## Method References
+Quando o lambda que passamos a um destes metodos apenas chama outro metodo, como é o exemplo do `l -> l.getId()` podemos
+ utilizar uma `Method Reference` com a seguinte sintaxe: `<Class>::<method>`
+
+Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguinte alteração.
+```Java
+    List<Integer> ids = list.stream()
+        .map(ListElem::getId)
+        .collect(Collectors.toList);
+```
 
 ---
-
----
-
 # Extra Notes
 1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a precorrer toda
  mas os stores são contra isto, justificando que fica menos legivel. (Pessoalmente acho que depende e tem de ser visto caso a caso)
@@ -145,7 +178,14 @@ Ficamos assim com uma lista com os Ids, esta nova lista independente da original
 2. O `E` no tipo de retorno do `next()` deve-se a este depender do tipo de `Iterator` quando este é declarado.
    Por exemplo, o `next()` de um `Iterator<String>` vai retornar `String`. A isto chamam-se genéricos e saem muito
    fora do ambito do que é esperado nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
-3. A Api dos `Collectors` e dos `Streams` é muito extensa e depende de muitas classes. No entanto está cheia de
+3. Existem também "especializações" do `map` como o [mapToInt][mapToIntMethod] que retorna um [IntStream][IntStream] em
+   vez de um `Stream` normal. Sobre este podemos fazer [somatorios][sumMethod], [médias][averageMethod], etc.
+   ```Java
+   int totalValue = list.stream()
+        .mapToInt(l -> l.getId())
+        .sum();
+   ```
+4. A Api dos `Collectors` e dos `Streams` é muito extensa e depende de muitas classes. No entanto está cheia de
    exemplos que ajudam a sua compreensão
 
 [extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#extra-notes
@@ -158,3 +198,9 @@ Ficamos assim com uma lista com os Ids, esta nova lista independente da original
 [mapMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-
 [collectMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.stream.Collector-
 [collectors]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html
+[getListMutaveis]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Anatomia_de_uma_classe.md#get-de-uma-lista-de-objectos-mutaveis
+[ItInternosEx1]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#exemplo-1-map
+[mapToIntMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#mapToInt-java.util.function.ToIntFunction-
+[IntStream]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
+[sumMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#sum--
+[averageMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#average--
