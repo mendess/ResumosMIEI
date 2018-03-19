@@ -32,6 +32,12 @@ for(ListElem l: list){
 ```
 Pode até ser lido, em liguagem natural, "For each `ListElem l` in list do \<this\>"
 
+Alternativamente, este codigo pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
+ *(mais sobre estes numa [secção][ItInternos] mais à frente)*:
+```Java
+list.foreach(l -> l.doStuff());
+```
+
 Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
  visto que não temos a condição de paragem explicita"_. [<sup>\[1\]</sup>][extraNotes]
 
@@ -165,6 +171,29 @@ Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguint
         .collect(Collectors.toList);
 ```
 
+## Lambda mais complexos
+Por vezes o código que temos de implementar é muito complexo para ser escrito numa só linha. Nestes casos podemos, "espandir"
+ o lambda para que seja mais legivel o que estámos a fazer.
+
+```Java
+public List<ListElem> getAbove(int x){
+    return this.list.stream()
+        .filter(l -> {
+                int i = l.getValue();
+                if(someCondition(i)){
+                    return true;
+                }else{
+                    if(someOtherCondition(i)){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                }
+        })
+        .collect(Collectors.toList());
+}
+```
+
 ---
 # Extra Notes
 1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a precorrer toda
@@ -190,6 +219,7 @@ Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguint
 
 [extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#extra-notes
 [iterable]: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
+[ItInternos]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#iteradores-internos
 [iterator]: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 [interfaceMD]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Hierarquia_de_classes.md#interfaces
 [streamMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--
