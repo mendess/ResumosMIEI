@@ -1,8 +1,3 @@
----
----
-# NOT FINISHED
----
----
 # Hierarquia de classes
 
 A hierarquia de classes tem imensas vantagens no que toca a manter a sanidade de quem programa.
@@ -164,6 +159,7 @@ public class Cartao{
 	public Cartao(Pessoa p){
 		this.p = p;
 	}
+}
 ```
 Esta classe pode ter, na sua variavel de instancia, uma `Pessoa`, um `Aluno` ou um
  `Prof`.

@@ -31,18 +31,18 @@ Tudo o que vem a seguir a `//` é um comentário em C. Tudo o que se encontra en
 
 Várias funções em C ja estão definidas, para as utilizarmos temos apenas que as importar.
 
-Em C isso é feito utilizando a diretiva, de pre-processamento, `#include` seguida do ficheiro que contém a função pretendida entre  `<  >`.
-Os ficheiros `.h`, header files, são os ficheiros importados que contêm todas as assinaturas das nossas funções (aprofundado mais a frente).
+Em C isso é feito utilizando a diretiva, de pré-processamento, `#include` seguida do ficheiro que contém a função pretendida entre  `<  >`.
+Os ficheiros `.h`, header files, são os ficheiros importados que contêm todas as assinaturas das nossas funções (aprofundado mais à frente).
 
-Visto que pretendemos escrever "Hello, World" no ecra, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função ja existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` enconta-se no ficheiro `stdio.h`. Stdio é uma abreviatura para Standard Input Output.
+Visto que pretendemos escrever "Hello, World" no ecrã, temos que ter uma função que passe o nosso texto para o terminal (standard output). Essa função já existe em C e chama-se `printf`, mas para a usarmos temos que incluir (importar) o ficheiro que a define (tecnicamente é onde se encontra a sua assinatura). A função `printf` encontra-se no ficheiro `stdio.h`. Stdio é uma abreviatura para Standard Input Output.
 
-Mas como sabemos onde se encontram as funções que queremos usar e como usa-las?
+Mas como sabemos onde se encontram as funções que queremos usar e como usá-las?
 A resposta é simples, documentação.
 
-Portanto `#include <stdio.h>` importa várias funções, sendo uma delas a `printf`, podemos então usar livermente esta função.
+Portanto `#include <stdio.h>` importa várias funções, sendo uma delas a `printf`, podemos então usar livremente esta função.
 
 
-## Main e introdução as funções
+## Main e introdução às funções
 
 A próxima linha de código é uma função muito importante, a função `main`.
 
@@ -71,7 +71,7 @@ tipo nome(tipo1 argumento1, tipo2 argumento2, tipo2 argumento3, [etc]);
 
 ### Corpo de uma função
 
-O corpo de uma função, a sua definição é todo escrito entre chavetas. É aqui que o seu comportamento é definido.
+O corpo de uma função, a sua implementação, é todo escrito entre chavetas. É aqui que o seu comportamento é definido.
 
 No caso da nossa função `main` apenas chama a função `printf` e retorna 0.
 
@@ -88,6 +88,6 @@ Aqui a função printf recebe um argumento:
 ```
 
 ## Return
-Como a nossa `main` é do tipo int, tal como ja vimos nas assinaturas de funções, tem que devolver um int.
-Esta operação de "devolver" é feita com o `return` em C. Como neste caso não tem grande significado, fazemos simplesmente, return 0.
+Como a nossa `main` é do tipo int, tal como já vimos nas assinaturas de funções, tem que devolver um int.
+Esta operação de "devolver" é feita com o `return` em C. Como neste caso não tem grande significado, fazemos simplesmente return 0.
 

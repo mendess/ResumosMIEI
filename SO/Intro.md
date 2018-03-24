@@ -18,14 +18,45 @@ Cada utilizador tem um determinado tempo atribuído só para si, podem utilizar 
 Seguiram-se então os sistemas de `tratamento em batch`. Sendo que **maior parte do tempo de processador era gasto em operações I/O (espera activa)**, a solução foi separar os periférico de I/O.
 Começaram também a surgir os primeiros dispositivos de memória secundária.
 
-Um computador auxiliar lia para a banda magnética os programas a executar, quando o trabalho em curso terminasse o sistema operativo ia a lista de trabalho e seleccionava o próximo a executar. Alem disso, em vez de imprimir o resultado dos programas, os ficheiros são enviados para uma impressora quando acabam de executar.
+Um computador auxiliar lia para a banda magnética os programas a executar, quando o trabalho em curso terminasse o sistema operativo ia a lista de trabalho e seleccionava o próximo a executar. Alem disso, em vez de imprimir o resultado dos programas diretamente, os ficheiros são enviados para uma impressora quando acabam de executar.
 
 Os periféricos avisam o processador no fim da sua exeução, através de interrupções.
 
+
+A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis `user space` e `kernel space`.
 ## Escalonamento
 
 Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução.
 
+## Interrupções
+
+Interrupções/excepções podem ser geradas tanto a partir do software como do hardware.
+
+Alguns exemplos:
+1. Periféricos I/O
+  * Quando acabam as suas operações "avisam" o sistema operativo através de uma chamada ao sistema (que gera uma interrupção).
+2. Excepções
+  * Quando uma instrução executa uma operação inválida, e.g: dividir por zero, aceder a uma zona de memória não permitida.
+3. Timers do CPU.
+
+A interrupção transfere o contexto de execução para a rotina apropriada que vai lidar com o "problema". Visto que apenas algumas interrupções são permitidas existe uma tabela de apontadores, chamada de `interrupt vector` para as rotinas de tratamento de excepções. Cada rotina é chamada indiretamente através da tabela, sem nenhuma rotina/programa intermédia/o. Lidar com interrupções fica menos custoso, em termos de tempo, para o sistema operativo.
+
+O controlo de interrupções é mais ou menos o seguinte:
+1. Um processo do utilizador gera uma interrupção e o Program Counter e o estado do processador são guardados num stack especial do kernel, ficando o processo bloqueado.
+2. O controlador de interrupções decide que tipo de interrupção foi gerada e chama a rotina apropriada do kernel para lidar com ela.
+3. O estado geral do processador é guardado (visto que mudamos de contexto).
+4. O kernel executa a rotina apropriada para lidar com a interrupção.
+5. Se esta rotina foi rapida o kernel volta para o proesso que estava a executar, se não o processo entra para a lista de processos candidatos a CPU.
+  * Assumindo que o processo não foi morto
+6. O Estado do processo é carregado para o registos e o controlo é novamente transferido para o processo.
+
+De notar que o CPU muda o contexto entre user space e kernel space, onde todas as operações são permitidas. Esta mudança é feita internamente pelo hardware.
+
+Dado as excepções serem assíncronas tem que haver forma de lidar com aparecimento de várias excepções em simultaneo. Este controlo é feito com dois mecanismos.
+O primeiro inibe interrupções depois de uma ter sido aceite. Assim se uma interrupção tiver a ser tratada, nao é possível mudança de contexto ao aparecer outra.
+O segundo inibe interrupções dado a sua gravidade, podendo interromper rotinas de tratamento de excepções com menor prioridade.
+
+O returno a modo de user é feito pela instrução de terno de interrupção  `RIT`.
 ## Multiprogramação
 
 O mecanismo de interrupções permite multiplexar o processador.

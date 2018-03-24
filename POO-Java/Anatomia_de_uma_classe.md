@@ -43,16 +43,16 @@ Este constructor recebe como parametro os valores que as variaveis de instancia
 *(Nota: Uma classe pode ter mais variaveis de instacia do que os parametros
  passados neste tipo de constructor, caso, por exemplo, uma destas tenha um
  valor derivado de outras variaveis)*
+
+As diferentes atribuições feitas neste constructor são explicadas atravez dos
+ getters/setters mais à frente.
 ```Java
 	public MyClass(int num, String nome, XClass outraCena,
 			ArrayList<String> nomes, ArrayList<XClass> outrasCenas){
 		this.num = num;
 		this.nome = nome;
 		this.outraCena = outraCena.clone();
-		this.nomes = new ArrayList<>();
-		for(String nome: nomes){
-			this.nomes.add(nome);
-		}
+		this.nomes = new ArrayList<>(nomes);
 		this.outrasCenas = new ArrayList<>();
 		for(XClass cena: outrasCenas){
 			this.outrasCenas.add(cena.clone());
@@ -108,13 +108,13 @@ fora da instancia que o retornou, implica alterar o estado interno da mesma inst
 Tem de se criar uma lista nova. Apesar de cada objecto individual da lista ser imutavel a lista
 em si não é emutavel. Logo se retornarmos a lista diretamente, novos valores podem ser adicionados
 à mesma, alterando o estado interno da instancia a partir do exterior.
+
+Para isto podemos fazer uso do construtor da `ArrayList` que recebe uma `Collection` e copia os valores.
+
+**_ATENÇÃO SÓ PUDEMOS USAR ESTE CONSTRUCTOR PARA LISTAS DE OBJECTOS IMUTAVEIS_**
 ```Java
 	public List<String> getNomes(){
-		ArrayList<String> newNomes = new ArrayList<>();
-		for(String nome: this.nomes){
-			newNomes.add(nome);
-		}
-		return newNomes;
+		return new ArrayList<>(this.nomes);
 	}
 ```
 #### Get de uma lista de objectos mutaveis
@@ -145,12 +145,8 @@ não tem de ser clonados. O resto sim.
 		this.outraCena = outraCena;
 	}
 
-	public void setNomes(List<String> nomes){
-		ArrayList<Nomes> newNomes = new ArrayList<>();
-		for(String nome: nomes){
-			newNomes.add(nome);
-		}
-		this.nomes = newNomes;
+	public void setNomes(ArrayList<String> nomes){
+		this.nomes = new ArrayList<>(nomes);
 	}
 
 	public void setOutrasCenas(List<String> cenas){
@@ -217,4 +213,19 @@ O clone deve ser implementado porque o Nestor diz que sim. Objectos imutaveis n�
 	}
 ```
 
+
+---
+Lista dos principais objectos imutaveis disponiveis:
+ * Integer
+ * Float
+ * Double
+ * Char
+ * Boolean
+ * String
+ * LocalDate
+ * LocalTime
+ * LocalDateTime
+(existem mais)
+
+---
 Todo o codigo pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)
