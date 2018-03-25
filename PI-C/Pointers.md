@@ -50,8 +50,9 @@ Este código imprime no ecra `x: 4, y: 2`. Isto porque a variavel `x` é *"passe
 Por outro lado, `y` é *"passed by reference"*, ou seja, é passado um apontador para a variavel que é local à `main`, podendo então a `func` alterar o valor desta.
 
 ## Arrays
-Os arrays em C são na verdade apontadores para o primeiro indice do array. Os arrays são guardados
- em memória da seguinte forma.
+Os arrays em C são na verdade apontadores para o primeiro indice do array. Os elementos de um array são guardados
+ em memória de forma contigua, ou seja, o segundo elemento do array começa no bit a seguir ao ultimo bit
+ do primeiro elemento, e assim sucessivamente.
 
 *Assuma nesta secção que o nosso sistema guarda inteiros com quatro bits.*
 
@@ -71,6 +72,8 @@ Será guaradado em memoria da seguinte forma
 na verdade `array` é uma varaivel do tipo `int *` e, analogamente pode ser declarado
  dessa forma: `int *array = {1,2,3}`, é equivalente.
 
+**Escrever `int array[]` é exatamente igual a escrever `int *array`**
+
 Sabendo que um array é na verdade um apontador para o primeiro elemento temos então que:
 ```C
     printf(" array == %p\n",array);
@@ -84,7 +87,7 @@ irá produzir o seguinte output:
 
 ## Aritmética de apontadores
 Aritmética de apontadores permite escrever código mais sucinto mas, se for mal usada, por fazer com que este fique mais dificil de ler
- e, consequentemente, de corrigir
+ e, consequentemente, de corrigir.
 
 Continuando com o exemplo anterior do nosso array, podemos aceder ao apontador do segundo elemento do array:
 ```C
@@ -106,6 +109,52 @@ Output:
   array[1] == 2
 *(array+1) == 2
 ```
+
+## Matrizes aka Arrays de Arrays
+*Para esta secção assuma vou usar* `[` *e* `﹇` *para representar o inicio de um array,* `]` *e* `﹈` *para o fim de um array.
+ Também vou usar* `·->` *para simbolizar um apontador.*
+
+Um matriz é, na verdade, um array de arrays.
+```
+int matrix[][] = {{1,2,3},{4,5,6},{7,8,9}};
+﹇
+[ 1, 2, 3 ]
+[ 4, 5, 6 ]
+[ 7, 8, 9 ]
+﹈
+```
+e, se um array é na verdade um apontador para o primeiro elemento, então uma matriz é um array de apontadores.
+```C
+int *matriz[] = {{1,2,3},{4,5,6},{7,8,9}};
+﹇
+·-> 1
+·-> 4
+·-> 7
+﹈
+```
+Que pode ser lido como "Array de apontadores para `int`"
+
+O resto dos elementos de cada array estão armazenados contiguamente na memória mas, sem usar aritmética de apontadores
+ (nem acessos como `matriz[x][y]`), na verdade cada posição do "array principal" apenas aponta para o primeiro elemento
+ de cada um dos seus arrays.
+
+Mas se um array é um apontador para o primeiro elemento, então:
+
+```C
+int **matriz = {{1,2,3},{4,5,6},{7,8,9}};
+·
+|
+V
+·-> 1
+```
+Que pode ser lido como "Apontador para um apontador de `int`"
+
+Ou seja, uma matriz é na verdade um apontador para um apontador.
+
+**Relembro que todas estas maneiras de declarar a matriz são sintaticamente equivalentes!
+ Fazem exatamente a mesma coisa. É apenas uma prespetiva diferente de olhar para as coisas.**
+
+`int matriz[][] === int *matrix[] === int **matrix`
 
 ## Extra Notes
  1. Esta sintaxe para declarar um apontador é flexivel, isto é, `int *x`, `int* x` e `int * x` são todas equivalentes.
