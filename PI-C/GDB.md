@@ -41,12 +41,12 @@ Para usar o `gdb` é simples, assumindo que o terminal se encontra na diretoria 
 ```bash
 gdb program
 ```
-ou
+--- ou ---
 ```bash
 gdb
 ```
 ```bash
-(gdb) fie program
+(gdb) file program
 ```
 A ultima linha de código é dentro do terminal do `gdb`. O comando file faz load a um programa.
 
@@ -56,7 +56,7 @@ De facto, o `gdb` possui uma shell interativa com um conjunto de comandos bastan
 (gdb)
 ```
 
-O terminal do `gdb` tem TAB completion para maior parte dos comando e `help <comando>` para mais informações sobre qualquer comando.
+O terminal do `gdb` tem TAB completion para maior parte dos comandos e `help <comando>` para mais informações sobre qualquer comando.
 
 ## Comandos essenciais
 
@@ -92,29 +92,52 @@ int test(char a, void* c){
 (gdb) b test
 ```
 
-
 Agora que temos vários `breakpoints` quando corrermos o programa com `run` ele vai parar no primeiro `breakpoint` que encontrar.
 
 Podemos continuar para o próximo com o comando `continue`, ou executar o programa linha a linha com o comando `step`.
 
 Semelhante ao `step` existe o `next`, que trata uma função (por exemplo) como uma linha de código só, executando-a e parando depois.
 
-Estar sempre a escrer `step` ou `next` é repetitivo, ao clicar ENTER o `gdb` executa o ultimo comando outra vez.
+Estar sempre a escrever `step` ou `next` é repetitivo, ao clicar ENTER o `gdb` executa o ultimo comando outra vez.
+
+Para remover um `breakpoint` podemos usar o comando `del <num>` onde `num` é o número do `breakpoint`. `del` apenas remove todos os `breakpoints`
 
 ## Estado das variaveis
 
 As vezes é interessante estudar o estado das nossas variaveis.
 
+#### Print
 O comando `print` seguido de uma variavel, imprime o valor da mesma.
 ```bash
 (gdb) print var
 ```
 É possivel formatar este valor para outra base numerica.
 
+Estar sempre a verificar o estado de uma variavel a mao também é aborrecido e o `gdb` oferece duas alternativas.
 
-Estar sempre a verificar o estado de uma variavel a mao também é aborrecido e o `gdb` oferece uma alternativa mais poderosa.
-O comando `watch` é uma espécie de `breakpoint` que interronpe a execução do programa quando a variavel que esta a ser observada é alterada, fazendo print do novo e antigo valor.
+#### Display
+O comando `display` repete o `print` sempre que o gdb pára, ou seja, quando para num breakpoint, no fim de um `next` ou `step`.
+```bash
+(gdb) display var
+```
+Para parar de vazer `display` a uma variavel basta fazer `undisplay <num>` onde o num é indicado atras do valor da variavel impressa.
+
+#### Watch
+O comando `watch` é uma espécie de `breakpoint` que interrompe a execução do programa quando a variavel que esta a ser observada é alterada, fazendo print do novo e antigo valor.
 ```bash
 (gdb) watch var
 ```
 Atenção que se várias variaveis varaiveis tiverem o mesmo nome o `gdb` escolhe qual observar por localidade.
+
+## Abreviaturas
+Porque a perguiça não tem limites, os commandos mais utilizados tem uma abreviatura disponivel:
+
+| comando  | abreviatura |
+| -------- | ----------- |
+|`break`   | `b`         |
+|`print`   | `p`         |
+|`run`     | `r`         |
+|`next`    | `n`         |
+|`step`    | `s`         |
+|`continue`| `c`         |
+
