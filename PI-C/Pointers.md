@@ -111,8 +111,9 @@ Output:
 ```
 
 ## Matrizes aka Arrays de Arrays
-*Para esta secção assuma vou usar* `[` *e* `﹇` *para representar o inicio de um array,* `]` *e* `﹈` *para o fim de um array.
- Também vou usar* `·->` *para simbolizar um apontador.*
+*Para esta secção assuma que* `[` *e* `﹇` *são usados para representar o inicio de um array,* `]` *e* `﹈` *para o fim de um array.
+ 
+ É usado* `·->` *para simbolizar um apontador.*
 
 Um matriz é, na verdade, um array de arrays.
 ```
@@ -123,7 +124,7 @@ int matrix[][] = {{1,2,3},{4,5,6},{7,8,9}};
 [ 7, 8, 9 ]
 ﹈
 ```
-e, se um array é na verdade um apontador para o primeiro elemento, então uma matriz é um array de apontadores.
+e, se um array é na verdade um apontador para o primeiro elemento, então uma matriz é um array de apontadores (para os primeiros elementos).
 ```C
 int *matriz[] = {{1,2,3},{4,5,6},{7,8,9}};
 ﹇
@@ -132,9 +133,9 @@ int *matriz[] = {{1,2,3},{4,5,6},{7,8,9}};
 ·-> 7
 ﹈
 ```
-Que pode ser lido como "Array de apontadores para `int`"
+Pode ser lido como "Array de apontadores para `int`"
 
-O resto dos elementos de cada array estão armazenados contiguamente na memória mas, sem usar aritmética de apontadores
+O resto dos elementos de cada array estão armazenados continuamente na memória mas, sem usar aritmética de apontadores
  (nem acessos como `matriz[x][y]`), na verdade cada posição do "array principal" apenas aponta para o primeiro elemento
  de cada um dos seus arrays.
 
@@ -150,6 +151,7 @@ V
 Que pode ser lido como "Apontador para um apontador de `int`"
 
 Ou seja, uma matriz é na verdade um apontador para um apontador.
+O resto dos elementos são apontadores e seguindos estes apontadores temos os valores guardados na matriz.
 
 **Relembro que todas estas maneiras de declarar a matriz são sintaticamente equivalentes!
  Fazem exatamente a mesma coisa. É apenas uma prespetiva diferente de olhar para as coisas.**
