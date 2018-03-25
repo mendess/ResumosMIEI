@@ -11,3 +11,4 @@ Vamos tentar seguir a ordem das fichas de PI.
  3. [Estruturas de controlo e decisão](./Estruturas_de_controlo_decisao.md)
  4. [Ciclos](./Ciclos.md)
  5. [Arrays](./Arrays.md)
+ 6. [Pointers.md](./Pointers.md)
