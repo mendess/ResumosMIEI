@@ -1,6 +1,6 @@
 # Pointers
 Um apontador é apenas isso. Uma variavel que aponta, neste caso, para um endereço
- em memoria. Este são extremamente poderosos mas também perigosos.
+ em memoria. Estes são extremamente poderosos mas também perigosos.
 
 ## Sintaxe
 Com apontadores vem dois "novos" simbolos: `*` e `&`.
@@ -21,11 +21,11 @@ int main(){
     printf("X == %d\n",x); // [5]
 }
 ```
- 1. `x` é do tipo `int` e tem o valor `2`
- 2. `x_ptr` é um apontador para um `int`
- 3. `x_ptr` está agora a apontar para o endereço da variavel `x`
- 4. O valor da variavel apontada por `x_ptr` passa a ser 4;
- 5. Este `printf` imprime `X == 4` no ecra.
+ 1. `x` é do tipo `int` e tem o valor `2`;
+ 2. `x_ptr` é um apontador para um `int`; [<sup>\[1\]</sup>][extraNotes]
+ 3. `x_ptr` está agora a apontar para o endereço da variavel `x`;
+ 4. O valor da variavel apontada por `x_ptr` passa a ser 4, aceder ao valor de um apontador chama-se _diferenciar o apontador_;
+ 5. Este `printf` imprime `X == 4` no ecra;
 
 ## Passagem por referencia e passagem por cópia
 Se quisermos que um variavel local seja alterada por uma função podemos passar um apontador
@@ -46,7 +46,7 @@ int main(){
 }
 ```
 Este código imprime no ecra `x: 4, y: 2`. Isto porque a variavel `x` é *"passed by value"*,
- ou seja, o seu valor é copiado para ser passado para a função. Que é como quem diz, uma nova variavel local é criada dentro da função `func`(`x`) e toma o valor passado quando a função é chamada. O `x` da main e o `x` da func são variaveis diferentes, apenas têm o mesmo valor.
+ ou seja, o seu valor é copiado para ser passado para a função. Que é como quem diz, uma nova variavel local é criada dentro da função `func(x)` e toma o valor passado quando a função é chamada. O `x` da main e o `x` da func são variaveis diferentes, apenas têm o mesmo valor.
 Por outro lado, `y` é *"passed by reference"*, ou seja, é passado um apontador para a variavel que é local à `main`, podendo então a `func` alterar o valor desta.
 
 ## Arrays
@@ -71,4 +71,43 @@ Será guaradado em memoria da seguinte forma
 na verdade `array` é uma varaivel do tipo `int *` e, analogamente pode ser declarado
  dessa forma: `int *array = {1,2,3}`, é equivalente.
 
+Sabendo que um array é na verdade um apontador para o primeiro elemento temos então que:
+```C
+    printf(" array == %p\n",array);
+    printf("*array == %d\n",*array);
+```
+irá produzir o seguinte output:
+```
+ array == 0x101
+*array == 1
+```
 
+## Aritmética de apontadores
+Aritmética de apontadores permite escrever código mais sucinto mas, se for mal usada, por fazer com que este fique mais dificil de ler
+ e, consequentemente, de corrigir
+
+Continuando com o exemplo anterior do nosso array, podemos aceder ao apontador do segundo elemento do array:
+```C
+    printf("array+1 == %p\n",array+1);
+```
+Output:
+```
+array+1 == 0x102
+```
+
+E seguindo o padrão sintatico das secções anteriores podemos também usar esta aritmética para aceder ao segundo elemento
+ do array:
+```C
+    printf("  array[1] == %d\n",array[1]);
+    printf("*(array+1) == %d\n",*(array+1));
+```
+Output:
+```
+  array[1] == 2
+*(array+1) == 2
+```
+
+## Extra Notes
+ 1. Esta sintaxe para declarar um apontador é flexivel, isto é, `int *x`, `int* x` e `int * x` são todas equivalentes.
+
+[extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/writing/PI-C/Pointers.md#extra-notes
