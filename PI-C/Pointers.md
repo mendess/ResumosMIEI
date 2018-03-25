@@ -1,6 +1,6 @@
 # Pointers
 Um apontador é apenas isso. Uma variavel que aponta, neste caso, para um endereço
- em memoria. Este são estremamente poderosos mas também perigosos
+ em memoria. Este são extremamente poderosos mas também perigosos.
 
 ## Sintaxe
 Com apontadores vem dois "novos" simbolos: `*` e `&`.
@@ -27,7 +27,7 @@ int main(){
  4. O valor da variavel apontada por `x_ptr` passa a ser 4;
  5. Este `printf` imprime `X == 4` no ecra.
 
-## Pointers usados com funções PRECISO DE UM TITULO MELHOR
+## Passagem por referencia e passagem por cópia
 Se quisermos que um variavel local seja alterada por uma função podemos passar um apontador
  para esta.
 
@@ -46,9 +46,8 @@ int main(){
 }
 ```
 Este código imprime no ecra `x: 4, y: 2`. Isto porque a variavel `x` é *"passed by value"*,
- ou seja, o seu valor é copiado para ser passado para a função. Por outro lado, `y` é
- *"passed by reference"*, ou seja, é passado um apontador para a variavel que é local à
- `main`, podendo então a `func` alterar o valor desta.
+ ou seja, o seu valor é copiado para ser passado para a função. Que é como quem diz, uma nova variavel local é criada dentro da função `func`(`x`) e toma o valor passado quando a função é chamada. O `x` da main e o `x` da func são variaveis diferentes, apenas têm o mesmo valor.
+Por outro lado, `y` é *"passed by reference"*, ou seja, é passado um apontador para a variavel que é local à `main`, podendo então a `func` alterar o valor desta.
 
 ## Arrays
 Os arrays em C são na verdade apontadores para o primeiro indice do array. Os arrays são guardados
