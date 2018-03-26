@@ -56,7 +56,7 @@ mySumInt 3 4 :: Int
 Se nos abstrairmos do modelo de pensamento imposto por outros paradigmas de programação, podemos começar a pensar em funções como bem mais que blocos de código cujo **único** propósito é o retorno de dados processados.
 Podemos então começar a pensar em funções como geradores de **novas** funções, dado esta nova relação entre elas.
 
-## Curry and uncurry
+## Curry e uncurry
 
 Como ja vimos, todas as funções em `Haskell` recebem apenas um argumento.
 Funções com vários argumentos vão aplicando parcialmente a função aos seus argumentos até que se tornem numa função com um só argumento.
