@@ -51,11 +51,6 @@ mySumInt 3 :: Int -> Int
 mySumInt 3 4 :: Int
 ```
 
-**Porque é que isto importa?**
-
-Se nos abstrairmos do modelo de pensamento imposto por outros paradigmas de programação, podemos começar a pensar em funções como bem mais que blocos de código cujo **único** propósito é o retorno de dados processados.
-Podemos então começar a pensar em funções como geradores de **novas** funções, dado esta nova relação entre elas.
-
 ## Curry e uncurry
 
 Como ja vimos, todas as funções em `Haskell` recebem apenas um argumento.
@@ -107,3 +102,41 @@ uncurry f (a, b) = f a b
   * `f` é uma função que recebe dois argumentos separados
   * `a` e `b` são de tipos diferentes, qualquer, passados juntos como um tuplo
 O que a `uncurry` faz é separar o `a` e `b`,e chamar a função `f`, que recebe os argumentos em separado.
+
+## Composição de função
+
+Em `Haskell` é possivel compor funções, tal como em matematica.
+O unico requesito é que elas 'tipem', ou seja que os tipos das funções batam certo, tal como em matematica o contradominio de `g` tem que pertencer ao dominio do `f` em `fºg`.
+É muito mais fácil demonstar a composição de funções do que tentar explicar teoricamente, no entanto a analogia com funções composta da matemática é muito forte.
+
+Vamos assumir que temos as seguintes funções
+```haskell
+par :: Int -> Bool
+not :: Bool -> Bool
+```
+
+Podemos defenir a função `impar` da seguinte forma.
+```haskell
+impar :: Int -> Bool
+impar x = not (even x)
+```
+Mas pode ser definidade de forma mais simples e mais legivel.
+```haskell
+impar' :: Int -> Bool
+impar' = not . even
+```
+As duas funções são exatamente iguais, a segunda apenas 'colou' as duas funções usadas.
+
+Daqui deduzimos que
+```haskell
+(not . even) x = not (even x)
+```
+E no caso mais geral
+```haskell
+(f . g) x = f (g x)
+```
+
+## Porque é que isto importa?
+
+Se nos abstrairmos do modelo de pensamento imposto por outros paradigmas de programação, podemos começar a pensar em funções como bem mais que blocos de código cujo **único** propósito é o retorno de dados processados.
+Podemos então começar a pensar em funções como geradores de **novas** funções, dado estas novas relações entre elas.
