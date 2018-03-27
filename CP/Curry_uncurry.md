@@ -12,7 +12,7 @@ Por simplicidade vamos definir uma função básica.
 mySumInt :: Int -> Int -> Int
 mySumInt x y = x + y
 ```
-A partir do tipo da função, para alguem iniciado em Haskell, não é muito intuitivo que esta função recebe dois `Ints` e devolve outro.
+A partir do tipo da função, para alguém iniciado em Haskell, não é muito intuitivo que esta função recebe dois `Ints` e devolve um outro.
 
 Isto acontece porque na realidade as funções em Haskell recebem apenas um argumento.
 Funções com vários argumentos, vão aplicando o primeiro argumento (o mais a esquerda) e devolvem uma nova função que pede menos um argumento.
@@ -28,9 +28,9 @@ mySumInt 3 :: Int -> Int
 mySumInt3 :: Int -> Int
 ```
 Como podemos ver, ao aplicar a `mySumInt` a apenas um `Int`, temos uma nova função, que aceita um `Int` e devolve o resultado da soma desse `Int` com `3`.
-Ou seja, o primeiro argumento da `mySumInt` foi substituido por `3` e temos uma função nova que soma um `Int` qualquer a `3`.
+Ou seja, o primeiro argumento da `mySumInt` foi substituido por `3`.
 
-De facto, podemos pensar em `aplicação parcial` de uma função como uma especialização. A função `mySumInt` somava dois `Ints` e apos aplicada parcialmente soma um `Int` a `3`, que é um caso muito mais especifico.
+De facto, podemos pensar em `aplicação parcial` de uma função como uma especialização. A função `mySumInt` somava dois `Ints` quaisquer e depois de ser aplicada parcialmente soma um `Int` a `3`, que é um caso muito mais específico.
 
 ```haskell
 mySumInt 3 4
@@ -53,17 +53,19 @@ mySumInt 3 4 :: Int
 
 ## Curry e uncurry
 
-Como ja vimos, todas as funções em `Haskell` recebem apenas um argumento.
-Funções com vários argumentos vão aplicando parcialmente a função aos seus argumentos até que se tornem numa função com um só argumento.
+Como já vimos, todas as funções em `Haskell` recebem apenas um argumento.
+Funções com vários argumentos vão aplicando parcialmente a função aos seus argumentos até se tornem numa função com um só argumento.
 
-As funções em `Haskell` possuem então duas formas `curried` e `uncurried`.
+As funções em `Haskell` possuem então duas formas, `curried` e `uncurried`.
 
 As funções `curried` são as que costumamos trabalhar normalmente
 ```haskell
 mySumInt :: Int -> Int -> Int
 mySumInt x y = x + y
 ```
-Visto que possuem mais que um argumento, podem ser aplicadas parcialmente. O seu resultado nao tem que ser totalmente calculado logo. Pode receber um argumento, espera por um segundo argumento e vai 'calculando' o que pode com este primeiro argumento, recebe o segundo, calcula o que pode, espera por outro argumento e quando tiver todos os argumentos, calcula o que falta. Desta forma o tempo de calculo (processamento da função) é distribuido, nao tendo que ficar a espera de todos os argumentos.
+Visto que possuem mais que um argumento, podem ser aplicadas parcialmente. 
+O seu resultado não tem que ser totalmente calculado logo.
+Pode receber um argumento, espera por um segundo argumento e vai 'calculando' o que pode com este primeiro argumento. Recebe o segundo argumento, calcula o que pode, espera por outro argumento e quando tiver todos os argumentos, calcula o que falta. Desta forma o tempo de calculo (processamento da função) é distribuído, não tendo que ficar a espera de todos os argumentos.
 
 
 A segunda forma é a `uncurried`
@@ -71,7 +73,7 @@ A segunda forma é a `uncurried`
 mySumInt :: (Int, Int) -> Int
 mysumInt (x, y) = x + y
 ```
-Esta forma recebe apenas **um** argumento sendo que para executar, tem que ter os dados (elementos do tuplo) presentes ao mesmo tempo.
+Esta forma recebe apenas **um** argumento sendo que para executar, tem que ter todos os dados (elementos do tuplo) presentes ao mesmo tempo.
 
 
 Existem funções para passar de um estado para o outro.
@@ -83,7 +85,7 @@ curry f a b = f (a,b)
 uncurry :: (a -> b -> c) -> (a, b) -> c
 uncurry f (a, b) = f a b
 ```
-Os nomes podem parecer trocados mas analisando os tipos fazem perfeito sentido. Vamos fazer esse exercicio por alto.
+Os nomes podem parecer trocados mas analisando os tipos fazem perfeito sentido. Vamos fazer esse exercício por alto.
 
 ```haskell
 curry :: ((a, b) -> c) -> (a -> b -> c)
@@ -103,11 +105,11 @@ uncurry f (a, b) = f a b
   * `a` e `b` são de tipos diferentes, qualquer, passados juntos como um tuplo
 O que a `uncurry` faz é separar o `a` e `b`,e chamar a função `f`, que recebe os argumentos em separado.
 
-## Composição de função
+## Composição de funções
 
-Em `Haskell` é possivel compor funções, tal como em matematica.
-O unico requesito é que elas 'tipem', ou seja que os tipos das funções batam certo, tal como em matematica o contradominio de `g` tem que pertencer ao dominio do `f` em `fºg`.
-É muito mais fácil demonstar a composição de funções do que tentar explicar teoricamente, no entanto a analogia com funções composta da matemática é muito forte.
+Em `Haskell` é possível compor funções, tal como em matemática.
+O único requisito é que elas 'tipem', ou seja que os tipos das funções batam certo, tal como em matemática o contradomínio de `g` tem que pertencer ao domínio do `f` em `fºg`.
+É muito mais fácil demonstrar a composição de funções do que tentar explicar teoricamente, no entanto a analogia com funções composta da matemática é muito forte.
 
 Vamos assumir que temos as seguintes funções
 ```haskell
@@ -115,12 +117,12 @@ par :: Int -> Bool
 not :: Bool -> Bool
 ```
 
-Podemos defenir a função `impar` da seguinte forma.
+Podemos definir a função `impar` da seguinte forma.
 ```haskell
 impar :: Int -> Bool
 impar x = not (even x)
 ```
-Mas pode ser definidade de forma mais simples e mais legivel.
+Mas pode ser definida de forma mais simples e mais legivel.[<sup>\[1\]</sup>][extra]
 ```haskell
 impar' :: Int -> Bool
 impar' = not . even
@@ -140,3 +142,6 @@ E no caso mais geral
 
 Se nos abstrairmos do modelo de pensamento imposto por outros paradigmas de programação, podemos começar a pensar em funções como bem mais que blocos de código cujo **único** propósito é o retorno de dados processados.
 Podemos então começar a pensar em funções como geradores de **novas** funções, dado estas novas relações entre elas.
+
+
+[extra]: https://stackoverflow.com/questions/3030675/haskell-function-composition-and-function-application-idioms-correct-us
