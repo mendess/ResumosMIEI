@@ -26,7 +26,7 @@ Os periféricos avisam o processador no fim da sua exeução, através de interr
 A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis `user space` e `kernel space`.
 ## Escalonamento
 
-Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução.
+Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução. Vamos analisar estar 'escolha' mais à frente.
 
 ## Interrupções
 
@@ -63,12 +63,19 @@ O mecanismo de interrupções permite multiplexar o processador.
 A capacidade de alternar a execução **não** é limitada a `um programa e periféricos I/O` mas pode ser estendida a **vários programas em memória**.
 
 Um programa que queira aceder a um ficheiro em disco fica bloqueada enquanto o controlador de disco actua. Durante este tempo outro programa pode ser executado pelo processador.
-Desta forma conseguimos optimizar a utilização do processador.
+Desta forma conseguimos optimizar a utilização do processador, tendo sempre algo para fazer.
 
 ## Memória virtual
 
-//TODO
+O CPU carrega instruções apenas a partir da memória, o que impllica que para que os programas corram tenham que estar em memória. A grande maioria dos programas correm os programas numa memória volatil, a RAM, que vai ser chamada de memória principal.
 
+Esta, e outras formas de memória, disponibilizam um `array de bytes`. Cada byte tem o seu endereço. Os bytes interegarem entre si atravez de instruções de `load` ou `store` referidas a endereços de memória especificos.
+A `load` move um byte, ou uma `word`, da memória principal para um registo do CPU e a `sotre` faz a operação inversa.
+De notar que a unidade de memória apenas 've' uma série de endereços de memória, é totalmente agnostica à forma como foram criados ou o seu conteúdo.
+
+Idealmente os `processos` estariam todos presentes na memória virtual mas isso não é possivel.
+
+Surge então a memória virtual que simula um espaçõ de memória completo para cada `processo` sendo que na realidade apenas parte do `processo` se encontra na `memória principal`. Vai ser mais analisada mais a frente.
 
 # Papel do Sistema Operativo
 
