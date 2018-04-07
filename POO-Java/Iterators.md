@@ -1,9 +1,10 @@
 # Iterators
-Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes. Cabe nos a nós encontrar a mais indicada
- para o nosso problema.
+Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes.
+Cabe-nos a nós encontrar a mais indicada para o nosso problema.
 
-Relembro que ler a documentação começa a ser, cada vez mais, crucial para escrever bom código. A maior parte das operações
- que são necessárias já estão definidas, não vale a pena *"reinventar a roda"*.
+Relembro que ler a documentação começa a ser, cada vez mais, crucial para
+escrever bom código. A maior parte das operações que são necessárias já estão
+definidas, não vale a pena *"reinventar a roda"*.
 
 ---
 
@@ -11,7 +12,8 @@ Ao longo deste documento:
  * `list` é um objecto do tipo `List<ListElem>`
  * `ListElem` é um elemento da lista
 
-# O 'for' que todos conhecemos
+# O `for` que todos conhecemos
+
 De certeza já viste/escreveste um `for` assim.
 ```Java
 for(int i=0; i<list.size(); i++){
@@ -19,11 +21,13 @@ for(int i=0; i<list.size(); i++){
     l.doStuff();
 }
 ```
-Este metodo funciona para a maior parte dos casos quando temos de iterar por um array (ArrayList), mas assume muito
-sobre o funcionamento da estrutura/classe.
+Este método funciona para a maior parte dos casos quando temos de iterar por um
+array (ArrayList), mas assume muito sobre o funcionamento da estrutura/classe.
 
 # Foreach
-Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
+
+Collections que implementem [Iterable][iterable] podem ser iteradas com este
+estilo de `for`, chamado "foreach".
 
 ```Java
 for(ListElem l: list){
@@ -32,29 +36,36 @@ for(ListElem l: list){
 ```
 Pode até ser lido, em liguagem natural, "For each `ListElem l` in list do \<this\>"
 
-Alternativamente, este codigo pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
+Alternativamente, este código pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
  *(mais sobre estes numa [secção][ItInternos] mais à frente)*:
 ```Java
 list.foreach(l -> l.doStuff());
 ```
 
-Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
- visto que não temos a condição de paragem explicita"_. [<sup>\[1\]</sup>][extraNotes]
+Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a
+lista toda, visto que não temos a condição de paragem explicita"_.
+[<sup>\[1\]</sup>][extraNotes]
 
 # Iteradores externos
-Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
- é uma [interface][interfaceMD], e esta garante que classes que a implementam têm o
- metodo `iterator()` que retorna um `Iterator` sobre a collection.
 
-Como podemos ver pelos [javaDocs][iterator] `Iterator` implementa 3 metodos muito simples.
+Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
+é uma [interface][interfaceMD], e esta garante que classes que a implementam têm
+o método `iterator()` que retorna um `Iterator` sobre a collection.
+
+Como podemos ver pelos [javaDocs][iterator] `Iterator` implementa 3 métodos
+muito simples.
+
 ```Java
 boolean hasNext()
 ```
 Que retorna `true` se o iterador não chegou ao fim da lista.
+
 ```Java
 E next()
 ```
-Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o proximo elemento. [<sup>\[2\]</sup>][extraNotes]
+Que retorna um elemento da lista onde o iterador se encontra e avança o iterador
+para o próximo elemento. [<sup>\[2\]</sup>][extraNotes]
+
 ```Java
 void remove()
 ```
@@ -72,7 +83,7 @@ while(it.hasNext()){
 }
 ```
 
-Podemos então aqui alterar o codigo para que o ciclo acabe quando uma condição se verificar.
+Podemos então aqui alterar o código para que o ciclo acabe quando uma condição se verificar.
 ```Java
 boolean flag = true;
 Iterator<ListElem> it = list.iterator();
@@ -161,10 +172,10 @@ public List<ListElem> getAbove(int x){
 ```
 
 ## Method References
-Quando o lambda que passamos a um destes metodos apenas chama outro metodo, como é o exemplo do `l -> l.getId()` podemos
+Quando o lambda que passamos a um destes métodos apenas chama outro metodo, como é o exemplo do `l -> l.getId()` podemos
  utilizar uma `Method Reference` com a seguinte sintaxe: `<Class>::<method>`
 
-Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguinte alteração.
+Olhando para o [Exemplo 1][ItInternosEx1] novamente, o código sofreria a seguinte alteração.
 ```Java
     List<Integer> ids = list.stream()
         .map(ListElem::getId)

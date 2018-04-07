@@ -47,7 +47,7 @@ Portanto `#include <stdio.h>` importa várias funções, sendo uma delas a `prin
 A próxima linha de código é uma função muito importante, a função `main`.
 
 A função `main` tem a particularidade de ser sempre executada quando corremos os nossos programas, além do mais é sempre a primeira!
-Mas que raio é uma função em C?!?! Uma função em C é um conjunto de codigo C que é executado quando a função é chamada. Podemos pensar que sempre que a função `main` é chamada, tudo o que está entre chavetas é executado.
+Mas que raio é uma função em C?!?! Uma função em C é um conjunto de código C que é executado quando a função é chamada. Podemos pensar que sempre que a função `main` é chamada, tudo o que está entre chavetas é executado.
 
 Isto leva-nos a mais duas definições:
   * Assinatura da função;

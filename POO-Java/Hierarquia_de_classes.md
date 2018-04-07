@@ -43,12 +43,14 @@ public class Prof {
 	/* Getters, Setters, etc */
 }
 ```
-No entanto, temos assim muito codigo duplicado. Variaveis repetidas, getters, setters, se for o caso, tb teremos metodos iguais repetidos.
+No entanto, temos assim muito código duplicado. Variaveis repetidas, getters, setters, se for o caso, tb teremos métodos iguais repetidos.
 
-O equals, toString vão ser extremamento parecidos tambem.
+O equals, toString vão ser extremamento parecidos também.
 
-## Classe que agrupa o codigo comum
+## Classe que agrupa o código comum
+
 Uma primeira solução para o nosso problema é então agrupar as partes comuns numa só classe.
+
 ```Java
 public class Pessoa {
 	private String num;
@@ -63,9 +65,10 @@ public class Pessoa {
 	/* Getters, Setters, etc */
 }
 ```
-Resta-nos apenas relacionar as nossas antigas classes com esta.
-Isto é muito simples. Mas tem alguns detalhes importantes a ter em conta,
-que falarei a seguir.
+Resta-nos apenas relacionar as nossas antigas classes com esta. Isto é muito
+simples. Mas tem alguns detalhes importantes a ter em conta, que falarei a
+seguir.
+
 ```Java
 public class Aluno extends Pessoa {
 	private ArrayList<String> cadeiras;
@@ -88,14 +91,14 @@ public class Prof extends Pessoa {
 }
 ```
 A primeira palavra ('keyword') nova aqui é `super`. Esta serve para fazer
-referencia a simbolos (variaveis, metodos, etc) definidos na super classe.
+referência a simbolos (variaveis, métodos, etc) definidos na super classe.
 
-Assim a linha `super(...)` refere-se ao constructor da superclasse e evita-se assim
- repetir codigo, visto que aquela parte do constructor é igual para todas as
- subclasses de `Pessoa`.
+Assim a linha `super(...)` refere-se ao constructor da superclasse e evita-se
+assim repetir código, visto que aquela parte do constructor é igual para todas
+as subclasses de `Pessoa`.
 
-Podemos também usar o super para chamar metodos da superclasse. O classico exemplo é
-o equals.
+Podemos também usar o super para chamar métodos da superclasse. O clássico
+exemplo é o equals.
 ```Java
 public class Aluno extends Pessoa {
 	/* igual ao de cima */
@@ -109,17 +112,17 @@ public class Aluno extends Pessoa {
 	}
 }
 ```
-### Implicações desta construção do codigo
+### Implicações desta construção do código
 Pessoa é uma classe como outra qualquer. Podemos instancia-la e chamar-lhe os
-metodos que tem definido.
+métodos que tem definido.
 ```Java
 	Pessoa p = new Pessoa("D99999","JBB","god@ghci.com");
 	String num = p.getNum(); // funciona
 	ArrayList<String> cadeiras = p.getCadeiras(); // não funciona, este getter não
                                                      // esta definido na classe Pessoa
 ```
-`Aluno` (e `Prof`) podem tambem ser instanciados. E podemos chamar metodos
- definidos na superclasse e metodos definidos na propria classe.
+`Aluno` (e `Prof`) podem também ser instanciados. E podemos chamar métodos
+ definidos na superclasse e métodos definidos na propria classe.
 ```Java
 	Aluno a = new Aluno("A12345","Mendes","mendes@mymail.com", new ArrayList<>());
 	String num = a.getNum(); // funciona. O getter esta definido na superclasse
@@ -164,17 +167,19 @@ public class Cartao{
 Esta classe pode ter, na sua variavel de instancia, uma `Pessoa`, um `Aluno` ou um
  `Prof`.
 
-#### Atencao
+#### Atenção
+
 ```Java
 	ArrayList<Pessoa> pessoas = new ArrayList<>();
 	// Adicionam-se montes de cenas a lista
 	Pessoa p = pessoas.get(42);
 	Prof prof = (Prof) p; // Não funciona caso o tipo "verdadeiro" de p não seja Prof
 ```
-Este codigo poderá lancar uma `ClassCastException`. Este tipo de erros não podem ser
+Este código poderá lancar uma `ClassCastException`. Este tipo de erros não podem ser
  detetados pelo compilador mas quando ocorrem crasham o programa.
 
 Para evitar isto simplesmente temos de fazer uma simples verificação.
+
 ```Java
 	if(p instanceof Prof){
 		Prof prof = (Prof) p;
@@ -184,10 +189,11 @@ Para evitar isto simplesmente temos de fazer uma simples verificação.
 
 ## Classes Abstractas
 Até agora tudo bem, mas há um problema com a nossa aplicação. Podem haver
- instancias de `Pessoa`, que não faz sentido no nosso contexto. (Ou se é Aluno ou se
- é Prof)
+intâncias de `Pessoa`, que não faz sentido no nosso contexto. (Ou se é Aluno ou
+se é Prof)
 
 Este problema é facilmente resolvido adicionando uma palavra na declaração de `Pessoa`.
+
 ```Java
 public abstract class Pessoa {
 	/* Tudo igual */
@@ -196,7 +202,7 @@ public abstract class Pessoa {
 Tudo que foi escrito acima deste paragrafo continua a ser verdade, excepto
 `new Pessoa(...)`, isto é agora invalido.
 
-Outra vantagem é que agora podemos definir metodos abstractos.
+Outra vantagem é que agora podemos definir métodos abstractos.
 ```Java
 public abstract class Pessoa {
 	public abstract irParaAula(Aula a);
@@ -215,11 +221,13 @@ Em Java cada classe pode apenas extender uma superclasse. (C++, por exemplo, per
 
 
 ## Interfaces
+
 Finalmente temos as interfaces. Estas servem para resolver o problema de Java não permitir herança multipla.
 
-Interfaces podem ser vistas como contratos, ou seja, uma classe que implementa uma interface compromete-se a implementar os metodos descritos na interface.
+Interfaces podem ser vistas como contratos, ou seja, uma classe que implementa uma interface compromete-se a implementar os métodos descritos na interface.
 
 ### Situação exemplo
+
 Estamos a desenvolver uma api para reproduzir musica.
 ```Java
 public class Radio {
@@ -241,8 +249,9 @@ public class Radio {
 Mas não queremos que restringir aos utilizadores da nossa api (outros programadores) a uma classe `Musica` definida por nós.
 
 ### Solução
+
 Podemos então definir uma interface, um contrato. E as condições deste contrato são muito simples:
- * *"Se implementares estes metodos, eu posso reproduzir a tua musica"*
+ * *"Se implementares estes métodos, eu posso reproduzir a tua musica"*
 
 Definimos a interface então da seguinte forma:
 ```Java
@@ -250,7 +259,7 @@ public interface Musica{
     void start();
 }
 ```
-De notar que não coloquei um *access modifier* (`public`, `private`, etc.). Isto é porque todos os metodos definidos numa interface
+De notar que não coloquei um *access modifier* (`public`, `private`, etc.). Isto é porque todos os métodos definidos numa interface
  são `public` por defeito.
 
 Assim um programador que queria usar a nossa api pode definir a sua classe de musica e utlizar o radio que nós já definimos.
@@ -271,13 +280,16 @@ public class MyMusic implements Musica{
 ```
 
 ### Interfaces mais comuns
+
 #### Collections
+
 Nas `Collections` do Java temos varias interfaces que podemos utilizar.
 Alguns exemplos
  * [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
  * [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
 
-Podemos utlizar estas interfaces para fazer o nosso codigo mais genérico.
+Podemos utlizar estas interfaces para fazer o nosso código mais genérico.
+
 ```Java
 public class MyClass{
     private List<String> nomes;
@@ -294,6 +306,7 @@ public class MyClass{
 Esta classe aceita qualquer tipo de lista.
 
 E este sistema permite-nos também implementar as nossa proprias implementações de listas/maps/etc
+
 ```Java
 public class DBMap implements Map<String,Cena>{
 }

@@ -85,7 +85,7 @@ Se o nosso programa tiver vários ficheiros `.c` associados temos que especifica
 Podemos também por um `breakpoint` associado a uma função diretamente:
 ```c
 int test(char a, void* c){
-    // codigo
+    // código
   }
 ```
 ```bash

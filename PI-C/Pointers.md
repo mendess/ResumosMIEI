@@ -27,7 +27,7 @@ int main(){
  4. O valor da variavel apontada por `x_ptr` passa a ser 4, aceder ao valor de um apontador chama-se _diferenciar o apontador_;
  5. Este `printf` imprime `X == 4` no ecra;
 
-## Passagem por referencia e passagem por cópia
+## Passagem por referência e passagem por cópia
 Se quisermos que um variavel local seja alterada por uma função podemos passar um apontador
  para esta.
 

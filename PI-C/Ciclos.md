@@ -14,7 +14,7 @@ O `while` é o mais simples destes.
         etc;
     }
 ```
-Enquanto a `condicao` for verdadeira o codigo é repetido.
+Enquanto a `condicao` for verdadeira o código é repetido.
 
 Exemplo pratico:
 ```C
@@ -27,7 +27,7 @@ Exemplo pratico:
 Podemos até ler este código em linguagem natural da seguinte forma: "Enquanto o `i`
  for menor que 3, imprimir o valor do `i` e incrementar o `i`".
 
-O output deste codigo é:
+O output deste código é:
 ```
 0
 1
@@ -39,7 +39,7 @@ O `for` é essencialmente uma extenção do `while`. Como podemos ver no exemplo
  anterior, inicializamos uma variavel para contar iterações (`i`), usamos essa mesma
  variavel na condição do `while`, e incrementamos a variavel no corpo do `while`.
 
-O `for` permite-nos juntar estes 3 passos numa linha de codigo.
+O `for` permite-nos juntar estes 3 passos numa linha de código.
 ```C
     for(<expr1>; <expr2>; <expr3>){
         /* corpo */
@@ -56,7 +56,7 @@ Exemplo prático:
         printf("%d\n",i);
     }
 ```
-Este codigo é equivalente ao anterior. O output é o mesmo.
+Este código é equivalente ao anterior. O output é o mesmo.
 
 ## Uma nota sobre recursividade
 A recursividade é válida em C, mas não é tão eficiente como um ciclo na maioria das

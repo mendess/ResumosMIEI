@@ -95,11 +95,11 @@ public class MyClass /*[extends SuperClass] [implements InterfaceClass, ...]*/{
 
 	/*
 	 *
-	 * Metodos
+	 * Métodos
 	 *
 	 */
 
-	// Metodos obrigatorios
+	// Métodos obrigatorios
 
 	public boolean equals(Object o){
 		if(this == o) return true;
