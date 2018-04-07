@@ -1,8 +1,11 @@
 # Contextualização
 
-As histórias do Moura têm como objectivo justificar e contextualizar as decisões tomadas sobre a evolução dos Sistemas Operativos. Infelizmente, o resultado obtido é uma amálgama de informação com muito pouca utilidade.
+As histórias do Moura têm como objectivo justificar e contextualizar as decisões
+tomadas sobre a evolução dos Sistemas Operativos. Infelizmente, o resultado
+obtido é uma amálgama de informação com muito pouca utilidade.
 
-Este capitulo tem como objectivos principais *resumir o contexto histórico* e *apresentar o papel do sistema operativo e sua definição*.
+Este capítulo tem como objectivos principais *resumir o contexto histórico* e
+*apresentar o papel do sistema operativo e sua definição*.
 
 # Contexto Histórico
 
@@ -24,6 +27,7 @@ Os periféricos avisam o processador no fim da sua exeução, através de interr
 
 
 A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis `user space` e `kernel space`.
+
 ## Escalonamento
 
 Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução.
@@ -57,6 +61,7 @@ O primeiro inibe interrupções depois de uma ter sido aceite. Assim se uma inte
 O segundo inibe interrupções dado a sua gravidade, podendo interromper rotinas de tratamento de excepções com menor prioridade.
 
 O returno a modo de user é feito pela instrução de terno de interrupção  `RIT`.
+
 ## Multiprogramação
 
 O mecanismo de interrupções permite multiplexar o processador.
@@ -99,7 +104,7 @@ Lista de recursos lógicos geridos pelo sistema operativo;
    * GUI (Linux, Apple, Windows).
 * System calls
    * Permitem executar operações associadas aos objectos do sistema;
-   * Os objectos do sistema representa os recrusos lógicos e os seus metodos associados.
+   * Os objectos do sistema representa os recrusos lógicos e os seus métodos associados.
    * Fazem parte do modelo computacional dos sistemas opertativos.
 
 ## 3. Máquina virtual

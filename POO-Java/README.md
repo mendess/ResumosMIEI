@@ -6,7 +6,7 @@ Nesta secção irei explorar os conteudos lecionados em POO.
  no contexto da cadeira. Planeio escrever eventualmente um artigo com algums
  destes detalhes.
 
-# Indice
+# Índice
 
  1. [Anatomia de uma classe](./Anatomia_de_uma_classe.md)
     * [ANEXO](./ANEXOS/Anatomia_de_uma_classe.java)

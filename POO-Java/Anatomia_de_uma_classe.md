@@ -1,7 +1,7 @@
 # Anatomia de uma classe
 
 Notas:
- * Codigo entre [ ] é opcional. Ou seja fica ao teu criterio se é necessário.
+ * Código entre [ ] é opcional. Ou seja fica ao teu criterio se é necessário.
  * As palavras 'MyClass', 'XClass', 'SuperClass' e 'InterfaceClass' sao apenas exemplicficativos
 
 
@@ -158,10 +158,10 @@ não tem de ser clonados. O resto sim.
 	}
 ```
 *Nota: setters de uma lista nem sempre fazem sentido. Dependendo do contexto, pode fazer mais
-sentido implementar metodos que adicionem ou removam elementos as listas*
+sentido implementar métodos que adicionem ou removam elementos as listas*
 
-### Metodos "obrigatorios" de definir.
-Estes metodos devem ser definidos para todas as classes que sejam criadas. Salvo exceções em que
+### Métodos "obrigatorios" de definir.
+Estes métodos devem ser definidos para todas as classes que sejam criadas. Salvo exceções em que
 sejam que sejam inuteis.
 
 #### equals
@@ -181,11 +181,11 @@ O equals é o mais importante e raramente é inutil.
 		    && this.outrasCenas.equals(that.getOutrasCenas());
 	}
 ```
-Analise do codigo:
+Analise do código:
  1. Compara-se os apontadores. Se forem iguais sabemos que o objecto é o mesmo.
  2. Verifica-se se o objecto é null ou se as classes entre eles são diferentes. Qualquer uma destas
     indica que nao são iguais.
- 3. Faz-se o cast para se poder chamar chamar metodos.
+ 3. Faz-se o cast para se poder chamar chamar métodos.
  4. Verifica-se se todos os elementos da classe são iguais.
     * Para tipos primitivos podemos comparar normalemte `==`.
     * Para classes chamamos o `equals` das mesmas.
@@ -228,4 +228,4 @@ Lista dos principais objectos imutaveis disponiveis:
 (existem mais)
 
 ---
-Todo o codigo pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)
+Todo o código pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)

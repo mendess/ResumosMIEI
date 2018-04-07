@@ -15,8 +15,8 @@ O `if` em si tem dois casos.
 
 ```C
 if(condição){
-  linhaDeCodigo1;
-  linhaDeCodigo2;
+  linhaDecódigo1;
+  linhaDecódigo2;
 }
 ```
 
@@ -77,12 +77,12 @@ y--; // y = y - 1
 ```
 
 Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia. Se não colocarmos chavetas e mais tarde alterarmos
- adicionarmos codigo dentro do `if`, podemos nos esquecer destas e o codigo não faz o que esperamos. É um dos tipos de erros mais dificil de detetar
+ adicionarmos código dentro do `if`, podemos nos esquecer destas e o código não faz o que esperamos. É um dos tipos de erros mais dificil de detetar
  (falo por experiência!).
 
 ### Else
 
-Vamos acrescentar o `else` agora. Este indica um bloco de codigo que irá executar sempre que a condição do `if` for falsa.
+Vamos acrescentar o `else` agora. Este indica um bloco de código que irá executar sempre que a condição do `if` for falsa.
 ```C
 int x = 4;
 int y = 0;
@@ -137,7 +137,7 @@ void menu(char opcao){
     }
 }
 ```
-Este codigo é equivalente ao seguinte.
+Este código é equivalente ao seguinte.
 ```C
 void menu(char opcao){
     if(opcao == 'Y'){
@@ -153,7 +153,7 @@ void menu(char opcao){
 ```
 Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tenha 10 opções diferentes a condição do ultimo `if` irá ser gigantesca.
 
-Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se a condição do
+Para além disso, o segundo excerto de código é menos eficiente, visto que o nosso código fara muitas mais comparações. Enquanto que no 1º excerto se a condição do
  primeiro `if` for verdadeira apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de
  fazer todas as outras comparações.
 
