@@ -19,6 +19,7 @@ Visto que `<f ,g>` mantém a informação tanto de `f` como de `g` podemos obter
 Podemos obter `f` como  `p1 . <f, g>` e `g` como  `p2 . <f, g>`. Sendo que p significa Pi.
 Juntando tudo num gráfico temos:
 
+![Tudo junto](./images/splitfull.jpg)
 
 # Haskell
 
