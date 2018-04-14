@@ -1,4 +1,4 @@
-# Split (meso dominio)
+# Split (mesmo dominio)
 
 Se tivermos duas funções, `f` e `g`, que mapeiam de `A` para `B` e `C` respectivamente, podemos representar as funções da seguinte forma:
 
@@ -16,7 +16,7 @@ Visto que `<f ,g>` mantém a informação tanto de `f` como de `g` podemos obter
 
 (inserir imagem)
 
-Podemos obter `f` como `\pi 1 - <f, g>` e `g` como `\pi 2 - <f, g>`.
+Podemos obter `f` como ` \pi 1 - <f, g>` e `g` como ` \pi 2 - <f, g>`.
 
 Juntando tudo num gráfico temos:
 
