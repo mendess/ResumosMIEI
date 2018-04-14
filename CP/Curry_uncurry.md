@@ -63,7 +63,7 @@ As funções `curried` são as que costumamos trabalhar normalmente
 mySumInt :: Int -> Int -> Int
 mySumInt x y = x + y
 ```
-Visto que possuem mais que um argumento, podem ser aplicadas parcialmente. 
+Visto que possuem mais que um argumento, podem ser aplicadas parcialmente.
 O seu resultado não tem que ser totalmente calculado logo.
 Pode receber um argumento, espera por um segundo argumento e vai 'calculando' o que pode com este primeiro argumento. Recebe o segundo argumento, calcula o que pode, espera por outro argumento e quando tiver todos os argumentos, calcula o que falta. Desta forma o tempo de calculo (processamento da função) é distribuído, não tendo que ficar a espera de todos os argumentos.
 
@@ -79,7 +79,7 @@ Esta forma recebe apenas **um** argumento sendo que para executar, tem que ter t
 Existem funções para passar de um estado para o outro.
 Curiosamente só podem ser definidas desta forma.
 ```haskell
-curry :: ((a, b) -> c) -> (a -> b -> c)
+curry :: ((a, b) -> c) -> a -> b -> c
 curry f a b = f (a,b)
 
 uncurry :: (a -> b -> c) -> (a, b) -> c
@@ -88,10 +88,10 @@ uncurry f (a, b) = f a b
 Os nomes podem parecer trocados mas analisando os tipos fazem perfeito sentido. Vamos fazer esse exercício por alto.
 
 ```haskell
-curry :: ((a, b) -> c) -> (a -> b -> c)
+curry :: ((a, b) -> c) -> a -> b -> c
 curry f a b = f (a,b)
 ```
-  * `f` é uma função que recebe um tuplo
+  * `f` é uma função que recebe um tuplo, `(a,b)` e retorna um `c`.
   * `a` é um tipo qualquer que é passado separadamente do `b`
   * `b` é um tipo qualquer que é passado separadamente do `a`
 O que a `curry` faz é agrupar o `a` e `b` num tuplo `(a,b)` e chamar a função `f`, que recebe um tuplo.
@@ -101,19 +101,19 @@ O que a `curry` faz é agrupar o `a` e `b` num tuplo `(a,b)` e chamar a função
 uncurry :: (a -> b -> c) -> (a, b) -> c
 uncurry f (a, b) = f a b
 ```
-  * `f` é uma função que recebe dois argumentos separados
+  * `f` é uma função que recebe dois argumentos separados, `a` e `b`, e retorna um `c`
   * `a` e `b` são de tipos diferentes, qualquer, passados juntos como um tuplo
 O que a `uncurry` faz é separar o `a` e `b`,e chamar a função `f`, que recebe os argumentos em separado.
 
 ## Composição de funções
 
 Em `Haskell` é possível compor funções, tal como em matemática.
-O único requisito é que elas 'tipem', ou seja que os tipos das funções batam certo, tal como em matemática o contradomínio de `g` tem que pertencer ao domínio do `f` em `fºg`.
+O único requisito é que elas 'tipem', ou seja, que os tipos das funções batam certo, tal como em matemática o contradomínio de `g` tem que pertencer ao domínio do `f` em `fºg`.
 É muito mais fácil demonstrar a composição de funções do que tentar explicar teoricamente, no entanto a analogia com funções composta da matemática é muito forte.
 
 Vamos assumir que temos as seguintes funções
 ```haskell
-par :: Int -> Bool
+even :: Int -> Bool
 not :: Bool -> Bool
 ```
 

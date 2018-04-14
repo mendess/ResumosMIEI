@@ -11,4 +11,5 @@ Nesta secção irei explorar os conteudos lecionados em POO.
  1. [Anatomia de uma classe](./Anatomia_de_uma_classe.md)
     * [ANEXO](./ANEXOS/Anatomia_de_uma_classe.java)
  2. [Hierarquia de classes](./Hierarquia_de_classes.md)
- 3. [Iterators](./Iterators.md)
+ 3. [CollectionsAndMaps](./CollectionsAndMaps.md)
+ 4. [Iterators](./Iterators.md)
