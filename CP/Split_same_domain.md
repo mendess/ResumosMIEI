@@ -16,7 +16,7 @@ Visto que `<f ,g>` mantém a informação tanto de `f` como de `g` podemos obter
 
 (inserir imagem)
 
-Podemos obter `f` como ``` \pi 1 - <f, g>``` e `g` como ``` \pi 2 - <f, g>```.
+Podemos obter `f` como  \pi 1 - <f, g> e `g` como  \pi 2 - <f, g>.
 
 Juntando tudo num gráfico temos:
 
