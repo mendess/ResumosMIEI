@@ -8,4 +8,4 @@ Vamos tentar seguir a ordem das fichas de CP.
 
 ## Principal
  1. [Revisões](./Curry_uncurry.md)
- 2. [Split com o mesmo dominio](./Split_same_domain.md)
+ 2. [Split com o mesmo dominio](./Split.md)
