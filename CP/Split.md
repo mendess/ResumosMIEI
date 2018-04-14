@@ -44,7 +44,7 @@ Há casos de funções que não partilham o mesmo domninio, `f : C -> A` e `g : 
 
 Uma forma de aplicar o `split` a estas funções é juntar os seus dominios atráves do produto cartesiano dos mesmos `C >< D`. Desta maneira podemos tratar `C` como a projeção `p1` e `D` como a projeção `p2`.
 
-![Produto cartesiado dos dominios](./images/split/dominio.jpg)
+![Produto cartesiado dos dominios](./images/split/dominios.jpg)
 
 Surge então este diagrama:
 
