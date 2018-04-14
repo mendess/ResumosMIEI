@@ -2,11 +2,11 @@
 
 Se tivermos duas funções, `f` e `g`, que mapeiam de `A` para `B` e `C` respectivamente, podemos representar as funções da seguinte forma:
 
-![Mesmo dominio][./images/samedomain.jpged]
+![Mesmo dominio](./images/samedomain.jpged)
 
 Podemos também juntar os seus outputs visto que `f` e `g` partiham o mesmo dominio. `(f(z), g(z))` para `z` pertencente a `A`. Estes pares,ou seja, vários valores concretos de `z`, pertencem ao produto cartesiano de `B` e `C`.
 
-![Produto cartesiano][./images/carprod.jpg]
+![Produto cartesiano](./images/carprod.jpg)
 
 É então natural pensar numa operação que agrupa tanto os outputs de `f` como os outputs de `g`.
 Surge portanto, `<f,g>` onde `<f,g>z = (f(z), g(z))`.
@@ -14,7 +14,7 @@ Surge portanto, `<f,g>` onde `<f,g>z = (f(z), g(z))`.
 
 Visto que `<f ,g>` mantém a informação tanto de `f` como de `g` podemos obter a informação de `B` como de `C` a partir de `B >< C` através de projeções:
 
-![Projeções][./images/proje.jpg]
+![Projeções](./images/proje.jpg)
 
 Podemos obter `f` como  `p1 . <f, g>` e `g` como  `p2 . <f, g>`. Sendo que p significa Pi.
 Juntando tudo num gráfico temos:
