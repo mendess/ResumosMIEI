@@ -34,7 +34,7 @@ i2      = Right
 
 # Either (codominio diferente)
 
-Quando duas funções não partilham o mesmo dominio também é possivel combina-las.
+Quando duas funções não partilham o mesmo codominio também é possivel combina-las.
 Segue `f : A -> C` e `g : B -> D`. Injetando os codomino temos `C+D`:
 
 ![Diferente codominio](./images/either/difcodomain.jpg)
