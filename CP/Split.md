@@ -1,6 +1,6 @@
 # Split (mesmo dominio)
 
-Se tivermos duas funções, `f` e `g`, `f :: A -> B` e `g :: A -> C`, podemos representar as funções da seguinte forma:
+Se tivermos duas funções, `f` e `g`, `f : A -> B` e `g : A -> C`, podemos representar as funções da seguinte forma:
 
 ![Mesmo dominio](./images/split/samedomain.jpeg)
 
@@ -40,7 +40,7 @@ split f g x = (f x, g x)
 
 # Split (dominio diferente)
 
-Há casos de funções que não partilham o mesmo domninio, `f :: C -> A` e `g :: D -> B`, sendo que `<f, g>` deixa de ser válido. Note que as funções não "tipam".
+Há casos de funções que não partilham o mesmo domninio, `f : C -> A` e `g : D -> B`, sendo que `<f, g>` deixa de ser válido. Note que as funções não "tipam".
 
 Uma forma de aplicar o `split` a estas funções é juntar os seus dominios atráves do produto cartesiano dos mesmos `C >< D`. Desta maneira podemos tratar `C` como a projeção `p1` e `D` como a projeção `p2`.
 
