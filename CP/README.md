@@ -9,3 +9,4 @@ Vamos tentar seguir a ordem das fichas de CP.
 ## Principal
  1. [Revisões](./Curry_uncurry.md)
  2. [Split](./Split.md)
+ 3. [Either](./Either.md)
