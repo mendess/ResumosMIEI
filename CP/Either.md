@@ -11,7 +11,7 @@ Aplicamos `f` caso apareça um valor do tipo `A` e aplicamos `g` caso apareça u
 
 Podemos combinar os dominios destas duas funções, para isso é necessário uma marca a indicar de que tipo (conjunto) vem o valor (se do `A` ou do `B`). Para marcar de que tipo o valor vem usamos injeções.
 
-![Simbolo](./images/either/inject.jpeg)
+![Simbolo](./images/either/inject.jpg)
 
 Em Haskell já existe um tipo de dados que serve perfeitamente para fazer estas injeções. O `Either` representa ou um valor ou outro, marcando-os com `Left` ou `Right`.
 ```haskell
@@ -31,3 +31,28 @@ Como vimos o `Either` ja esta definido em Haskell.
 i1      = Left
 i2      = Right
 ```
+
+# Either (codominio diferente)
+
+Quando duas funções não partilham o mesmo dominio também é possivel combina-las.
+Segue `f : A -> C` e `g : B -> D`. Injetando os codomino temos `C+D`:
+
+![Diferente codominio](./images/either/difcodomain.jpg)
+
+Seguindo-se então este digrama:
+
+![Diagrama2](./images/either/difdiagrama.jpg)
+
+Daqui concluimos que `f` é igual a `i1 . f` e `g` a `i2 . g`.
+
+
+![Diagrama3](./images/either/diffim.jpg)
+
+Mais uma vez existe uma notação especial para este caso, `f -|- g`.
+
+## Haskell
+
+```haskell
+(-|-) :: (a -> b) -> (c -> d) -> Either a c -> Either b d
+f -|- g = either (i1 . f) (i2 . g)
+````
