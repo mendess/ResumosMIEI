@@ -106,11 +106,6 @@ int main(){
     Pessoa* p = malloc(sizeof(Pessoa)); // Alocamos memória para a
                                         // estrutura
     (*p).idade = 18;
-
-    /* pointer para um int para comparação */
-
-    int* i = malloc(sizeof(int));
-    *i = 18;
 }
 ```
 Porque estamos a usar um apontador temos de aceder ao valor apontado (*p) para
