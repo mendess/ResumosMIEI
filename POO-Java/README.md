@@ -13,3 +13,4 @@ Nesta secção irei explorar os conteudos lecionados em POO.
  2. [Hierarquia de classes](./Hierarquia_de_classes.md)
  3. [CollectionsAndMaps](./CollectionsAndMaps.md)
  4. [Iterators](./Iterators.md)
+ 5. [Exceptions](./Exceptions.md)
