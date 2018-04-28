@@ -109,7 +109,7 @@ nesse caso será boa ideia criar as nossas próprias exceções.
 Uma exceção é um objecto, e como todos os objectos é definido por uma classe.
 
 ```Java
-public class MyException extends Trowable{
+public class MyException extends Throwable{
 
     public MyException(){
     }
@@ -144,7 +144,7 @@ seguir os construtores implementados pela classe `Throwable` é o mais comun.
 
 ### Exemplo
 ```Java
-public class MyException extends Trowable{
+public class MyException extends Throwable{
 
     public MyException(){
     }
