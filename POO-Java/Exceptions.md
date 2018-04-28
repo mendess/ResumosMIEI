@@ -34,7 +34,7 @@ não possa subir mais, o que normalmente faz com que o programa termine, como
 foi o caso do exemplo anterior.
 
 ```Java
-  1 class ExampleClass{
+  1 public class ExampleClass{
   2     public static void main(String[] args){
   3         String s = null;
   4         System.out.println("Hello");
@@ -76,7 +76,7 @@ metodo*/` sem que o interrompa.
 
 Aplicando isto ao exemplo anterior:
 ```Java
-  1 class ExampleClass{
+  1 public class ExampleClass{
   2     public static void main(String[] args){
   3         String s = null;
   4         System.out.println("Hello");
