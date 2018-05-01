@@ -1,8 +1,8 @@
 # Anatomia de uma classe
 
 Notas:
- * Codigo entre [ ] é opcional. Ou seja fica ao teu criterio se é necessário.
- * As palavras 'MyClass', 'XClass', 'SuperClass' e 'InterfaceClass' sao apenas exemplicficativos
+ * Código entre [ ] é opcional. Ou seja, fica ao teu critério se é necessário.
+ * As palavras 'MyClass', 'XClass', 'SuperClass' e 'InterfaceClass' são apenas exemplificativas.
 
 
 ### Declaração
@@ -12,9 +12,9 @@ Nesta declaração indicamos o nome da nossa class, se extende uma classe e se, 
 public class MyClass [extends SuperClass] [implements InterfaceClass, ...] {
 ```
 
-### Variaveis de instancia
+### Variáveis de instância
 Estas devem ser sempre `private` para garantir o encapsulamento do estado
-interno do objecto.
+interno do objeto.
 ```Java
     private int num;
     private String nome;
@@ -22,11 +22,11 @@ interno do objecto.
     private ArrayList<String> nomes;
     private ArrayList<XClass> outrasCenas;
 ```
-### Constructores
-Os contrutores permitem instanciar novos objectos da classe. Devem inicializar todos as variaveis de instancia.
+### Construtores
+Os contrutores permitem instanciar novos objetos da classe. Devem inicializar todos as variáveis de instância.
 
-#### Constructor vazio
-Este constructor inicializa as variaveis de instancia com valores por defeito.
+#### Construtor vazio
+Este construtor inicializa as variáveis de instância com valores por defeito.
 ```Java
     public MyClass(){
         this.num = 0;
@@ -36,15 +36,15 @@ Este constructor inicializa as variaveis de instancia com valores por defeito.
         this.outrasCenas = new ArrayList<>();
     }
 ```
-#### Constructor parameterizado
-Este constructor recebe como parametro os valores que as variaveis de instancia
+#### Construtor parameterizado
+Este construtor recebe como parâmetro os valores que as variáveis de instância
  devem tomar.
 
-*(Nota: Uma classe pode ter mais variaveis de instacia do que os parametros
- passados neste tipo de constructor, caso, por exemplo, uma destas tenha um
- valor derivado de outras variaveis)*
+*(Nota: Uma classe pode ter mais variáveis de instância do que os parâmetros
+ passados neste tipo de construtor, caso, por exemplo, uma destas tenha um
+ valor derivado de outras variáveis.)*
 
-As diferentes atribuições feitas neste constructor são explicadas atravez dos
+As diferentes atribuições feitas neste construtor são explicadas através dos
  getters/setters mais à frente.
 ```Java
     public MyClass(int num, String nome, XClass outraCena,
@@ -59,11 +59,11 @@ As diferentes atribuições feitas neste constructor são explicadas atravez dos
         }
     }
 ```
-#### Constructor de copia
-Este constructor permite criar uma copia exata de outra instancia deste objecto
+#### Construtor de cópia
+Este construtor permite criar uma cópia exata de outra instância deste objeto.
 
-*(Nota: Este constructor assume que todos os getters clonam corretamente as
- variaveis de instancia que retornam)*
+*(Nota: Este construtor assume que todos os getters clonam corretamente as
+ variáveis de instância que retornam.)*
 ```Java
     public MyClass(MyClass myClass){
         this.num = myClass.getNum();
@@ -74,44 +74,44 @@ Este constructor permite criar uma copia exata de outra instancia deste objecto
     }
 ```
 ### Getters
-Os getters permitem aceder as variaveis de instancia de uma instancia da nossa
- classe. Devem ser `public` apenas os que queremos que seja possivel aceder.
+Os getters permitem aceder às variáveis de instância de uma instância da nossa
+ classe. Devem ser `public` apenas os que queremos que seja possível aceder.
 
-#### Get the uma variavel de tipo primitivo
-As variaveis são 'passed by value' ou seja o seu valor é copiado. Logo este get é simples
+#### Get de uma variável de tipo primitivo
+As variáveis são 'passed by value', ou seja, o seu valor é copiado. Logo, este get é simples.
 
-(isto fica mais claro mais a frente)
+(Irá ficar mais claro mais a frente.)
 ```Java
     public int getNum(){
         return this.num;
     }
 ```
-#### Get de um objecto imutavel
-Uma string é imutavel logo retornar um apontador para este objecto que pertence ao estado interno
-no nosso objecto não tem problema.
+#### Get de um objeto imutável
+Uma string é imutável, logo retornar um apontador para este objeto que pertence ao estado interno
+no nosso objeto não tem problema.
 ```Java
     public String getNome(){
         return this.nome;
     }
 ```
-#### Get de um objecto mutavel
-Um objecto mutavel deve ser clonado para manter o encapsulamento. Se este objecto fosse alterado
-fora da instancia que o retornou, implica alterar o estado interno da mesma instancia.
+#### Get de um objeto mutável
+Um objeto mutável deve ser clonado para manter o encapsulamento. Se este objeto fosse alterado
+fora da instância que o retornou, implicaria alterar o estado interno da mesma instância.
 
-(porque o variavel é 'passed by value' e esta, na verdade, é um apontador)
+(Porque a variável é 'passed by value' e esta, na verdade, é um apontador.)
 ```Java
     public XClass getOutraCena(){
         return this.outraCena.clone();
     }
 ```
-#### Get de uma lista de objectos imutaveis
-Tem de se criar uma lista nova. Apesar de cada objecto individual da lista ser imutavel a lista
-em si não é emutavel. Logo se retornarmos a lista diretamente, novos valores podem ser adicionados
-à mesma, alterando o estado interno da instancia a partir do exterior.
+#### Get de uma lista de objetos imutáveis
+Tem que se criar uma lista nova. Apesar de cada objeto individual da lista ser imutável, a lista
+em si, não é imutável. Logo, se retornarmos a lista diretamente, novos valores podem ser adicionados
+à mesma, alterando o estado interno da instância a partir do exterior.
 
-Para isto podemos fazer uso do construtor da `ArrayList` que recebe uma `Collection` e copia os valores.
+Para isto, podemos fazer uso do construtor da `ArrayList` que recebe uma `Collection` e copia os valores.
 
-**_ATENÇÃO SÓ PUDEMOS USAR ESTE CONSTRUCTOR PARA LISTAS DE OBJECTOS IMUTAVEIS_**
+**_ATENÇÃO: SÓ PUDEMOS USAR ESTE construtor PARA LISTAS DE objetos IMUTÁVEIS_**
 ```Java
     public ArrayList<String> getNomes(){
         return new ArrayList<>(this.nomes);
@@ -123,9 +123,9 @@ Ou
         return this.nomes.clone();
     }
 ```
-#### Get de uma lista de objectos mutaveis
-Como no get anterior tem de ser criada uma nova lista. Mas o elementos ao ser adicionados à mesma
-tem de ser clonados.
+#### Get de uma lista de objetos mutaveis
+Como no get anterior, tem que ser criada uma nova lista. Mas, os elementos ao serem adicionados à mesma,
+têm que ser clonados.
 ```Java
     public ArrayList<XClass> getOutrasCenas(){
         ArrayList<XClass> newOCenas = new ArrayList<>();
@@ -136,8 +136,8 @@ tem de ser clonados.
     }
 ```
 ### Setters
-Os setters seguem o mesmo principio dos getters. Objectos imutaveis e tipos primitivos
-não tem de ser clonados. O resto sim.
+Os setters seguem o mesmo princípio dos getters. Objetos imutáveis e tipos primitivos
+não têm que ser clonados, tudo o resto sim.
 ```Java
     public void setNum(int num){
         this.num = num;
@@ -154,11 +154,13 @@ não tem de ser clonados. O resto sim.
     public void setNomes(ArrayList<String> nomes){
         this.nomes = new ArrayList<>(nomes);
     }
+
 /*  OU assim
     public void setNomes(ArrayList<String> nomes){
         this.nomes = nomes.clone();
     }
 */
+
     public void setOutrasCenas(ArrayList<XClass> cenas){
         ArrayList<XClass> newCenas = new ArrayList<>();
         for(XClass cena: cenas){
@@ -167,15 +169,15 @@ não tem de ser clonados. O resto sim.
         this.outrasCenas = newCenas;
     }
 ```
-*Nota: setters de uma lista nem sempre fazem sentido. Dependendo do contexto, pode fazer mais
-sentido implementar metodos que adicionem ou removam elementos as listas*
+*Nota: Setters de uma lista nem sempre fazem sentido. Dependendo do contexto, pode fazer mais
+sentido implementar métodos que adicionem ou removam elementos às listas.*
 
-### Metodos "obrigatorios" de definir.
-Estes metodos devem ser definidos para todas as classes que sejam criadas. Salvo exceções em que
-sejam que sejam inuteis.
+### Métodos "obrigatórios" de definir.
+Estes métodos devem ser definidos para todas as classes que sejam criadas. Salvo exceções em que
+sejam inúteis.
 
 #### equals
-O equals é o mais importante e raramente é inutil.
+O equals é o mais importante, e raramente é inútil.
 ```Java
     public boolean equals(Object o){
 /*[1]*/ if(this == o) return true;
@@ -191,18 +193,17 @@ O equals é o mais importante e raramente é inutil.
             && this.outrasCenas.equals(that.getOutrasCenas());
     }
 ```
-Analise do codigo:
- 1. Compara-se os apontadores. Se forem iguais sabemos que o objecto é o mesmo.
- 2. Verifica-se se o objecto é null ou se as classes entre eles são diferentes. Qualquer uma destas
-    indica que nao são iguais.
- 3. Faz-se o cast para se poder chamar chamar metodos.
+Análise do código:
+ 1. Compara-se os apontadores. Se forem iguais, sabemos que o objeto é o mesmo.
+ 2. Verifica-se se o objeto é null ou se as classes entre eles são diferentes. Qualquer uma destas
+    indica que não são iguais.
+ 3. Faz-se o cast para se poder chamar métodos.
  4. Verifica-se se todos os elementos da classe são iguais.
-    * Para tipos primitivos podemos comparar normalemte `==`.
+    * Para tipos primitivos podemos comparar normalmente com `==`.
     * Para classes chamamos o `equals` das mesmas.
 
-
 #### toString
-O toString é importante para efeitos de debug. Pode tb ser adaptado para aplicações de terminal.
+O toString é importante para efeitos de debug. Pode também ser adaptado para aplicações de terminal.
 ```Java
     public String toString(){
         StringBuffer sb = new StringBuffer("MyClass: ");
@@ -214,9 +215,9 @@ O toString é importante para efeitos de debug. Pode tb ser adaptado para aplica
         return sb.toString();
     }
 ```
-#### clone
-O clone deve ser implementado porque o Nestor diz que sim. Objectos imutaveis não devem
- implementar este metodo.
+#### Clone
+O clone deve ser implementado porque o Nestor diz que sim. Objetos imutáveis não devem
+ implementar este método.
 ```Java
     public MyClass clone(){
         return new MyClass(this);
@@ -225,7 +226,7 @@ O clone deve ser implementado porque o Nestor diz que sim. Objectos imutaveis n�
 
 
 ---
-Lista dos principais objectos imutaveis disponiveis:
+Lista dos principais objetos imutáveis disponíveis:
  * Integer
  * Float
  * Double
@@ -238,4 +239,4 @@ Lista dos principais objectos imutaveis disponiveis:
 (existem mais)
 
 ---
-Todo o codigo pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)
+Todo o código pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)

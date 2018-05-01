@@ -8,8 +8,8 @@ Relembro que ler a documentação começa a ser, cada vez mais, crucial para esc
 ---
 
 Ao longo deste documento:
- * `list` é um objecto do tipo `List<ListElem>`
- * `ListElem` é um elemento da lista
+ * `list` é um objeto do tipo `List<ListElem>`
+ * `ListElem` é um elemento da lista.
 
 # O 'for' que todos conhecemos
 De certeza já viste/escreveste um `for` assim.
@@ -19,7 +19,7 @@ for(int i=0; i<list.size(); i++){
     l.doStuff();
 }
 ```
-Este metodo funciona para a maior parte dos casos quando temos de iterar por um array (ArrayList), mas assume muito
+Este método funciona para a maior parte dos casos quando temos de iterar por um array (ArrayList), mas assume muito
 sobre o funcionamento da estrutura/classe.
 
 # Foreach
@@ -32,21 +32,21 @@ for(ListElem l: list){
 ```
 Pode até ser lido, em liguagem natural, "For each `ListElem l` in list do \<this\>"
 
-Alternativamente, este codigo pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
+Alternativamente, este código pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
  *(mais sobre estes numa [secção][ItInternos] mais à frente)*:
 ```Java
 list.foreach(l -> l.doStuff());
 ```
 
 Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
- visto que não temos a condição de paragem explicita"_. [<sup>\[1\]</sup>][extraNotes]
+ visto que não temos a condição de paragem explicíta"_. [<sup>\[1\]</sup>][extraNotes]
 
 # Iteradores externos
 Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
  é uma [interface][interfaceMD], e esta garante que classes que a implementam têm o
- metodo `iterator()` que retorna um `Iterator` sobre a collection.
+ método `iterator()` que retorna um `Iterator` sobre a collection.
 
-Como podemos ver pelos [javaDocs][iterator] `Iterator` implementa 3 metodos muito simples.
+Como podemos ver pelos [javaDocs][iterator] `Iterator` implementa 3 métodos muito simples.
 ```Java
 boolean hasNext()
 ```
@@ -54,13 +54,13 @@ Que retorna `true` se o iterador não chegou ao fim da lista.
 ```Java
 E next()
 ```
-Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o proximo elemento. [<sup>\[2\]</sup>][extraNotes]
+Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o próximo elemento. [<sup>\[2\]</sup>][extraNotes]
 ```Java
 void remove()
 ```
-Que remove da lista o ultimo elemento que o `next()` retornou.
+Que remove da lista o último elemento que o `next()` retornou.
 
-Vamos então por isto em pratica.
+Vamos então pôr isto em prática.
 ```Java
 Iterator<ListElem> it = list.iterator();
 while(it.hasNext()){
@@ -72,7 +72,7 @@ while(it.hasNext()){
 }
 ```
 
-Podemos então aqui alterar o codigo para que o ciclo acabe quando uma condição se verificar.
+Podemos então aqui alterar o código para que o ciclo acabe quando uma condição se verificar.
 ```Java
 boolean flag = true;
 Iterator<ListElem> it = list.iterator();
@@ -88,13 +88,13 @@ while(flag && it.hasNext()){
 }
 ```
 
-Como cada classe `Iterable` implementa o seu proprio metodo `iterator()` podemos ter a certeza que estamos a
+Como cada classe `Iterable` implementa o seu próprio método `iterator()` podemos ter a certeza que estamos a
 iterar de forma correcta sobre a `Collecion` (O `foreach` também garante isto).
 
 # Iteradores Internos
 Os iteradoes internos tentam emular programação funcional para iterar sobre as `Collections`.
 
-Estas implementam (desde o Java 8) o metodo [stream][streamMethod] que retorna um [Stream][streamDocs]
+Estas implementam (desde o Java 8) o método [stream][streamMethod] que retorna um [Stream][streamDocs]
  da `Collection` e sobre este podemos fazer uma imensas operações.
 
 Importante notar que, como acontece em Programação Funcional, os streams apresentam Imutabilidade, ou seja,
@@ -128,7 +128,7 @@ Analisando passo a passo:
  será um lambda. Lambdas são relativamente simples, este `l -> l.getId()`, por exemplo, quer dizer: "para cada `l`
  chama e guarda o resultado de `getId()` como elemento da lista", no contexto do `map`. [<sup>\[3\]</sup>][extraNotes]
  2. [collect][collectMethod] *coleciona* o resultado numa lista, visto que o resultado das nossas operações é um
- `Stream<Integer>` e nós precisamos de uma `List<Integer>`. Para chamar o metodo `collect()` temos de lhe passar
+ `Stream<Integer>` e nós precisamos de uma `List<Integer>`. Para chamar o método `collect()` temos de lhe passar
   o [Collector][collectors] que este deve usar. [<sup>\[4\]</sup>][extraNotes]
 
 Ficamos assim com uma lista com os Ids, esta nova lista independente da original.
@@ -147,8 +147,8 @@ public List<ListElem> getAbove(int x){
 }
 ```
 
-Este metodo irá então retornar uma lista dos `ListElem` com valor superior a `x` mas **atenção!**, pode, se `ListElem` não for
- imutavel, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este metodo.
+Este método irá então retornar uma lista dos `ListElem` com valor superior a `x` mas **atenção!**, pode, se `ListElem` não for
+ imutavel, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este método.
  Podemos, no entanto, resolver este problema facilmente, usando o `map`.
 
 ```Java
@@ -161,7 +161,7 @@ public List<ListElem> getAbove(int x){
 ```
 
 ## Method References
-Quando o lambda que passamos a um destes metodos apenas chama outro metodo, como é o exemplo do `l -> l.getId()` podemos
+Quando o lambda que passamos a um destes métodos apenas chama outro método, como é o exemplo do `l -> l.getId()` podemos
  utilizar uma `Method Reference` com a seguinte sintaxe: `<Class>::<method>`
 
 Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguinte alteração.
