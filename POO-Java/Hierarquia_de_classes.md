@@ -262,7 +262,7 @@ public class MyMusic implements Musica{
         this.song = song;
     }
 
-    public void start(){
+    public void start(){  // < Implementação do metodo que a interface obriga a implementar
         /*
         Reproduzir a musica
         */
@@ -273,7 +273,7 @@ public class MyMusic implements Musica{
 ### Interfaces mais comuns
 #### Collections
 Nas `Collections` do Java temos varias interfaces que podemos utilizar.
-Alguns exemplos
+Alguns exemplos são:
  * [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
  * [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
 
