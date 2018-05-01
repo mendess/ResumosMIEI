@@ -16,11 +16,11 @@ public class MyClass [extends SuperClass] [implements InterfaceClass, ...] {
 Estas devem ser sempre `private` para garantir o encapsulamento do estado
 interno do objecto.
 ```Java
-	private int num;
-	private String nome;
-	private XClass outraCena;
-	private ArrayList<String> nomes;
-	private ArrayList<XClass> outrasCenas;
+    private int num;
+    private String nome;
+    private XClass outraCena;
+    private ArrayList<String> nomes;
+    private ArrayList<XClass> outrasCenas;
 ```
 ### Constructores
 Os contrutores permitem instanciar novos objectos da classe. Devem inicializar todos as variaveis de instancia.
@@ -28,13 +28,13 @@ Os contrutores permitem instanciar novos objectos da classe. Devem inicializar t
 #### Constructor vazio
 Este constructor inicializa as variaveis de instancia com valores por defeito.
 ```Java
-	public MyClass(){
-		this.num = 0;
-		this.nome = "";
-		this.outraCena = new OutraCena();
-		this.nomes = new ArrayList<>();
-		this.outrasCenas = new ArrayList<>();
-	}
+    public MyClass(){
+        this.num = 0;
+        this.nome = "";
+        this.outraCena = new XClass();
+        this.nomes = new ArrayList<>();
+        this.outrasCenas = new ArrayList<>();
+    }
 ```
 #### Constructor parameterizado
 Este constructor recebe como parametro os valores que as variaveis de instancia
@@ -47,17 +47,17 @@ Este constructor recebe como parametro os valores que as variaveis de instancia
 As diferentes atribuições feitas neste constructor são explicadas atravez dos
  getters/setters mais à frente.
 ```Java
-	public MyClass(int num, String nome, XClass outraCena,
-			ArrayList<String> nomes, ArrayList<XClass> outrasCenas){
-		this.num = num;
-		this.nome = nome;
-		this.outraCena = outraCena.clone();
-		this.nomes = new ArrayList<>(nomes);
-		this.outrasCenas = new ArrayList<>();
-		for(XClass cena: outrasCenas){
-			this.outrasCenas.add(cena.clone());
-		}
-	}
+    public MyClass(int num, String nome, XClass outraCena,
+                    ArrayList<String> nomes, ArrayList<XClass> outrasCenas){
+        this.num = num;
+        this.nome = nome;
+        this.outraCena = outraCena.clone();
+        this.nomes = new ArrayList<>(nomes);
+        this.outrasCenas = new ArrayList<>();
+        for(XClass cena: outrasCenas){
+            this.outrasCenas.add(cena.clone());
+        }
+    }
 ```
 #### Constructor de copia
 Este constructor permite criar uma copia exata de outra instancia deste objecto
@@ -65,13 +65,13 @@ Este constructor permite criar uma copia exata de outra instancia deste objecto
 *(Nota: Este constructor assume que todos os getters clonam corretamente as
  variaveis de instancia que retornam)*
 ```Java
-	public MyClass(MyClass myClass){
-		this.num = myClass.getNum();
-		this.nome = myClass.getNome();
-		this.outraCena = myClass.getOutraCena();
-		this.nomes = myClass.getNomes();
-		this.outrasCenas = myClass.getOutrasCenas();
-	}
+    public MyClass(MyClass myClass){
+        this.num = myClass.getNum();
+        this.nome = myClass.getNome();
+        this.outraCena = myClass.getOutraCena();
+        this.nomes = myClass.getNomes();
+        this.outrasCenas = myClass.getOutrasCenas();
+    }
 ```
 ### Getters
 Os getters permitem aceder as variaveis de instancia de uma instancia da nossa
@@ -82,17 +82,17 @@ As variaveis são 'passed by value' ou seja o seu valor é copiado. Logo este ge
 
 (isto fica mais claro mais a frente)
 ```Java
-	public int getNum(){
-		return this.num;
-	}
+    public int getNum(){
+        return this.num;
+    }
 ```
 #### Get de um objecto imutavel
 Uma string é imutavel logo retornar um apontador para este objecto que pertence ao estado interno
 no nosso objecto não tem problema.
 ```Java
-	public String getNome(){
-		return this.nome;
-	}
+    public String getNome(){
+        return this.nome;
+    }
 ```
 #### Get de um objecto mutavel
 Um objecto mutavel deve ser clonado para manter o encapsulamento. Se este objecto fosse alterado
@@ -100,9 +100,9 @@ fora da instancia que o retornou, implica alterar o estado interno da mesma inst
 
 (porque o variavel é 'passed by value' e esta, na verdade, é um apontador)
 ```Java
-	public XClass getOutraCena(){
-		return this.outraCena.clone();
-	}
+    public XClass getOutraCena(){
+        return this.outraCena.clone();
+    }
 ```
 #### Get de uma lista de objectos imutaveis
 Tem de se criar uma lista nova. Apesar de cada objecto individual da lista ser imutavel a lista
@@ -113,49 +113,59 @@ Para isto podemos fazer uso do construtor da `ArrayList` que recebe uma `Collect
 
 **_ATENÇÃO SÓ PUDEMOS USAR ESTE CONSTRUCTOR PARA LISTAS DE OBJECTOS IMUTAVEIS_**
 ```Java
-	public List<String> getNomes(){
-		return new ArrayList<>(this.nomes);
-	}
+    public ArrayList<String> getNomes(){
+        return new ArrayList<>(this.nomes);
+    }
+```
+Ou
+```Java
+    public ArrayList<String> getNomes(){
+        return this.nomes.clone();
+    }
 ```
 #### Get de uma lista de objectos mutaveis
 Como no get anterior tem de ser criada uma nova lista. Mas o elementos ao ser adicionados à mesma
 tem de ser clonados.
 ```Java
-	public List<XClass> getOutrasCenas(){
-		ArrayList<XClass> newOCenas = new ArrayList<>();
-		for(XClass cena: this.outrasCenas){
-			newOCenas.add(cena.clone());
-		}
-		return newOCenas;
-	}
+    public ArrayList<XClass> getOutrasCenas(){
+        ArrayList<XClass> newOCenas = new ArrayList<>();
+        for(XClass cena: this.outrasCenas){
+            newOCenas.add(cena.clone());
+        }
+        return newOCenas;
+    }
 ```
 ### Setters
 Os setters seguem o mesmo principio dos getters. Objectos imutaveis e tipos primitivos
 não tem de ser clonados. O resto sim.
 ```Java
-	public void setNum(int num){
-		this.num = num;
-	}
+    public void setNum(int num){
+        this.num = num;
+    }
 
-	public void setNome(String nome){
-		this.nome = nome;
-	}
+    public void setNome(String nome){
+        this.nome = nome;
+    }
 
-	public void setOutraCena(XClass outraCena){
-		this.outraCena = outraCena;
-	}
+    public void setOutraCena(XClass outraCena){
+        this.outraCena = outraCena;
+    }
 
-	public void setNomes(ArrayList<String> nomes){
-		this.nomes = new ArrayList<>(nomes);
-	}
-
-	public void setOutrasCenas(List<String> cenas){
-		ArrayList<XClass> newCenas = new ArrayList<>();
-		for(XClass cena: cenas){
-			newCenas.add(cena.clone());
-		}
-		this.outrasCenas = newCenas;
-	}
+    public void setNomes(ArrayList<String> nomes){
+        this.nomes = new ArrayList<>(nomes);
+    }
+/*  OU assim
+    public void setNomes(ArrayList<String> nomes){
+        this.nomes = nomes.clone();
+    }
+*/
+    public void setOutrasCenas(ArrayList<XClass> cenas){
+        ArrayList<XClass> newCenas = new ArrayList<>();
+        for(XClass cena: cenas){
+            newCenas.add(cena.clone());
+        }
+        this.outrasCenas = newCenas;
+    }
 ```
 *Nota: setters de uma lista nem sempre fazem sentido. Dependendo do contexto, pode fazer mais
 sentido implementar metodos que adicionem ou removam elementos as listas*
@@ -167,19 +177,19 @@ sejam que sejam inuteis.
 #### equals
 O equals é o mais importante e raramente é inutil.
 ```Java
-	public boolean equals(Object o){
-	/*[1]*/ if(this == o) return true;
+    public boolean equals(Object o){
+/*[1]*/ if(this == o) return true;
 
-	/*[2]*/ if(o == null || this.getClass() != o.getClass())
-			return false;
+/*[2]*/ if(o == null || this.getClass() != o.getClass())
+            return false;
 
-	/*[3]*/ MyClass that = (MyClass) o;
-	/*[4]*/ return this.num == that.getNum()
-		    && this.nome.equals(that.getNome())
-		    && this.outraCena.equals(that.getOutraCena())
-		    && this.nomes.equals(that.getNomes())
-		    && this.outrasCenas.equals(that.getOutrasCenas());
-	}
+/*[3]*/ MyClass that = (MyClass) o;
+/*[4]*/ return this.num == that.getNum()
+            && this.nome.equals(that.getNome())
+            && this.outraCena.equals(that.getOutraCena())
+            && this.nomes.equals(that.getNomes())
+            && this.outrasCenas.equals(that.getOutrasCenas());
+    }
 ```
 Analise do codigo:
  1. Compara-se os apontadores. Se forem iguais sabemos que o objecto é o mesmo.
@@ -194,23 +204,23 @@ Analise do codigo:
 #### toString
 O toString é importante para efeitos de debug. Pode tb ser adaptado para aplicações de terminal.
 ```Java
-	public String toString(){
-		StringBuffer sb = new StringBuffer("MyClass: ");
-		sb.append("Num: ").append(this.num).append(", ");
-		sb.append("Nome: ").append(this.nome).append(", ");
-		sb.append("Outra Cena: ").append(this.outraCena).append(", ");
-		sb.append("Nomes: ").append(this.nomes).append(", ");
-		sb.append("Outras Cenas: ").append(this.outrasCenas).append(", ");
-		return sb.toString();
-	}
+    public String toString(){
+        StringBuffer sb = new StringBuffer("MyClass: ");
+        sb.append("Num: ").append(this.num).append(", ");
+        sb.append("Nome: ").append(this.nome).append(", ");
+        sb.append("Outra Cena: ").append(this.outraCena).append(", ");
+        sb.append("Nomes: ").append(this.nomes).append(", ");
+        sb.append("Outras Cenas: ").append(this.outrasCenas).append(", ");
+        return sb.toString();
+    }
 ```
 #### clone
 O clone deve ser implementado porque o Nestor diz que sim. Objectos imutaveis não devem
  implementar este metodo.
 ```Java
-	public MyClass clone(){
-		return new MyClass(this);
-	}
+    public MyClass clone(){
+        return new MyClass(this);
+    }
 ```
 
 
