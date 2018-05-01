@@ -229,7 +229,7 @@ public class Radio {
     }
 
     public void queue(Musica musica){
-        this.musica.add(musica);
+        this.musicas.add(musica);
     }
 
     public void play(){
