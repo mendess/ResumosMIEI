@@ -24,7 +24,7 @@ Exception in thread "main" java.lang.NullPointerException
     at ExampleClass.main(ExampleClass.java:4)
 ```
 Como podemos ver o nome completo da exception é `java.lang.NullPointerException`,
-a classe em que ocurreu e o metodo `ExampleClass.main` e o ficheiro e respetiva
+a classe em que ocorreu e o metodo `ExampleClass.main` e o ficheiro e respetiva
 linha de código `ExampleClass.java:4`
 
 ## Propagação de exceções por metodos
