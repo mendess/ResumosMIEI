@@ -1,5 +1,5 @@
 # Iterators
-Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes. Cabe nos a nós encontrar a mais indicada
+Em Java iterar sobre uma coleção pode ser feito de muitas formas diferentes. Cabe-nos a nós encontrar a mais indicada
  para o nosso problema.
 
 Relembro que ler a documentação começa a ser, cada vez mais, crucial para escrever bom código. A maior parte das operações

@@ -14,3 +14,4 @@ Nesta secção irei explorar os conteudos lecionados em POO.
  3. [CollectionsAndMaps](./CollectionsAndMaps.md)
  4. [Iterators](./Iterators.md)
  5. [Exceptions](./Exceptions.md)
+ 6. [Metodos de Classe](./Static.md)

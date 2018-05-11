@@ -14,7 +14,7 @@ que se tenta aceder a uma variavel cujo valor seja `null`.
 1 public class ExampleClass{
 2     public static void main(String[] args){
 3         String s = null;
-4         System.out.println(s.length);
+4         System.out.println(s.length());
 5     }
 6 }
 ```
