@@ -152,9 +152,9 @@ uma exceção, para que quem o use esteja ciente dessa possibilidade e possa
 tratar o erro.
 
 ## A Classe Throwable
-A classe [Throwable][ThrowableDocs] é a superclasse de todas as exceções, apenas
-classes que extendam `Throwable` podem ser lançadas por um `throw` e tratadas
-por um `catch`.
+A classe [Throwable][ThrowableDocs] é a superclasse de todas as exceções e erros,
+apenas classes que extendam `Throwable` podem ser lançadas por um `throw` e
+tratadas por um `catch`.
 
 A nossa exceção pode ter qualquer construtor que seja necessário, no entanto,
 seguir os construtores implementados pela classe `Throwable` é o mais comun.
