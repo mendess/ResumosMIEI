@@ -4,8 +4,6 @@ Tal como as instâncias de uma classe as classes em si podem ter variaveis e
 metodos, estes servem para definir dados e comportamento que seja igual para
 todas as instâncias independentemente do seu estado interno
 
-> Melhorar esta intro
-
 Para distinguir um variavel ou metodo de classe dos de instância usa-se a
 _keyword_ `static`
 
@@ -31,13 +29,13 @@ public class MyClass{
 ```
 Pontos importantes a notar deste exemplo:
 
-1. As variaveis de classe tem de ser inicializadas quando são declaradas, para
-não conterem valores por defeito (`null` no caso dos objectos). Visto não existe
-um "constructor de classe".
+1. As variaveis de classe tem de ser inicializadas quando são declaradas,
+para não conterem valores por defeito (`null` no caso dos objectos). Visto
+não existe um "constructor de classe".
 2. As variaveis de classe não podem ser referenciadas com a _keyword_ `this`
-visto que não pertencem a nenhuma instância. Aliás a referencia `this` não pode
-ser usada dentro de um contexo `static`, visto que não existe nenhuma instância
-para referênciar.
+visto que não pertencem a nenhuma instância. Aliás a referencia `this` não
+pode ser usada dentro de um contexo `static`, visto que não existe nenhuma
+instância para referênciar.
 
 #### Exemplo de como chamar os metodos
 ```Java
@@ -98,3 +96,21 @@ public class Highlander{
 O que isto implica é que não podem ser criadas instâncias novas porque o
 construtor é `private` e para obter uma instância temos de usar o metodo
 `static` `get()`, que irá retornar sempre a mesma instância.
+
+## Interfaces
+As interfaces também podem ter metodos static funcionando como qualquer
+qualquer outro metodo de classe.
+```Java
+public interface MyInterface{
+    public static foo(){
+        System.out.println("Bar");
+    }
+}
+```
+```Java
+public class Main{
+    public static void main(String[] args){
+        MyInterface.foo();
+    }
+}
+```
