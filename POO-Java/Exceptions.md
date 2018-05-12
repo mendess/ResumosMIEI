@@ -1,9 +1,27 @@
 # Exceptions
 
 Exceptions são uma ferramenta usada para realizar controlo de erros. Enquanto que
-em `C` quase todos os erros que ocorrem dão origem a uma Segmentation Fault
+em `C` quase todos os erros que ocorrem dão origem a uma `Segmentation Fault`
 genérica, quando trabalhamos com uma linguagem orientada a objectos é costume
 usar exceptions que transmitem mais informação.
+
+## Tipos de exceptions
+A classe abstracta que todos os erros e exceções devem estender é
+[Throwable][ThrowableDocs]. Depois desta temos 2 sub-tipos:
+
+* [Error][ErrorDocs] Que são erros que muitas vezes não podem ser tratados, por
+    exemplo:
+    * [OutOfMemoryError][OutOfMemoryDocs]
+* [Exception][Exception] Que são exceções do funcionamento normal e devem ser
+    tratados. Estas ainda se sub-dividem em mais dois tipos:
+    * [RuntimeExceptions][RuntimeExceptions]
+    * _Checked exceptions_  
+
+    A única diferença entre estas é que as _Checked Exceptions_ tem de ser
+    declaradas na assinatura do metodo, enquanto que as `RuntimeExceptions`
+    não. Exemplos de `RuntimeExceptions` são:
+    [NullPointerException][NullPointerDocs] e
+    [ArrayOutOfBoundsException][ArrayOutOfBoundsDocs].
 
 ## Exceptions mais communs
 A exceção mais commum é [NullPointerException][NullPointerDocs] que ocorre sempre
@@ -109,10 +127,8 @@ nesse caso será boa ideia criar as nossas próprias exceções.
 Uma exceção é um objecto, e como todos os objectos é definido por uma classe.
 
 ```Java
-public class MyException extends Throwable{
+public class MyException extends Exception{
 
-    public MyException(){
-    }
 }
 ```
 Isto é suficiente para criar uma exceção simples. A invocação do `super` está
@@ -130,9 +146,10 @@ public method() throws MyException{
 }
 ```
 Um `throw` tem o mesmo impacto na execução que um `return`, ou seja, se um
-`throw` for executado o metodo termina. Para além disto tem de se sinalizar
-na assinatura do metodo que este lança uma exceção, para que quem o use esteja
-ciente dessa possibilidade e possa tratar o erro.
+`throw` for executado o metodo termina. Para além disto, se se tratar de uma
+_Checked Exception_, tem de se sinalizar na assinatura do metodo que este lança
+uma exceção, para que quem o use esteja ciente dessa possibilidade e possa
+tratar o erro.
 
 ## A Classe Throwable
 A classe [Throwable][ThrowableDocs] é a superclasse de todas as exceções, apenas
@@ -144,10 +161,10 @@ seguir os construtores implementados pela classe `Throwable` é o mais comun.
 
 ### Exemplo
 ```Java
-public class MyException extends Throwable{
+public class MyException extends Exception{
 
-    public MyException(){
-    }
+    public MyException(){ // Se nao incluirmos este constructor a nossa
+    }                     // exceção terá de ter sempre uma mensagem
 
     public MyException(String message){
         super(message);
@@ -157,6 +174,20 @@ public class MyException extends Throwable{
 Fazendo assim uso de um dos [construtores][ThrowableMessageConst] da super
 classe.
 
+```Java
+public method() throws MyException{
+    /* code */
+    if(someError){
+        throw new MyException("Exceção feia :(");
+    }
+    /* more code */
+}
+```
+
 [NullPointerDocs]: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
 [ThrowableDocs]: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html
 [ThrowableMessageConst]: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html#Throwable-java.lang.String-
+[ErrorDocs]: https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Error.html
+[OutOfMemoryDocs]: https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/OutOfMemoryError.html
+[RuntimeExceptions]: https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html
+[ArrayOutOfBoundsDocs]: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html
