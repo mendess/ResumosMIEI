@@ -40,8 +40,8 @@ O par `B = (1, 3)` é um isomorfismo de `(3, 1)` visto que não se perde nenhuma
 
 inListas = either (const []) (uncurry (:))
 
-outLista [] = (Left ())
-outLista (h:t) = (Right (h,t))
+outListas [] = (Left ())
+outListas (h:t) = (Right (h,t))
 
 > outListas [1,2,3,4]
 Right (1,[2,3,4])
