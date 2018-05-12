@@ -38,7 +38,7 @@ O par `B = (1, 3)` é um isomorfismo de `(3, 1)` visto que não se perde nenhuma
 
 ```haskell
 
-intListas = either (const []) (uncurry (:))
+inListas = either (const []) (uncurry (:))
 
 outLista [] = (Left ())
 outLista (h:t) = (Right (h,t))
