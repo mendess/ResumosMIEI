@@ -2,7 +2,7 @@
 
 ## Informação
 
-Uma função `f` é definida como `f : A -> B`. Podemos pensar como um processo em que apenas conhecemos o tipo de entrada e o tipo de saida. Por outras palavras,  'f' compromete-se a produzir um valor do tipo `B` se receber um valor do tipo `A`.
+Uma função `f` é definida como `f : A -> B`. Podemos pensar como um processo em que apenas conhecemos o tipo de entrada e o tipo de saida. Por outras palavras, `f` compromete-se a produzir um valor do tipo `B` se receber um valor do tipo `A`.
 
 
 As funções podem ser vistas pelo forma como perdem ou matêm informação. 
