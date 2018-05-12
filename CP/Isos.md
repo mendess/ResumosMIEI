@@ -19,7 +19,7 @@ Funções injectivas são as funções que não confundem o seu input (input dif
 ## Funções sobrejectivas
 
 Funções sobrejectivas são as funções que o seu cojunto de chegada é igual ao seu domínio.
-Seja `f : A -> B`, para qualquer `b`pertencente a `B` existe um `a` tal que `f a = b` (sendo que `a` pertence a `A`).
+Seja `f : A -> B`, para qualquer `b` pertencente a `B` existe um `a` tal que `f a = b` (sendo que `a` pertence a `A`).
 
 ## Isomorfismos
 
@@ -43,9 +43,9 @@ inListas = either (const []) (uncurry (:))
 outLista [] = (Left ())
 outLista (h:t) = (Right (h,t))
 
->outListas [1,2,3,4]
+> outListas [1,2,3,4]
 Right (1,[2,3,4])
->inListas Right (1, [2,3,4])
+> inListas Right (1, [2,3,4])
 [1,2,3,4]
 ```
 
@@ -60,4 +60,4 @@ O que é o `1`? E o `+ A`?
 
 O `1` representa um conjunto de valores que só tem um elemento. 
 Isto é **NECESSÁRIO** para ser isomorfico, visto que se não admitisse apenas um elemento não saberiamos a que estado voltar.
-Ao analisarmos o `outLstas` vemos que tem dois casos possiveis, um **ou** outro (1). O `()` corresponde ao `1` em Haskell. Ou é uma lista vazia ou uma lista com elementos de `A` onde criamos um par com o primeiro elemento da lista e o resto `A >< A*`.
+Ao analisarmos o `outListas` vemos que tem dois casos possiveis, um **ou** outro (1). O `()` corresponde ao `1` em Haskell. Ou é uma lista vazia ou uma lista com elementos de `A` onde criamos um par com o primeiro elemento da lista e o resto `A >< A*`.
