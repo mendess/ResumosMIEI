@@ -60,4 +60,4 @@ O que é o `1`? E o `-|- A`?
 
 O `1` representa um conjunto de valores que só tem um elemento. 
 Isto é **NECESSÁRIO** para ser isomorfico, visto que se não admitisse apenas um elemento não saberiamos a que estado voltar.
-Ao analisarmos o `outListas` vemos que tem dois casos possiveis, um **ou** outro (1). O `()` corresponde ao `1` em Haskell. Ou é uma lista vazia ou uma lista com elementos de `A` onde criamos um par com o primeiro elemento da lista e o resto `A >< A*`.
+Ao analisarmos o `outListas` vemos que tem dois casos possiveis, um **ou** outro (`1`). O `()` corresponde ao `1` em Haskell. Ou é uma lista vazia ou uma lista com elementos de `A` onde criamos um par com o primeiro elemento da lista e o resto da lista `A >< A*`.
