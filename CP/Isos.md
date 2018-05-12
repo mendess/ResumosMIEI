@@ -14,7 +14,7 @@ As funções perdem informação `confundido` o input ou seja, para inputs difer
 
 ## Funções injectivas
 
-Funções injectivas são as funções que não confundem o seu input (input diferente, outptu **sempre** diferente).
+Funções injectivas são as funções que não confundem o seu input (input diferente, output **sempre** diferente).
 
 ## Funções sobrejectivas
 
@@ -54,9 +54,9 @@ Right (1,[2,3,4])
 ### Listas
 
 Vamos representar uma lista de valores do tipo `A` como `A*`. 
-Uma representação de um insomorfismo de `A*` é `1 + A >< A*`.
+Uma representação de um insomorfismo de `A*` é `1 -|- A >< A*`.
 
-O que é o `1`? E o `+ A`?
+O que é o `1`? E o `-|- A`?
 
 O `1` representa um conjunto de valores que só tem um elemento. 
 Isto é **NECESSÁRIO** para ser isomorfico, visto que se não admitisse apenas um elemento não saberiamos a que estado voltar.
