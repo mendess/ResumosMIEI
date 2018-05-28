@@ -11,4 +11,4 @@ Vamos tentar seguir a ordem das fichas de CP.
  2. [Split](./Split.md)
  3. [Either](./Either.md)
  4. [Isomorfismos](./Isos.md)
- 5. [Functors](./Functors)
+ 5. [Functors](./Functors.md)
