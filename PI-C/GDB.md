@@ -24,7 +24,7 @@ Outros distros
 Usamos o `gdb`, ou qualquer outro debugger, para:
   1. Analisar um programa que crashou (segmentation fault)
   2. Analisar memory leaks
-  3. Inspecionar o estado de algum variavel durante a execução do mesmo
+  3. Inspecionar o estado de alguma variavel durante a execução do mesmo
 
 ## Compilar
 
