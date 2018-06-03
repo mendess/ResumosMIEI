@@ -148,7 +148,7 @@ não têm que ser clonados, tudo o resto sim.
     }
 
     public void setOutraCena(XClass outraCena){
-        this.outraCena = outraCena;
+        this.outraCena = outraCena.clone();
     }
 
     public void setNomes(ArrayList<String> nomes){
