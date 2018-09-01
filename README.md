@@ -23,13 +23,14 @@ Para guardarem este repositório podem fazer `star`.
     Quem teve a iniciativa de expandir o conceito para outras cadeiras.
 
 # Mais ajuda
- * [Discord](https://discord.gg/Pqbzrcv)
-    Podem vir tirar dúvidas comigo neste discord do curso. (`@Mendess`)
+ * [Discord](https://discord.gg/7eaTedk)
+    Podem vir tirar dúvidas no discord do curso.
 
 # Disclaimer
 
-Estes resumos **não** servem para substituir as aulas ou os slides.
+Estes resumos **não** servem para substituir as aulas ou o material disponibilizado pelo
+corpo docente.
 
 Servem apenas para condensar a informação que achamos mais importante.
 
-O mais importante é praticar e fazer as fichas que os professores disponiblizam.
+O mais importante é praticar e fazer os exercicios que os professores disponiblizam.

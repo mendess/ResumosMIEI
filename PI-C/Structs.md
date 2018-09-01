@@ -15,9 +15,9 @@ Podemos então usar esta esturtura no nosso codigo:
 ```C
 int main(){
     struct pessoa p;
-    
+
     p.idade = 18;
-    
+
     char* nome = "Jbb";
     p.nome = nome;
 
@@ -26,7 +26,7 @@ int main(){
 }
 ```
 ### Typedef
-A keyword `typedef` permite-nos dar "alcunhas" aos nossos tipos, por exemplo 
+A keyword `typedef` permite-nos dar "alcunhas" aos nossos tipos, por exemplo
 se fizermos `typedef int inteiro` podemos escrever:
 ```C
 typedef int inteiro;
@@ -160,7 +160,8 @@ int main(){
 ```
 Diferenças importantes a notar com este typedef é que, apesar de nao estar
  explicito, o tipo `Pessoa` é um apontador, pelo que o `sizeof` tem de
- "medir" o tamanho da esturura para alocar tamanho certo.
+ "medir" o tamanho da esturura para alocar tamanho certo. Daí o uso de
+ `sizeof(struct pessoa)` e não `sizeof(Pessoa)`.
 
 Este `typedef` pode novamente ser abreviado para:
 ```C

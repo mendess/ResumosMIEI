@@ -16,3 +16,4 @@ Nesta secção irei explorar os conteudos lecionados em POO.
  5. [Iterators](./Iterators.md)
  6. [Exceptions](./Exceptions.md)
  7. [Metodos de Classe (Static)](./Static.md)
+ 8. [Comparators](./Comparators.md)
