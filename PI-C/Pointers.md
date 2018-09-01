@@ -161,4 +161,4 @@ O resto dos elementos são apontadores e seguindos estes apontadores temos os va
 ## Extra Notes
  1. Esta sintaxe para declarar um apontador é flexivel, isto é, `int *x`, `int* x` e `int * x` são todas equivalentes.
 
-[extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/writing/PI-C/Pointers.md#extra-notes
+[extraNotes]: ./Pointers.md#extra-notes

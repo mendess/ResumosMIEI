@@ -217,19 +217,19 @@ public List<ListElem> getAbove(int x){
 4. A Api dos `Collectors` e dos `Streams` é muito extensa e depende de muitas classes. No entanto está cheia de
    exemplos que ajudam a sua compreensão
 
-[extraNotes]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#extra-notes
+[extraNotes]: ./Iterators.md#extra-notes
 [iterable]: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
-[ItInternos]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#iteradores-internos
+[ItInternos]: ./Iterators.md#iteradores-internos
 [iterator]: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
-[interfaceMD]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Hierarquia_de_classes.md#interfaces
+[interfaceMD]: ./Hierarquia_de_classes.md#interfaces
 [streamMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--
 [streamDocs]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
-[iteradoresExternos]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#iteradores-externos
+[iteradoresExternos]: ./Iterators.md#iteradores-externos
 [mapMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-
 [collectMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.stream.Collector-
 [collectors]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html
-[getListMutaveis]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Anatomia_de_uma_classe.md#get-de-uma-lista-de-objectos-mutaveis
-[ItInternosEx1]: https://github.com/Mendess2526/ResumosMIEI/blob/master/POO-Java/Iterators.md#exemplo-1-map
+[getListMutaveis]: ./Anatomia_de_uma_classe.md#get-de-uma-lista-de-objectos-mutaveis
+[ItInternosEx1]: ./Iterators.md#exemplo-1-map
 [mapToIntMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#mapToInt-java.util.function.ToIntFunction-
 [IntStream]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
 [sumMethod]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#sum--
