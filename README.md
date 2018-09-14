@@ -23,7 +23,7 @@ Para guardarem este repositório podem fazer `star`.
     Quem teve a iniciativa de expandir o conceito para outras cadeiras.
 
 # Mais ajuda
- * [Discord](https://discord.gg/7eaTedk)
+ * [Discord](https://discord.gg/m3kVwYM)
     Podem vir tirar dúvidas no discord do curso.
 
 # Disclaimer
