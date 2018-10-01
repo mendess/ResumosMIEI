@@ -20,7 +20,7 @@ Para guardarem este repositório podem fazer `star`.
  * [Mendes2526](https://github.com/Mendess2526)
     Criador do primeiro resumo, da ideia.
  * [Herulume](https://github.com/herulume)
-    Quem teve a iniciativa de expandir o conceito para outras cadeiras.
+    Quem teve a iniciativa de expandir o conceito para outras cadeiras (AKA o gajo do Haskell).
 
 # Mais ajuda
  * [Discord](https://discord.gg/Pqbzrcv)
