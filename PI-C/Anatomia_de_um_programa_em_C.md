@@ -1,6 +1,5 @@
 # Anatomia de um programa
 
-
 ## Hello World
 
 ```c

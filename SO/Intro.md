@@ -24,6 +24,7 @@ Os periféricos avisam o processador no fim da sua exeução, através de interr
 
 
 A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis `user space` e `kernel space`.
+
 ## Escalonamento
 
 Este sistema simples ja permite mecanismos de optimização de gestão do computador. Um utilizador pode indicar a duração máxima de uma operação, ou os recursos utilizados. As operações poderão ser escolhidas com base no tempo de execução. Vamos analisar estar 'escolha' mais à frente.
@@ -57,6 +58,7 @@ O primeiro inibe interrupções depois de uma ter sido aceite. Assim se uma inte
 O segundo inibe interrupções dado a sua gravidade, podendo interromper rotinas de tratamento de excepções com menor prioridade.
 
 O returno a modo de user é feito pela instrução de terno de interrupção  `RIT`.
+
 ## Multiprogramação
 
 O mecanismo de interrupções permite multiplexar o processador.

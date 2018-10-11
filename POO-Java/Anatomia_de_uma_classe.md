@@ -36,6 +36,7 @@ Este construtor inicializa as variáveis de instância com valores por defeito.
         this.outrasCenas = new ArrayList<>();
     }
 ```
+
 #### Construtor parameterizado
 Este construtor recebe como parâmetro os valores que as variáveis de instância
  devem tomar.
@@ -59,6 +60,7 @@ As diferentes atribuições feitas neste construtor são explicadas através dos
         }
     }
 ```
+
 #### Construtor de cópia
 Este construtor permite criar uma cópia exata de outra instância deste objeto.
 
@@ -73,6 +75,7 @@ Este construtor permite criar uma cópia exata de outra instância deste objeto.
         this.outrasCenas = myClass.getOutrasCenas();
     }
 ```
+
 ### Getters
 Os getters permitem aceder às variáveis de instância de uma instância da nossa
  classe. Devem ser `public` apenas os que queremos que seja possível aceder.
@@ -86,6 +89,7 @@ As variáveis são 'passed by value', ou seja, o seu valor é copiado. Logo, est
         return this.num;
     }
 ```
+
 #### Get de um objeto imutável
 Uma string é imutável, logo retornar um apontador para este objeto que pertence ao estado interno
 no nosso objeto não tem problema.
@@ -94,6 +98,7 @@ no nosso objeto não tem problema.
         return this.nome;
     }
 ```
+
 #### Get de um objeto mutável
 Um objeto mutável deve ser clonado para manter o encapsulamento. Se este objeto fosse alterado
 fora da instância que o retornou, implicaria alterar o estado interno da mesma instância.
@@ -104,6 +109,7 @@ fora da instância que o retornou, implicaria alterar o estado interno da mesma 
         return this.outraCena.clone();
     }
 ```
+
 #### Get de uma lista de objetos imutáveis
 Tem que se criar uma lista nova. Apesar de cada objeto individual da lista ser imutável, a lista
 em si, não é imutável. Logo, se retornarmos a lista diretamente, novos valores podem ser adicionados
@@ -123,6 +129,7 @@ Ou
         return this.nomes.clone();
     }
 ```
+
 #### Get de uma lista de objetos mutaveis
 Como no get anterior, tem que ser criada uma nova lista. Mas, os elementos ao serem adicionados à mesma,
 têm que ser clonados.
@@ -135,6 +142,7 @@ têm que ser clonados.
         return newOCenas;
     }
 ```
+
 ### Setters
 Os setters seguem o mesmo princípio dos getters. Objetos imutáveis e tipos primitivos
 não têm que ser clonados, tudo o resto sim.
@@ -215,6 +223,7 @@ O toString é importante para efeitos de debug. Pode também ser adaptado para a
         return sb.toString();
     }
 ```
+
 #### Clone
 O clone deve ser implementado porque o Nestor diz que sim. Objetos imutáveis não devem
  implementar este método.

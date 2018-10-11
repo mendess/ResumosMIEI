@@ -8,6 +8,7 @@ Se algo não estiver claro estejam à vontade para submeter um [issue](https://g
 Para guardarem este repositório podem fazer `star`.
 
 # Índice
+
 ## Primeiro ano
  * [PI](PI-C/README.md)
 
@@ -15,6 +16,7 @@ Para guardarem este repositório podem fazer `star`.
   * [Java](POO-Java/README.md)
   * [SO](SO/README.md)
   * [CP](CP/README.md)
+
 # Contribuidores
 
  * [Mendes2526](https://github.com/Mendess2526)
@@ -23,6 +25,7 @@ Para guardarem este repositório podem fazer `star`.
     Quem teve a iniciativa de expandir o conceito para outras cadeiras.
 
 # Mais ajuda
+
  * [Discord](https://discord.gg/m3kVwYM)
     Podem vir tirar dúvidas no discord do curso.
 

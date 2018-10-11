@@ -116,23 +116,27 @@ Output:
  É usado* `·->` *para simbolizar um apontador.*
 
 Um matriz é, na verdade, um array de arrays.
-```
-int matrix[][] = {{1,2,3},{4,5,6},{7,8,9}};
+
+```C
+int matrix[][] = { {1,2,3}, {4,5,6}, {7,8,9} };
 ﹇
 [ 1, 2, 3 ]
 [ 4, 5, 6 ]
 [ 7, 8, 9 ]
 ﹈
 ```
+
 e, se um array é na verdade um apontador para o primeiro elemento, então uma matriz é um array de apontadores (para os primeiros elementos).
+
 ```C
-int *matriz[] = {{1,2,3},{4,5,6},{7,8,9}};
+int *matriz[] = { {1,2,3}, {4,5,6}, {7,8,9} };
 ﹇
 ·-> 1
 ·-> 4
 ·-> 7
 ﹈
 ```
+
 Pode ser lido como "Array de apontadores para `int`"
 
 O resto dos elementos de cada array estão armazenados continuamente na memória mas, sem usar aritmética de apontadores
@@ -142,12 +146,13 @@ O resto dos elementos de cada array estão armazenados continuamente na memória
 Mas se um array é um apontador para o primeiro elemento, então:
 
 ```C
-int **matriz = {{1,2,3},{4,5,6},{7,8,9}};
+int **matriz = { {1,2,3}, {4,5,6}, {7,8,9} };
 ·
 |
 V
 ·-> 1
 ```
+
 Que pode ser lido como "Apontador para um apontador de `int`"
 
 Ou seja, uma matriz é na verdade um apontador para um apontador.
