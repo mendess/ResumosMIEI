@@ -10,6 +10,7 @@ Para guardarem este repositório podem fazer `star`.
 # Índice
 
 ## Primeiro ano
+ * [PF](PF-Haskell/README.md)
  * [PI](PI-C/README.md)
 
 ## Segundo ano
