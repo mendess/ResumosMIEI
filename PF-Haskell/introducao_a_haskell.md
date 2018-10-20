@@ -64,7 +64,7 @@ f :: Int -> Int
 f x | x < 2  = x^2 + 1
     | x >= 2 = x^3 - 4 * x
 ```
-A isto chamam-se guardas. Estas podem ter um caso que funciona sempre. (*TODO FIX THIS SENTENCE*)
+A isto chamam-se guardas. É possível acrescentar um caso no fim da guarda que executa caso nenhuma das condições seja satisfeita.
 ```Haskell
 f :: Int -> Int
 f x | x < 0     = x^2 + 1
