@@ -24,9 +24,10 @@ output outro `Int`.
 Outros tipos importantes a saber são:
 
 - `Float`: Números reais
-- `String`: Texto
 - `Bool`: `False` ou `True`
+- `Char`: Caracteres (`'a'`, `'b'`, etc)
 - `[a]`: Lista de `a`. Esta pode ser uma lista de qualquer coisa, se quisermos ser especificos podemos usar `[Int]` para uma lista de `Int`s.
+- `String`: Texto. Este é equivalente a escrever `[Char]` porque texto é apenas uma lista de caracteres. 
 
 Podemos ainda definir novos tipos. Há dois metodos para isto:
 
