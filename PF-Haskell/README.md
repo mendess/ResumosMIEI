@@ -9,3 +9,5 @@ Vamos tentar seguir a ordem das fichas de PF.
 
 ## Principal
  1. [Introdução a Haskell](introducao_a_haskell.md)
+ 2. [Recursividade](recursividade.md)
+ 3. [Listas](listas.md)

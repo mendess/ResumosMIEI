@@ -45,11 +45,26 @@ data Hora = H Int Int
 Isto irá ser aprofundado mais a frente.
 
 ## Operadores
-Os operadores que podemos usar são os mesmos da matemática: `+`, `-`, `*` e `/` para operações aritemeticas mais os operadores lógicos:
+Os operadores que podemos usar são os mesmos da matemática:
+
+Para operações aritemeticas:
+
+- `+`: Adição
+- `-`: Subtração
+- `*`: Multiplicação
+- `/`: Divisão
+
+Para igualdades e desigualdades
 
 - `>` `<`: maior e menor
 - `>=` `<=`: maior ou igual e menor ou igual
 - `==`: Igualdade
+- `/=`: Desigualdade
+
+E ainda:
+
+- `&&`: *e*
+- `||`: *ou*
 
 ## Estruturas de controlo
 Em certas ocasiões um função pode ter de fazer um processamento mais complexo do
