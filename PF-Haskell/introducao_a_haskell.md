@@ -106,6 +106,11 @@ perimetro r = 2 * 3.14 * r
 ```
 
 ```Haskell
+soma :: Int -> Int -> Int
+soma a b = a + b
+```
+
+```Haskell
 type Hora = (Int,Int)
 
 avancaUmaHora :: Hora -> Hora
