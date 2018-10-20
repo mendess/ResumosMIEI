@@ -1,4 +1,4 @@
-# PI-C
+# PF-Haskell
 Nesta secção vamos explorar os conteúdos lecionados em PF.
 
 Haskell é a linguagem usada para explicar os conceitos de programação funcional
