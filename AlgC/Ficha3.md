@@ -72,9 +72,9 @@ BTree add(BTree tree, int value) {
         new->value = value;
         return new;
     } else if(tree->value > value) {
-        add(tree->left, value);
+        tree->left = add(tree->left, value);
     } else {
-        add(tree->right, value);
+        tree->right = add(tree->right, value);
     }
     return tree;
 }
