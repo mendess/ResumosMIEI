@@ -196,3 +196,419 @@ int balanceadaAux(BTree a, int *p) {
 ![thetaN](./recorencia_linear_binaria.png)  => Θ(N) para qualquer caso.
 
 
+## 2 - Filas com prioridades e *Heaps*
+
+```C
+typedef struct buffer *Buffer;
+
+Buffer init  (void);         //inicia e aloca espaço
+int    empty (Buffer);       //testa se esta vazio
+int    add   (Buffer, int);  //acrescenta elemento
+int    next  (Buffer, int *);//proximo a sair
+int    remove(Buffer, int *);//remove proximo
+```
+
+### 1
+#### a)
+*Assume-se que o "proximo a sair" é o maior elemento do buffer*
+
+**A**
+
+A inserção pode ser Θ(1), no melhor caso, se for inserido no fim do *buffer*, ou seja, é o maior de todos os elementos, no pior caso, é inserir um elemento menor do que qualquer outro, pois temos de mover todos os elementos para que "caiba" o menor, Θ(N).
+
+A remoção, assumindo que queremos remover o maior de todos os elementos, é sempre Θ(1). Só temos de remover o ultimo e não é necessário realiza mais nenhuma operação.
+
+Para uma sequência de N instruções o melhor caso é que as inserções sejam feitas por ordem crescente, assim todas as inserções serão Θ(1). Como todas as remoções são também Θ(1) temos que o tempo de execução no melhor caso é: Θ(N).
+
+Para o pior caso, os elementos serem inseridos por ordem decrescente, isto implica que, para 2N instruções, cada inserção demora Θ(M), para M igual ao número de elementos do array.
+
+![tempo-das-insercoes](./recorrencia_linear_2_parametros.png)
+
+Esta recorrência de Θ(N<sup>2</sup>) define o custo de fazer as inserções. As remoções são sempre Θ(1) e portanto todas juntas são Θ(N). No total temos Θ(N<sup>2</sup> + N) que é Θ(N<sup>2</sup>).
+
+**B**
+
+As inserções são sempre feitas em tempo Θ(1), visto que a ordem mantida é a ordem de chegada, só temos de colocar o novo elemento na "ponta".
+
+As remoções no entanto são mais custosas. No melhor caso, o maior elemento é o ultimo elemento inserido, neste caso, a remoção é Θ(N) porque temos de percorrer todo o array para encontrar o maior. Para o pior caso, o maior elemento foi o primeiro a ser inserido, temos de percorrer o array, Θ(N), e depois mover todos os elementos um índice para trás para remover o primeiro do *buffer*. Logo o tempo total é Θ(N<sup>2</sup>).
+
+Para uma sequência de 2N instruções, o melhor caso é quando as inserções são feitas por ordem crescente, assim as remoções demoram todas Θ(M).
+
+![tempo-das-remoções](./recorrencia_linear_2_parametros.png)
+
+Esta recorrência descreve o tempo de execução das N remoções para um array de tamanho M, e como a anterior é Θ(N<sup>2</sup>). Sendo que as inserções e remoções demoram N<sup>2</sup> + N que é Θ(N<sup>2</sup>).
+
+No pior caso as inserções são feitas por ordem decrescente, e portanto as remoções passam a ter todas Θ(N<sup>2</sup>).
+
+![tempo-das-remoções](./recorrencia_linear_2_parametros_sq.png)
+
+Esta recorrência tem Θ(N<sup>3</sup>) e portanto toda a sequência de instruções tem Θ(N<sup>3</sup>).
+
+### 2
+```C
+#define PARENT(i) (2*i + 1) // o indice do array começa em 0
+#define LEFT(i)   (2*i + 2)
+#define RIGHT(i)  ((i-1)/2)
+
+typedef int Elem; // elementos da heap.
+
+typedef struct {
+    int size;
+    int used;
+    Elem *values;
+} Heap;
+
+Heap* newHeap   (int size);
+int   insertHeap(Heap *h, Elem x);
+void  bubbleUp  (Elem h[], int i);
+int   extractMin(Heap *h, Elem *x);
+void  bubbleDown(Elem h[], int N);
+```
+
+#### c)
+```C
+Head *newHeap(int size) {
+    Heap * heap = malloc(sizeof(Heap));
+    heap->size = size;
+    heap->used = 0;
+    heap->values = malloc(sizeof(Elem)*size);
+}
+```
+
+```C
+int insertHeap(Heap *h, Elem x) {
+    heap->values[heap->used] = x;
+    bubbleUp(heap->values, heap->used);
+    heap->used++;
+}
+```
+
+```C
+void bubbleUp(Elem h[], int i) {
+    while(i != 0 && h[RIGHT(i)] > h[i]) {
+        swap(h, RIGHT(i), i);
+        i = PARENT(i);
+    }
+}
+```
+
+```C
+int extractMin(Heap *h, Elem *x) {
+    if(h->used < 1) return 0;
+    *x = heap->values[0];
+    heap->used--;
+    swap(heap->values, 0, heap->used);
+    bubbleDown(heap->values, heap->used);
+}
+```
+
+```C
+void bubbleDown(Elem h[], int N) {
+    while(LEFT(i) < N && RIGHT(i) < N) {
+        int smallest;
+        if(h[LEFT(i)] <= h[RIGHT(i)] && h[LEFT(i)] < h[i]) {
+            smallest = LEFT(i);
+        } else if(h[RIGHT(i)] <= h[LEFT(i)] && h[RIGHT(i)] < h[i]) {
+            smallest = RIGHT(i);
+        } else {
+            break;
+        }
+        swap(h, i, smallest);
+        i = smallest;
+    }
+    if(LEFT(i) < N && h[i] > h[LEFT(i)]){
+        swap(h, i , LEFT(i));
+    }
+}
+```
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+aa
+
+a
+
+a
