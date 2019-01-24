@@ -286,8 +286,8 @@ int insertHeap(Heap *h, Elem x) {
 
 ```C
 void bubbleUp(Elem h[], int i) {
-    while(i != 0 && h[RIGHT(i)] > h[i]) {
-        swap(h, RIGHT(i), i);
+    while(i != 0 && h[PARENT(i)] > h[i]) {
+        swap(h, i, PARENT(i));
         i = PARENT(i);
     }
 }
