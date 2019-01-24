@@ -1,5 +1,8 @@
 # Ficha 3 - Estruturas de Dados
 
+**Indice**
+- [Árvores binárias de procura](./Ficha3.md#1---árvores-binárias-de-procura)
+
 ## 1 - Árvores binárias de procura
 
 Definição de uma árvore:
