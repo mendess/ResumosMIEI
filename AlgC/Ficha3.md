@@ -266,6 +266,20 @@ int   extractMin(Heap *h, Elem *x);
 void  bubbleDown(Elem h[], int N);
 ```
 
+#### b)
+
+```C
+int minHeapOK(Heap * h) {
+    for(int i = 0; i < h->used; i++) {
+        if(LEFT(i) < h->used && h->values[i] > h->values[LEFT(i)])
+            return 0;
+        if(RIGHT(i) < h->used && h->values[i] > h->values[RIGHT(i)])
+            return 0;
+    }
+    return 1;
+}
+```
+
 #### c)
 ```C
 Head *newHeap(int size) {
