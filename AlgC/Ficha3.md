@@ -12,14 +12,14 @@ struct btree {
     int value;
     struct btree *left;
     struct btree *right;
-} * Btree;
+} * BTree;
 ```
 
 ### 1
-#### a) `int size(Btree)`
+#### a) `int size(BTree)`
 
 ```C
-int size(Btree tree) {
+int size(BTree tree) {
     if(tree != NULL) {
         return 1 + size(tree->left) + size(tree->right);
     }
@@ -37,10 +37,10 @@ int size(Btree tree) {
 
 O melhor e pior caso são iguais visto que temos sempre de ver toda a árvore, independentemente de estar ou não equilibrada: Θ(N) linear.
 
-#### b) `int altura (Btree)`
+#### b) `int altura (BTree)`
 
 ```C
-int altura(Btree tree) {
+int altura(BTree tree) {
     if(tree != NULL) {
         int aLeft = altura(tree->left);
         int aRight = altura(tree->right);
@@ -66,7 +66,7 @@ O melhor e pior caso são iguais visto que temos sempre de ver toda a árvore, i
 ```C
 BTree add(BTree tree, int value) {
     if(tree == NULL) {
-        Btree new = malloc(sizeof(struct btree));
+        BTree new = malloc(sizeof(struct btree));
         new->right = NULL;
         new->left = NULL;
         new->value = value;
@@ -92,7 +92,7 @@ BTree add(BTree tree, int value) {
 
   ![ii](./recorencia_logaritmica.png)
 
-#### d) `int search(Btree tree, int value)`
+#### d) `int search(BTree tree, int value)`
 
 ```C
 int search(BTree tree, int value) {
@@ -118,7 +118,7 @@ int search(BTree tree, int value) {
 #### e) `int max(BTree tree)`
 
 ```C
-int max(Btree tree) {
+int max(BTree tree) {
     // Nao vazia implica que nao temos de verificar tree == NULL
     while(tree->right != NULL) {
         tree = tree->right;
