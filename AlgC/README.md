@@ -1,4 +1,4 @@
-# POO-Java
+# AlgC
 Nesta secção irão ser resolvidas as fichas de Algoritmos.
 
 # Indice
