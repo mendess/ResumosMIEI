@@ -117,7 +117,7 @@ em si, não é imutável. Logo, se retornarmos a lista diretamente, novos valore
 
 Para isto, podemos fazer uso do construtor da `ArrayList` que recebe uma `Collection` e copia os valores.
 
-**_ATENÇÃO: SÓ PUDEMOS USAR ESTE construtor PARA LISTAS DE objetos IMUTÁVEIS_**
+**_ATENÇÃO: SÓ PODEMOS USAR ESTE construtor PARA LISTAS DE objetos IMUTÁVEIS_**
 ```Java
     public ArrayList<String> getNomes(){
         return new ArrayList<>(this.nomes);
