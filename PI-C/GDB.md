@@ -2,23 +2,6 @@
 
 O `gdb` é o debugger *de facto* para C/C++ em linux. Permite inspecionar o que um programa esta a fazer num certo ponto de execução, inspecionar o valor das variaveis naquele momento, entre muitas outras coisas.
 
-## Instalação
-
-Ubuntu/Debian based
-```
-sudo apt-get update
-sudo apt-get install gdb
-```
-
-Arch based
-```
-sudo pacman -Syu
-sudo pacman -S gdb
-```
-
-Outros distros
-  * Google it
-
 ## Casos de uso
 
 Usamos o `gdb`, ou qualquer outro debugger, para:
@@ -32,29 +15,16 @@ Para usar o `gdb` é preciso includir uma flag extra quando compilamos o nosso c
 
 Um exemplo com mais flags à mistura.
 ```
-gcc -Wall -g -ansi code.c -o program
+gcc -g code.c
 ```
 
 ## Primeiros passos no GDB
 
 Para usar o `gdb` é simples, assumindo que o terminal se encontra na diretoria do executavel:
 ```bash
-gdb program
+gdb nome_do_executavel
 ```
---- ou ---
-```bash
-gdb
-```
-```bash
-(gdb) file program
-```
-A ultima linha de código é dentro do terminal do `gdb`. O comando file faz load a um programa.
-
-De facto, o `gdb` possui uma shell interativa com um conjunto de comandos bastante completos.
-É fácil notar que estamos dentro do terminal do `gdb` pelo
-```bash
-(gdb)
-```
+O `gdb` possui uma shell interativa com um conjunto de comandos bastante completos.
 
 O terminal do `gdb` tem TAB completion para maior parte dos comandos e `help <comando>` para mais informações sobre qualquer comando.
 
@@ -65,7 +35,6 @@ Para executar o programa:
 (gdb) run
 ```
 Assumindo que o programa tem erros, a linha que levou o programa a crashar é apresentada após correr o programa juntamente com mais alguma informação.
-
 
 Se suspeitarmos que uma instrução é a culpada podemos mandar para o programa antes de a executar. Para isso impomos `breakpoints`. O programa para de executar **ANTES** de executar a instrução do `breakpoint`.
 
@@ -83,7 +52,7 @@ Se o nosso programa tiver vários ficheiros `.c` associados temos que especifica
 ```
 
 Podemos também por um `breakpoint` associado a uma função diretamente:
-```c
+```C
 int test(char a, void* c){
     // codigo
   }
@@ -98,39 +67,39 @@ Podemos continuar para o próximo com o comando `continue`, ou executar o progra
 
 Semelhante ao `step` existe o `next`, que trata uma função (por exemplo) como uma linha de código só, executando-a e parando depois.
 
-Estar sempre a escrever `step` ou `next` é repetitivo, ao clicar ENTER o `gdb` executa o ultimo comando outra vez.
+Estar sempre a escrever `step` ou `next` é repetitivo, ao carregar no ENTER o `gdb` executa o ultimo comando outra vez.
 
 Para remover um `breakpoint` podemos usar o comando `del <num>` onde `num` é o número do `breakpoint`. `del` apenas remove todos os `breakpoints`
 
 ## Estado das variaveis
 
-As vezes é interessante estudar o estado das nossas variaveis.
+As vezes é interessante estudar o estado das nossas variáveis.
 
 #### Print
-O comando `print` seguido de uma variavel, imprime o valor da mesma.
+O comando `print` seguido de uma variável, imprime o valor da mesma.
 ```bash
 (gdb) print var
 ```
-É possivel formatar este valor para outra base numerica.
+É possível formatar este valor para outra base numérica.
 
-Estar sempre a verificar o estado de uma variavel a mao também é aborrecido e o `gdb` oferece duas alternativas.
+Estar sempre a verificar o estado de uma variável a mão também é aborrecido e o `gdb` oferece duas alternativas.
 
 #### Display
 O comando `display` repete o `print` sempre que o gdb pára, ou seja, quando para num breakpoint, no fim de um `next` ou `step`.
 ```bash
 (gdb) display var
 ```
-Para parar de vazer `display` a uma variavel basta fazer `undisplay <num>` onde o num é indicado atras do valor da variavel impressa.
+Para parar de fazer `display` a uma variável basta fazer `undisplay <num>` onde o num é indicado atrás do valor da variável impressa.
 
 #### Watch
-O comando `watch` é uma espécie de `breakpoint` que interrompe a execução do programa quando a variavel que esta a ser observada é alterada, fazendo print do novo e antigo valor.
+O comando `watch` é uma espécie de `breakpoint` que interrompe a execução do programa quando a variável que esta a ser observada é alterada, fazendo print do novo e antigo valor.
 ```bash
 (gdb) watch var
 ```
-Atenção que se várias variaveis varaiveis tiverem o mesmo nome o `gdb` escolhe qual observar por localidade.
+Atenção que se várias variáveis tiverem o mesmo nome o `gdb` escolhe qual observar por localidade.
 
 ## Abreviaturas
-Porque a perguiça não tem limites, os commandos mais utilizados tem uma abreviatura disponivel:
+Porque a preguiça não tem limites, os commandos mais utilizados tem uma abreviatura disponível:
 
 | comando  | abreviatura |
 | -------- | ----------- |
