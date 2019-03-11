@@ -72,7 +72,7 @@ Desta forma conseguimos optimizar a utilização do processador, tendo sempre al
 O CPU carrega instruções apenas a partir da memória, o que impllica que para que os programas corram tenham que estar em memória. A grande maioria dos programas correm os programas numa memória volatil, a RAM, que vai ser chamada de memória principal.
 
 Esta, e outras formas de memória, disponibilizam um `array de bytes`. Cada byte tem o seu endereço. Os bytes interegarem entre si atravez de instruções de `load` ou `store` referidas a endereços de memória especificos.
-A `load` move um byte, ou uma `word`, da memória principal para um registo do CPU e a `sotre` faz a operação inversa.
+A `load` move um byte, ou uma `word`, da memória principal para um registo do CPU e a `store` faz a operação inversa.
 De notar que a unidade de memória apenas 've' uma série de endereços de memória, é totalmente agnostica à forma como foram criados ou o seu conteúdo.
 
 Idealmente os `processos` estariam todos presentes na memória virtual mas isso não é possivel.
