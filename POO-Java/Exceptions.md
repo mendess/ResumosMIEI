@@ -15,7 +15,7 @@ A classe abstracta que todos os erros e exceções devem estender é
 * [Exception][Exception] Que são exceções do funcionamento normal e devem ser
     tratados. Estas ainda se sub-dividem em mais dois tipos:
     * [RuntimeExceptions][RuntimeExceptions]
-    * _Checked exceptions_  
+    * _Checked exceptions_
 
     A única diferença entre estas é que as _Checked Exceptions_ tem de ser
     declaradas na assinatura do metodo, enquanto que as `RuntimeExceptions`
@@ -65,7 +65,9 @@ foi o caso do exemplo anterior.
  11     }
  12 }
 ```
+
 Irá produzir o seguinte output no terminal:
+
 ```Java
 Hello
 Exception in thread "main" java.lang.NullPointerException
@@ -83,7 +85,7 @@ Para tratar uma exceção temos ao nosso dispor a sintaxe do `try{}catch()`.
 ```Java
 try{
     /* try block: codigo que possa produzir uma exceção */
-catch(NullPointerException e){
+} catch (NullPointerException e) {
     /* catch block: tratar exceção */
 }
 /* Resto do metodo */
