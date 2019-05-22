@@ -86,7 +86,7 @@ A implementação de lista mais usada é o ArrayList. Este exibe o comportamento
  Disponibilizando assim metodos que esperamos encontrar numa lista que herda.
 
 # Map
-Um map, ou dicionario, server para guardar pares chave-valor. Efetivamente são uma Hash Table.
+Um map, ou dicionario, servem para guardar pares chave-valor. Efetivamente são uma Hash Table.
 
 ## Hierarquia de classes do Map
 A API do Map disponibiliza as seguintes classes: (Existem mais, este é apenas um pequeno exemplo)
