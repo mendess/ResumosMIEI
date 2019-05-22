@@ -50,7 +50,8 @@ getters, setters, se for o caso, também teremos métodos iguais repetidos.
 O equals e o toString vão ser extremamente parecidos também.
 
 ## Classe que agrupa o código comum
-Uma primeira solução para o nosso problema é então agrupar as partes comuns numa só classe.
+Uma primeira solução para o nosso problema é então agrupar as partes comuns
+numa só classe.
 ```Java
 public class Pessoa {
 	private String num;

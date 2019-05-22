@@ -1,6 +1,6 @@
 # Interfaces
 As interfaces servem para definir tipos de dados, para "agrupar" classes
-diferentes sob um tipo commum, com um comportamento commum.
+diferentes sob um tipo comum, com um comportamento comum.
 
 Interfaces podem ser vistas como contratos, ou seja, uma classe que
 implementa uma interface compromete-se a implementar os métodos descritos na

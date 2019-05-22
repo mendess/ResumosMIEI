@@ -1,6 +1,6 @@
 # Collections
 As collections de Java permitem-nos abstrair o comportamento habitual de guardar os nosso objetos em
- arrays, arvores, hastables, etc. Estes padrões de programação são tão communs que não vale a pena estar
+ arrays, arvores, hastables, etc. Estes padrões de programação são tão comuns que não vale a pena estar
  sempre a definilos.
 
 Neste documento vou falar de `Collection` e `Map`, que não é uma collection mas serve um proposito similar.

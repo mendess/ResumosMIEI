@@ -23,8 +23,8 @@ A classe abstracta que todos os erros e exceções devem estender é
     [NullPointerException][NullPointerDocs] e
     [ArrayOutOfBoundsException][ArrayOutOfBoundsDocs].
 
-## Exceptions mais communs
-A exceção mais commum é [NullPointerException][NullPointerDocs] que ocorre sempre
+## Exceptions mais comuns
+A exceção mais comum é [NullPointerException][NullPointerDocs] que ocorre sempre
 que se tenta aceder a uma variavel cujo valor seja `null`.
 
 ### Exemplo:
