@@ -40,11 +40,11 @@ public interface Musica{
 }
 ```
 De notar que não coloquei um *access modifier* (`public`, `private`, etc.).
-Isto é porque todos os métodos definidos numa interface são `public` por
-defeito.
+Isto é porque todos os métodos definidos numa interface são obrigatoriamente
+`public`.
 
 Assim um programador que queria usar a nossa API pode definir a sua classe
-de musica e utlizar o radio que nós já definimos.
+de musica e utilizar o radio que nós já definimos.
 ```Java
 public class MyMusic implements Musica{
     private byte[] song;
@@ -54,10 +54,18 @@ public class MyMusic implements Musica{
     }
 
     public void start(){  // < Implementação do método que a interface obriga a implementar
-        /*
-        Reproduzir a musica
-        */
+        System.audio(this.song);
     }
+}
+```
+
+E para utilizar a classe `Radio` podemos usar a nossa musica.
+
+```Java
+public static void main(String[] args) {
+    Radio radio = new Radio();
+    MyMusic m = new MyMusic(new byte[]{1, 2, 1, 4});
+    radio.queue(m);
 }
 ```
 
@@ -68,7 +76,7 @@ Alguns exemplos são:
  * [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
  * [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
 
-Podemos utlizar estas interfaces para fazer o nosso código mais genérico.
+Podemos utilizar estas interfaces para fazer o nosso código mais genérico.
 ```Java
 public class MyClass{
     private List<String> nomes;
@@ -92,8 +100,25 @@ public class DBMap implements Map<String,Cena>{
 }
 ```
 
+## Interfaces Funcionais
+
+Uma interface funcional é uma interface que apenas requer que um método seja
+implementado. por exemplo, a interface `Musica` (que obriga a implementação do
+método `void start()`), pode ser definida através de um lambda.
+
+E para utilizar a classe `Radio` podemos fazer.
+
+```Java
+public static void main(String[] args) {
+    Radio radio = new Radio();
+    radio.queue(() -> System.audio(new byte[]{1, 2, 1, 4}));
+}
+```
+
+Em vez de implementar uma classe.
+
 ## Default Methods
-Com o Java 8 foram introduzidos o metodos default. A ideia por traz destes é
+Com o Java 8 foram introduzidos o métodos default. A ideia por traz destes é
 definir comportamento por defeito para as classes que implementam a nossa
 interface.
 
@@ -112,6 +137,3 @@ public interface Musica{
 Assim todas as classes que implementem esta interface tem também este
 método. Este pode ser `Overriden` para alterar o seu comportamento.
 
-## Interfaces Funcionais
-
-**TODO**
