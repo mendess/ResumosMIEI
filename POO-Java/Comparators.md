@@ -107,6 +107,7 @@ public class Aluno implements Comparable<Aluno> {
     public int compareTo(Aluno aluno){
         return this.nome.compareTo(aluno.getNome());
     }
+} 
 ```
 **Nota:** As strings são `Comparable`.
 
