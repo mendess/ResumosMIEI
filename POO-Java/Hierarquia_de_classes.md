@@ -23,7 +23,7 @@ public class Aluno{
 		this.cadeiras = new ArrayList<>(cadeiras);
 		//Um dos construtores de arraylist permite passar uma Collection.
 		//No entanto, é preciso ter cuidado pois este construtor não
-		// clona os elementos da lista, ou seja, so pode ser usado para
+		// clona os elementos da lista, ou seja, só pode ser usado para
 		// listas de objetos imutáveis.
 	}
 	/* Getters, Setters, etc */
@@ -39,7 +39,7 @@ public class Prof{
 		this.num = num;
 		this.nome = nome;
 		this.email = email;
-		this.departamento = departameto;
+		this.departamento = departamento;
 	}
 	/* Getters, Setters, etc */
 }
@@ -85,7 +85,7 @@ public class Prof extends Pessoa {
 
 	public Prof(String num, String nome, String email, String departamento){
 		super(num,nome,email);
-		this.departamento = departameto;
+		this.departamento = departamento;
 	}
 	/* Getters, Setters, etc */
 }
@@ -126,7 +126,7 @@ os métodos que tem definido.
 ```Java
 	Aluno a = new Aluno("A12345","Mendes","mendes@mymail.com", new ArrayList<>());
 	String num = a.getNum(); // Funciona. O getter está definido na superclasse
-				 // que esta extende.
+				 // que esta estende.
 	ArrayList<String> cadeiras = a.getCadeiras();
 				// Funciona. O getter esta definido nesta classe.
 ```
@@ -135,7 +135,7 @@ Mas a mais interessante consequência é a seguinte:
 	Pessoa p = new Prof("D54321","Nestor","nestor@clone.com","DI");
 	String num = p.getNum(); //Funciona.
 	String departamento = p.getDepartamento();
-				// Não funciona. Um objecto do tipo Pessoa não tem
+				// Não funciona. Um objeto do tipo Pessoa não tem
 				// este getter definido. Apesar do "verdadeiro" tipo
 				// da classe ser Prof.
 	Prof prof = (Prof) p;
@@ -197,7 +197,7 @@ public abstract class Pessoa {
 	/* Tudo igual */
 }
 ```
-Tudo que foi escrito acima deste parágrafo continua a ser verdade, excepto
+Tudo que foi escrito acima deste parágrafo continua a ser verdade, exceto
 `new Pessoa(...)`, isto agora é inválido.
 
 Outra vantagem é que agora podemos definir métodos abstratos.
@@ -206,7 +206,7 @@ public abstract class Pessoa {
 	public abstract irParaAula(Aula a);
 }
 ```
-Agora todas as classes que extendem `Pessoa` são obrigadas a implementar o
+Agora todas as classes que estendem `Pessoa` são obrigadas a implementar o
 método `irParaAula`.
 
 Um método abstrato é declarado na classe abstrata e implementado nas
@@ -220,5 +220,5 @@ Isto é útil quando faz sentido que todas a subclasses implementem um certo
 comportamento mas este depende de fatores que não conhecemos na superclasse,
 por exemplo.
 
-Em Java cada classe pode apenas extender uma superclasse. (C++, por exemplo,
+Em Java cada classe pode apenas estender uma superclasse. (C++, por exemplo,
 permite herança múltipla)

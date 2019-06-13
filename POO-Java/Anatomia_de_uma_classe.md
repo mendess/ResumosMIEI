@@ -7,7 +7,7 @@ Notas:
 
 ### Declaração
 
-Nesta declaração indicamos o nome da nossa class, se extende uma classe e se, e quais, interfaces implementa.
+Nesta declaração indicamos o nome da nossa class, se estende uma classe e se, e quais, interfaces implementa.
 ```Java
 public class MyClass [extends SuperClass] [implements InterfaceClass, ...] {
 ```
@@ -37,7 +37,7 @@ Este construtor inicializa as variáveis de instância com valores por defeito.
     }
 ```
 
-#### Construtor parameterizado
+#### Construtor parametrizado
 Este construtor recebe como parâmetro os valores que as variáveis de instância
  devem tomar.
 
@@ -130,7 +130,7 @@ Ou
     }
 ```
 
-#### Get de uma lista de objetos mutaveis
+#### Get de uma lista de objetos mutáveis
 Como no get anterior, tem que ser criada uma nova lista. Mas, os elementos ao serem adicionados à mesma,
 têm que ser clonados.
 ```Java
@@ -246,6 +246,3 @@ Lista dos principais objetos imutáveis disponíveis:
  * LocalTime
  * LocalDateTime
 (existem mais)
-
----
-Todo o código pode ser visto no [Anexo](ANEXOS/Anatomia_de_uma_classe.java)
