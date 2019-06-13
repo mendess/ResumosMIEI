@@ -1,5 +1,5 @@
 # POO-Java
-Nesta secção irei explorar os conteúdos leccionados em POO.
+Nesta secção irei explorar os conteúdos lecionados em POO.
 
 É importante distinguir POO de Java. Java é a linguagem usada para explicar
  os conceitos de POO. Algumas coisas são válidas em Java mas não são válidas

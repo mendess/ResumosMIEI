@@ -1,6 +1,6 @@
 # Introdução ao Paradigma
 
-Um objecto é apenas a junção de dados e comportamento numa unidade lógica.
+Um objeto é apenas a junção de dados e comportamento numa unidade lógica.
 
 Ou seja, se tivermos um carro poderíamos representá-lo da seguinte forma:
 
@@ -38,7 +38,7 @@ int main() {
 
 Este padrão de funções que recebem a estrutura para fazer alterações sobre o
 mesmo é muito comum. Este tipos de funções são o que chamamos de comportamento
-e no paradigma orientado a objectos são definidas juntas com a estrutura em si.
+e no paradigma orientado a objetos são definidas juntas com a estrutura em si.
 Em Java usamos classes para criar esta relação e estas funções chamam-se **metodos**.
 
 Logo em Java definiríamos esta `Class` da seguinte forma.
