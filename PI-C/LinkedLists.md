@@ -80,7 +80,6 @@ void list_add2(LLigada* lista, int valor) {
     *lista = novo_nodo;
 }
 ```
-
 Qual é a diferença? A forma como se utiliza cada uma.
 ```C
 int main() {
@@ -98,3 +97,61 @@ int main() {
 }
 ```
 As duas listas que este programa produz são exactamente iguais.
+
+### 4. Adicionar um elemento num determinado indice da lista
+```C
+LLigada list_addIndex(LLigada lista, int valor, int indice) {
+    LLigada anterior = NULL;
+    LLigada r = lista;
+    for(int i = 0; lista != NULL && i < indice; i++) {
+        anterior = lista;
+        lista = lista->prox;
+    }
+    LLigada novo_nodo = malloc(sizeof(struct lligada));
+    novo_nodo->val = valor;
+
+    //Verificar se se vai adicionar à cabeça da lista
+    if(anterior == NULL) { 
+        novo_nodo->prox = lista;
+        r = novo_nodo;
+    }
+    else {
+        novo_nodo->prox = atual;
+        anterior->prox = novo_nodo;
+    }
+    return r;
+}
+```
+Também adicionar um elemento no meio de uma lista se torna mais simples
+que num array, basta iterar pela lista até à posição onde queremos
+adicionar o elemento, guardando o anterior, de forma a que seja possível
+"ligar" o novo nodo aos elementos anteriores.
+Embora o exemplo dado seja para adicionar um elemento numa dada posição,
+com ligeiras alterações, é possivel adapta-lo a outros critérios, como
+por exemplo, inserir um elemento numa lista ordenada, alterando a condição
+de paragem do ``for`` para ir de acordo com o pretendido.
+
+De igual modo, também é possivel ter uma versão que recebe o apontador
+para a cabeça da lista.
+```C
+void list_addIndex2(LLigada* lista, int valor, int indice) {
+    LLigada anterior = NULL;
+    LLigada atual = *lista;
+    for(int i = 0; atual != NULL && i < indice; i++) {
+        anterior = atual;
+        atual = atual->prox;
+    }
+    LLigada novo_nodo = malloc(sizeof(struct lligada));
+    novo_nodo->val = valor;
+
+    //Verificar se se vai adicionar à cabeça da lista
+    if(anterior == NULL) { 
+        novo_nodo->prox = atual;
+        *lista = novo_nodo;
+    }
+    else {
+        novo_nodo->prox = atual;
+        anterior->prox = novo_nodo;
+    }
+}
+```
