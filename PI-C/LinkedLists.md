@@ -80,6 +80,7 @@ void list_add2(LLigada* lista, int valor) {
     *lista = novo_nodo;
 }
 ```
+
 Qual é a diferença? A forma como se utiliza cada uma.
 ```C
 int main() {
