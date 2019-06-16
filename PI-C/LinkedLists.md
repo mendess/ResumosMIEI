@@ -56,7 +56,10 @@ int list_at(LLigada lista, int indice) {
 }
 ```
 Como podemos ver, aceder a um elemento de uma lista ligada num determinado índice e mais
-complicado do que num array. Para além de ser mais custoso.
+complicado do que num array. Para além de ser mais custoso. Este custo acrescido ocorre
+porque, no caso do array, acedesse diretamente à posição de memória que contém o valor
+pretendido e por isso o custo é de O(1). No caso da lista ligada, é necessário percorrer
+todos os elementos até chegar à posição pretendida. levando a um custo de O(N).
 
 ### 3. Adicionar um elemento ao inicio da lista.
 ```C
