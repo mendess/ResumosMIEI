@@ -112,7 +112,7 @@ LLigada list_addIndex(LLigada lista, int valor, int indice) {
     novo_nodo->val = valor;
 
     //Verificar se se vai adicionar à cabeça da lista
-    if(anterior == NULL) { 
+    if(anterior == NULL) {
         novo_nodo->prox = lista;
         r = novo_nodo;
     }
@@ -146,7 +146,7 @@ void list_addIndex2(LLigada* lista, int valor, int indice) {
     novo_nodo->val = valor;
 
     //Verificar se se vai adicionar à cabeça da lista
-    if(anterior == NULL) { 
+    if(anterior == NULL) {
         novo_nodo->prox = atual;
         *lista = novo_nodo;
     }
@@ -155,4 +155,20 @@ void list_addIndex2(LLigada* lista, int valor, int indice) {
         anterior->prox = novo_nodo;
     }
 }
+```
+
+Para vizualizar este algoritmo.
+```
+Passo 1: Alocar um nodo    ||  Passo 2: Ligar o novo      ||  Passo 3: Ligar o antigo
+                           ||       ao nodo seguinte      ||        nodo ao novo nodo
+                           ||                             ||
+    +---+                  ||       +---+                 ||       +---+
+    | 4 |                  ||       | 4 |                 ||       | 4 |
+    | 0 |                  ||       | x----+              ||       | x----+
+    +---+                  ||       +---+  |              ||       +---+  |
+                           ||              v              ||         ^    v
++---+    +---+    +---+    ||   +---+    +---+    +---+   ||   +---+ |  +---+    +---+
+| 3 |    | 5 |    | 7 |    ||   | 3 |    | 5 |    | 7 |   ||   | 3 | |  | 5 |    | 7 |
+| x----->| x----->| 0 |    ||   | x----->| x----->| 0 |   ||   | x---+  | x----->| 0 |
++---+    +---+    +---+    ||   +---+    +---+    +---+   ||   +---+    +---+    +---+
 ```
