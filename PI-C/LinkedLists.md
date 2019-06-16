@@ -101,7 +101,7 @@ As duas listas que este programa produz são exactamente iguais.
 
 ### 4. Adicionar um elemento num determinado indice da lista
 ```C
-LLigada list_addIndex(LLigada lista, int valor, int indice) {
+LLigada list_add_index(LLigada lista, int valor, int indice) {
     LLigada anterior = NULL;
     LLigada r = lista;
     for(int i = 0; lista != NULL && i < indice; i++) {
@@ -135,7 +135,7 @@ de paragem do ``for`` para ir de acordo com o pretendido.
 De igual modo, também é possivel ter uma versão que recebe o apontador
 para a cabeça da lista.
 ```C
-void list_addIndex2(LLigada* lista, int valor, int indice) {
+void list_add_index2(LLigada* lista, int valor, int indice) {
     LLigada anterior = NULL;
     LLigada atual = *lista;
     for(int i = 0; atual != NULL && i < indice; i++) {
@@ -159,16 +159,45 @@ void list_addIndex2(LLigada* lista, int valor, int indice) {
 
 Para vizualizar este algoritmo.
 ```
-Passo 1: Alocar um nodo    ||  Passo 2: Ligar o novo      ||  Passo 3: Ligar o antigo
-                           ||       ao nodo seguinte      ||        nodo ao novo nodo
-                           ||                             ||
-    +---+                  ||       +---+                 ||       +---+
-    | 4 |                  ||       | 4 |                 ||       | 4 |
-    | 0 |                  ||       | x----+              ||       | x----+
-    +---+                  ||       +---+  |              ||       +---+  |
-                           ||              v              ||         ^    v
-+---+    +---+    +---+    ||   +---+    +---+    +---+   ||   +---+ |  +---+    +---+
-| 3 |    | 5 |    | 7 |    ||   | 3 |    | 5 |    | 7 |   ||   | 3 | |  | 5 |    | 7 |
-| x----->| x----->| 0 |    ||   | x----->| x----->| 0 |   ||   | x---+  | x----->| 0 |
-+---+    +---+    +---+    ||   +---+    +---+    +---+   ||   +---+    +---+    +---+
+Passo 1: Alocar um nodo   ||  Passo 2: Ligar o novo      ||  Passo 3: Ligar o antigo
+                          ||       ao nodo seguinte      ||        nodo ao novo nodo
+                          ||                             ||
+    +---+                 ||       +---+                 ||       +---+
+    | 4 |                 ||       | 4 |                 ||       | 4 |
+    | 0 |                 ||       | x----+              ||       | x----+
+    +---+                 ||       +---+  |              ||       +---+  |
+                          ||              v              ||         ^    v
++---+    +---+    +---+   ||   +---+    +---+    +---+   ||   +---+ |  +---+    +---+
+| 3 |    | 5 |    | 7 |   ||   | 3 |    | 5 |    | 7 |   ||   | 3 | |  | 5 |    | 7 |
+| x----->| x----->| 0 |   ||   | x----->| x----->| 0 |   ||   | x---+  | x----->| 0 |
++---+    +---+    +---+   ||   +---+    +---+    +---+   ||   +---+    +---+    +---+
 ```
+
+### 5. Libertar a memória utilizada por uma lista
+```C
+void list_free(LLigada lista) {
+    while(lista != NULL) {
+        LLigada tmp = lista->prox;
+        free(tmp);
+        lista = tmp;
+    }
+}
+```
+Para libertar uma lista ligada, temos apenas de visitar todos os nodos e
+libertá-los individualmente. Tendo cuidado de não libertar um nodo sem guardar
+uma referencia para o próximo. Senão nunca mais conseguimos avançar.
+
+
+## Discussão
+
+As listas ligadas têm vantagens e desvantagens, dependendo do problema a
+resolver, em teoria <sup>[1]</sup>, uma lista ligada pode ser mais eficiente
+do que um array. Por exemplo, se temos de adicionar muitas vezes no inicio de
+uma lista a operação é simples e em tempo constante, enquanto que para fazer o
+mesmo num array, todos os elementos do array teriam de ser copiados para a
+frente para fazer espaço para o novo elemento.
+
+- [1] Na pratica, com as maquinas que temos agora, uma lista ligada é quase sempre
+  a escolha errada. Mesmo no caso exemplo acima, há soluções mais eficientes do que
+  uma lista ligada.
+
