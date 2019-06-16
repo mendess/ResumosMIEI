@@ -4,11 +4,11 @@ Agora, juntando o conhecimento de apontadores e estruturas, vamos introduzir a n
 ligada.
 
 ## Definição
-Uma lista ligada é uma forma alternativa de representar uma lista de valores. Ao invés dos arrays
-, que possuem tamanho fixo, uma lista ligada tem comprimento variável.
+Uma lista ligada é uma forma alternativa de representar uma lista de valores. Contrariamente aos arrays,
+ que possuem tamanho fixo, uma lista ligada tem comprimento variável.
 
 A representação de uma lista ligada em memória é um conjunto de nodos, cada um com o valor desse
-nodo, e um apontador para o nodo seguinte.
+nodo e um apontador para o nodo seguinte.
 
 ```
 +---+    +---+    +---+
@@ -190,8 +190,8 @@ uma referencia para o próximo. Senão nunca mais conseguimos avançar.
 
 ## Discussão
 
-As listas ligadas têm vantagens e desvantagens, dependendo do problema a
-resolver, em teoria <sup>[1]</sup>, uma lista ligada pode ser mais eficiente
+As listas ligadas têm vantagens e desvantagens dependendo do problema a
+resolver, em teoria <sup>[1]</sup> uma lista ligada pode ser mais eficiente
 do que um array. Por exemplo, se temos de adicionar muitas vezes no inicio de
 uma lista a operação é simples e em tempo constante, enquanto que para fazer o
 mesmo num array, todos os elementos do array teriam de ser copiados para a
