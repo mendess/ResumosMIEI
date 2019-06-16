@@ -41,7 +41,7 @@ Sem chavetas:
 int x = 4;
 int y = 0;
 
-if(x==4) // mudou a condição!
+if(x==0) // mudou a condição!
         // não temos {  }
 x += 3; // x = x + 3
 y--; // y = y - 1
