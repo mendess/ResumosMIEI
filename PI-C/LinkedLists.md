@@ -4,10 +4,10 @@ Agora, juntando o conhecimento de apontadores e estruturas, vamos introduzir a n
 ligada.
 
 ## Definição
-Uma lista ligada é uma forma alternativa de representar uma lista, de valores. Em vez de utilizar
-um array de tamanho fixo, uma lista tem comprimento variável.
+Uma lista ligada é uma forma alternativa de representar uma lista de valores. Ao invés dos arrays
+, que possuem tamanho fixo, uma lista ligada tem comprimento variável.
 
-A representação de uma lista ligada em memoria e um conjunto de nodos, cada um com o valor desse
+A representação de uma lista ligada em memória é um conjunto de nodos, cada um com o valor desse
 nodo, e um apontador para o nodo seguinte.
 
 ```
@@ -40,7 +40,7 @@ void print_lista(LLigada lista) {
     }
 }
 ```
-Este método de iterar por uma lista ligada e bastante comum, declara-se um *pointer* que vamos utilizar
+Este método de iterar por uma lista ligada é bastante comum, declara-se um *pointer* que vamos utilizar
 como cursor para percorrer a lista, e em todas as iterações do ciclo, o cursor passa a apontar para
 o próximo nodo.
 
@@ -56,7 +56,7 @@ int list_at(LLigada lista, int indice) {
 }
 ```
 Como podemos ver, aceder a um elemento de uma lista ligada num determinado índice e mais
-complicado do que num array. Para alem de ser mais custoso.
+complicado do que num array. Para além de ser mais custoso.
 
 ### 3. Adicionar um elemento ao inicio da lista.
 ```C
@@ -67,8 +67,8 @@ LLigada list_add(LLigada lista, int valor) {
     return novo_nodo;
 }
 ```
-Por outro lado, adicionar um elemento "a cabeça" da lista, e muito mais simples
-do que num array. Apenas temos de alocar o espaço para esta e colocar este novo
+Por outro lado, adicionar um elemento "à cabeça" da lista, é muito mais simples
+do que num array. Apenas temos de alocar o espaço para o nodo e colocar este novo
 nodo a apontar para a antiga "cabeça".
 
 Outra versão desta função involve o uso de um apontador para o apontador da cabeça.
@@ -99,7 +99,7 @@ int main() {
 ```
 As duas listas que este programa produz são exactamente iguais.
 
-### 4. Adicionar um elemento num determinado indice da lista
+### 4. Adicionar um elemento num determinado índice da lista
 ```C
 LLigada list_add_index(LLigada lista, int valor, int indice) {
     LLigada anterior = NULL;
@@ -128,11 +128,11 @@ que num array, basta iterar pela lista até à posição onde queremos
 adicionar o elemento, guardando o anterior, de forma a que seja possível
 "ligar" o novo nodo aos elementos anteriores.
 Embora o exemplo dado seja para adicionar um elemento numa dada posição,
-com ligeiras alterações, é possivel adapta-lo a outros critérios, como
+com ligeiras alterações, é possível adaptá-lo a outros critérios, como
 por exemplo, inserir um elemento numa lista ordenada, alterando a condição
-de paragem do ``for`` para ir de acordo com o pretendido.
+de paragem do ``for`` para ir de encontro ao pretendido.
 
-De igual modo, também é possivel ter uma versão que recebe o apontador
+De igual modo, também é possível ter uma versão que recebe o apontador
 para a cabeça da lista.
 ```C
 void list_add_index2(LLigada* lista, int valor, int indice) {
@@ -157,7 +157,7 @@ void list_add_index2(LLigada* lista, int valor, int indice) {
 }
 ```
 
-Para vizualizar este algoritmo.
+Para visualizar este algoritmo.
 ```
 Passo 1: Alocar um nodo   ||  Passo 2: Ligar o novo      ||  Passo 3: Ligar o antigo
                           ||       ao nodo seguinte      ||        nodo ao novo nodo
