@@ -2,7 +2,7 @@
 
 A primeira primitiva com que vamos trabalhar são ficheiros.
 
-Em UNIX, *tudo ou são ficheiros*, fazendo destas funções as mais importantes
+Em UNIX, *tudo são ficheiros*, fazendo destas funções as mais importantes
 para interagir com o sistema operativo.
 
 ## API:
