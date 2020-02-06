@@ -59,8 +59,12 @@ permissões com que ele é criado não são especificadas, podendo ser qualquer
 coisa.
 
 #### Valor de retorno
-O valor de retorno é um *file descriptor* que pode mais tarde ser passado a
-varias funções para interagir com o ficheiro aberto.
+O valor de retorno pode ter 2 significados.
+
+Se for:
+- `≥ 0`: um *file descriptor* que pode mais tarde ser passado a varias funções
+  para interagir com o ficheiro aberto
+- `< 0`: Indica que ocorreu algum erro
 
 ### Read
 ```c
@@ -78,9 +82,9 @@ O `count` é quantos bytes no máximo devem ser lidos para dentro do buffer.
 O valor de retorno pode ter 3 significados.
 
 Se for
-- > 0: Indica quantos bytes foram lidos
-- = 0: Indica que o ficheiro terminou
-- < 0: Indica que ocorreu algum erro
+- `> 0`: Indica quantos bytes foram lidos
+- `= 0`: Indica que o ficheiro terminou
+- `< 0`: Indica que ocorreu algum erro
 
 TODO: Falar de `errno`?
 
@@ -100,8 +104,8 @@ O `count` é quantos bytes do `buf` devem ser escritos
 O valor de retorno pode ter 2 significados.
 
 Se for
-- ≥ 0: Indica quantos bytes foram lidos
-- < 0: Indica que ocorreu algum erro
+- `≥ 0`: Indica quantos bytes foram lidos
+- `< 0`: Indica que ocorreu algum erro
 
 ### Close
 ```
@@ -117,8 +121,8 @@ Fechar ficheiros é importante por varias razões, as mais importantes sendo:
 O `fd` a fechar
 
 #### Valor de retorno
-0: Se foi fechado com sucesso.
--1: Se ocorreu um erro.
+- 0: Se foi fechado com sucesso.
+- -1: Se ocorreu um erro.
 
 
 ## Standard Input, Output e Error
@@ -161,28 +165,28 @@ de verificar se algum erro ocorre e terminar o programa nesse caso.
 #include <fcntl.h>
 
 int main(void) {
-    int source = open("file1", O_RDONLY);
+    const int source = open("file1", O_RDONLY);
     if (source < 0) {
-        char* message = "Error opening file1\n";
+        char const* message = "Error opening file1\n";
         write(2, message, strlen(message));
         return 1;
     }
-    int dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    const int dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (dest < 0) {
-        char* message = "Error opening file2\n";
+        char const* message = "Error opening file2\n";
         write(2, message, strlen(message));
         return 1;
     }
     char buf[10];
     size_t amount = read(source, buf, 10);
     if (amount < 0) {
-        char* message = "Error reading from file1\n";
+        char const* message = "Error reading from file1\n";
         write(2, message, strlen(message));
         return 1;
     }
     amount = write(dest, buf, amount);
     if (amount < 0) {
-        char* message = "Error writting to file2\n";
+        char const* message = "Error writting to file2\n";
         write(2, message, strlen(message));
         return 1;
     }
