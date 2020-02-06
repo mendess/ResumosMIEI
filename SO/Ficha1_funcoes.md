@@ -64,7 +64,7 @@ O valor de retorno pode ter 2 significados.
 Se for:
 - `≥ 0`: um *file descriptor* que pode mais tarde ser passado a varias funções
   para interagir com o ficheiro aberto
-- `< 0`: Indica que ocorreu algum erro
+- ` -1`: Indica que ocorreu algum erro
 
 ### Read
 ```c
@@ -84,7 +84,7 @@ O valor de retorno pode ter 3 significados.
 Se for
 - `> 0`: Indica quantos bytes foram lidos
 - `= 0`: Indica que o ficheiro terminou
-- `< 0`: Indica que ocorreu algum erro
+- ` -1`: Indica que ocorreu algum erro
 
 ### Write
 ```c
@@ -103,7 +103,7 @@ O valor de retorno pode ter 2 significados.
 
 Se for
 - `≥ 0`: Indica quantos bytes foram lidos
-- `< 0`: Indica que ocorreu algum erro
+- ` -1`: Indica que ocorreu algum erro
 
 ### Close
 ```
