@@ -102,7 +102,7 @@ O `count` é quantos bytes do `buf` devem ser escritos
 O valor de retorno pode ter 2 significados.
 
 Se for
-- `≥ 0`: Indica quantos bytes foram lidos
+- `≥ 0`: Indica quantos bytes foram escritos
 - ` -1`: Indica que ocorreu algum erro
 
 ### Close
@@ -163,29 +163,29 @@ de verificar se algum erro ocorre e terminar o programa nesse caso.
 #include <fcntl.h>
 
 int main(void) {
-    const int source = open("file1", O_RDONLY);
-    if (source < 0) {
-        char const* message = "Error opening file1\n";
-        write(2, message, strlen(message));
+    int const source = open("file1", O_RDONLY);
+    if (source == -1) {
+        perror("Error opening file1");
         return 1;
     }
-    const int dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (dest < 0) {
-        char const* message = "Error opening file2\n";
-        write(2, message, strlen(message));
+    int const dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (dest == -1) {
+        perror("Error opening file2");
         return 1;
     }
     char buf[10];
-    size_t amount = read(source, buf, 10);
-    if (amount < 0) {
-        char const* message = "Error reading from file1\n";
-        write(2, message, strlen(message));
+    size_t const amount_read = read(source, buf, 10);
+    if (amount == -1) {
+        perror("Error reading file1");
         return 1;
     }
-    amount = write(dest, buf, amount);
-    if (amount < 0) {
-        char const* message = "Error writting to file2\n";
-        write(2, message, strlen(message));
+    size_t const amount_written = write(dest, buf, amount_read);
+    if (amount == -1) {
+        perror("Error writting file2");
+        return 1;
+    }
+    if (amount_written < amount_read) {
+        perror("Couldn't write everything");
         return 1;
     }
     close(source);
