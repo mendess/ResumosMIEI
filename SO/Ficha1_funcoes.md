@@ -35,7 +35,7 @@ exemplo, `open("file", O_RDONLY | O_WRONLY)` está errado.
 
 As outras flags que podem ser passadas indicam opções.
 - `O_CREAT`: Cria o ficheiro se ele não existir.
-- `O_APPEND`: Começa a escrever no fim do ficheiro em vez de no inicio.
+- `O_APPEND`: Começa a escrever no fim do ficheiro em vez de no início.
 - `O_TRUNC`: Apaga todo o conteúdo do ficheiro.
 - etc, consultar a man page `man 2 open` para saber mais.
 
@@ -114,15 +114,15 @@ int close(int fd);
 Fechar ficheiros é importante por varias razões, as mais importantes sendo:
 - *Flushing*, não é garantido que mal um `write` é executado que o texto seja
   escrito em disco. Ao fechar o ficheiro correctamente temos essa garantia.
-- Cada processo tem um máximo finito de *file descriptor* que pode ter abertos
-  ao mesmo tempo.
+- Cada processo tem um máximo de *file descriptor* que pode ter abertos ao mesmo
+  tempo.
 
 #### Parâmetros
 O `fd` a fechar
 
 #### Valor de retorno
-- 0: Se foi fechado com sucesso.
-- -1: Se ocorreu um erro.
+- ` 0`: Se foi fechado com sucesso.
+- `-1`: Se ocorreu um erro.
 
 
 ## Standard Input, Output e Error
@@ -195,8 +195,16 @@ int main(void) {
 }
 ```
 
-
 ## Nota sobre performance
 As system calls `read` e `write` são das mais lentas e mais utilizadas pelo que
 é preciso ter cuidado e tentar reduzir o número de vezes que são chamadas.
 
+## Extra notes
+
+- Os *magic numbers* `0`, `1` e `2` para o `stdin`, `stdout` e `stderr`
+    respetivamente, podem ser substituidos pelas macros `STDIN_FILENO`,
+    `STDOUT_FILENO` e `STDERR_FILENO` respectivamente.
+
+- Sempre que uma função mecionadas assima retorna um erro, o tipo de erro que
+    ocorreu pode ser visto na variavel global `errno`. `man errno` para aprender
+    a usar a variavel.
