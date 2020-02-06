@@ -86,8 +86,6 @@ Se for
 - `= 0`: Indica que o ficheiro terminou
 - `< 0`: Indica que ocorreu algum erro
 
-TODO: Falar de `errno`?
-
 ### Write
 ```c
 ssize_t write(int fd, void const* buf, size_t count);
