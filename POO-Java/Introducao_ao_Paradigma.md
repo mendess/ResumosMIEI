@@ -4,7 +4,7 @@ Um objeto é apenas a junção de dados e comportamento numa unidade lógica.
 
 Ou seja, se tivermos um carro poderíamos representá-lo da seguinte forma:
 
-```C
+```c
 struct Car {
     String brand;
     String model;
@@ -17,21 +17,21 @@ Depois podemos querer definir que o carro pode "andar" e aumentar o número de
 kms que tem, ou reiniciar a quilometragem parcial. Para isto podemos definir
 funções como:
 
-```C
-void andar(Car car, int km) {
-    car.kmsTotal += km;
-    car.kmsParcial += km;
+```c
+void andar(Car* car, int km) {
+    car->kmsTotal += km;
+    car->kmsParcial += km;
 }
 
-void resetParcial(Car car) {
-    car.kmsParcial = 0;
+void resetParcial(Car* car) {
+    car->kmsParcial = 0;
 }
 
 
 // Example Main
 int main() {
     Car car = /* inicialização */
-    andar(car, 10);
+    andar(&car, 10);
     resetParcial(car);
 }
 ```
@@ -43,7 +43,7 @@ Em Java usamos classes para criar esta relação e estas funções chamam-se **m
 
 Logo em Java definiríamos esta `Class` da seguinte forma.
 
-```Java
+```java
 public class Car {
     private String brand;
     private String model;
@@ -72,3 +72,11 @@ public class Main {
 
 Aqui podemos ver que a keyword `this` substitui a referencia da estrutura que
 temos sempre de ter em programação imperativa.
+
+
+## Nota
+
+Em Java todos os objectos são pointers, (excepto os tipos primitivos, `int`,
+`long`, `float`, `double`, `byte`, etc), logo onde no código em `C`tem de se
+explicitamente passar um pointer para as funções, em Java isto e implícito,
+fazendo o `'.'` em Java equivalente ao `'->'` em `C`.
