@@ -1,7 +1,8 @@
 # Índice
 
  1. [Introdução/Histórias do Moura](./Intro.md)
- 1. [Ficha1](./Ficha1_funcoes.md)
+ 1. [Ficha1](./Ficha1.md)
+ 2. [Ficha2](./Ficha2.md)
 
 
 Já ninguém tem tempo para escrever isto xD por isso vou começar a por links mais
