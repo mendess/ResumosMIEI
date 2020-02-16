@@ -2,7 +2,6 @@
 Nesta secção vamos explorar os conteúdos lecionados em PI.
 
 C é a linguagem usada para explicar os conceitos de programação imperativa.
-Vamos tentar seguir a ordem das fichas de PI.
 
 # Indice
 
@@ -14,6 +13,7 @@ Vamos tentar seguir a ordem das fichas de PI.
  5. [Arrays](./Arrays.md)
  6. [Pointers](./Pointers.md)
  7. [Structs](./Structs.md)
+ 8. [Linked Lists](./LinkedLists.md)
 
 ## Auxiliares
  1. [GDB Debugger](./GDB.md)

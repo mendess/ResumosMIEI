@@ -2,10 +2,10 @@
 
 Um comparator serve para definir um critério pelo qual se podem
  comparar duas classes. Este tipo de comparações são normalmente usadas
- ordenar elementos de uma lista ou inserir corretamente numa arvore de
+ ordenar elementos de uma lista ou inserir corretamente numa árvore de
  procura.
 
-Durante este resumo vai ser varias vezes refereciada a seguinte classe:
+Durante este resumo vai ser varias vezes referenciada a seguinte classe:
 ```Java
 public class Aluno{
     private String nome;
@@ -16,7 +16,7 @@ public class Aluno{
 
 ### Comparators I
 
-Para criar um comparator temos apenas de defninir uma classe que
+Para criar um comparator temos apenas de definir uma classe que
  implemente [Comparator][comparatorDocs].
 
 Se quisermos ordenar por ordem de notas, criamos o seguinte comparator.
@@ -27,24 +27,24 @@ public class AlunoComparator implements Comparator<Aluno>{
     }
 }
 ```
-Os tipos basicos (`int`, `float`, `double`, ...) já tem definidos na
-respetiva classe metodos para os comparar.
+Os tipos básicos (`int`, `float`, `double`, ...) já tem definidos na
+respetiva classe métodos para os comparar.
 
 #### Utilização
 
-##### Metodo
+##### Método
 
-Para o utilizar apenas temos de o passar a algum metodo ou construtor
+Para o utilizar apenas temos de o passar a algum método ou construtor
 que necessite de um.
 ```Java
 List<Aluno> alunosPorNota = new ArrayList<>();
 // inserir montes de alunos
 alunosPorNota.sort(new AlunoComparator());
 ```
-Neste caso o metodo [sort][sortDocs] ira ordenar por ordem crescente de notas
+Neste caso o método [sort][sortDocs] ira ordenar por ordem crescente de notas
 os alunos da lista.
 
-Se quisermos ordenar pela ordem inversa podemos utilizar o metodo
+Se quisermos ordenar pela ordem inversa podemos utilizar o método
 [reversed][reversedDocs] disponibilizado por defeito em todos os `Comparator`s
 ```Java
 alunosPorNota.sort(new AlunosComparator().reversed());
@@ -53,7 +53,7 @@ alunosPorNota.sort(new AlunosComparator().reversed());
 ##### Construtor
 
 Para criar um [SortedSet][sortedSetDocs], neste caso, temos de passar um comparator
- ao criar uma instancia.
+ ao criar uma instância.
 ```Java
 SortedSet<Aluno> alunos = new TreeSet<>(new AlunoComparator());
 ```
@@ -62,9 +62,9 @@ Assim sempre que for adicionado um novo aluno a este [TreeSet][treeSetDocs] este
 
 ### Comparators II
 
-Em vez de criarmos uma classe nova para comparar objectos de uma outra
+Em vez de criarmos uma classe nova para comparar objetos de uma outra
  classe podemos também criar comparators com `lambdas` e outros
- metodos pre-definidos.
+ métodos pré-definidos.
 
 #### Utilização
 
@@ -73,15 +73,15 @@ Em vez de criarmos uma classe nova para comparar objectos de uma outra
 Utilizando a classe da secção anterior, os alunos podem ser ordenados
  das seguintes formas.
 
- * Usando um comparator de inteiros pre-definido na classe comparator,
- ao qual temos apenas de passar um metodo que retorna o valor a
+ * Usando um comparator de inteiros pré-definido na classe comparator,
+ ao qual temos apenas de passar um método que retorna o valor a
  comparar.
 ```Java
 alunosPorNota.sort(Comparator.comparingInt(Aluno::getNota));
-alunosPorNome.sort(Comparator.comparing(Aluno::getNome)); //O resultado do metodo tem de ser
+alunosPorNome.sort(Comparator.comparing(Aluno::getNome)); //O resultado do método tem de ser
                                                           //comparable (ver secção seguinte)
 ```
- * Usando um lambda que compare dois objectos.
+ * Usando um lambda que compare dois objetos.
 ```Java
 alunosPorNota.sort((a1, a2) -> Integer.compare(a1.getNota(), a2.getNota()));
 ```
@@ -93,13 +93,13 @@ alunosPorNota.sort(Comparator.comparingInt(Aluno::getNota).reversed());
 
 ### Comparable ou "ordem natural"
 
-Outro metodo de comparar objectos de uma classe é fazer essa classe comparavel.
+Outro método de comparar objetos de uma classe é fazer essa classe comparável.
 
 ##### Metodo
 
 Podemos definir que, por defeito, os Alunos podem ser comparados por nome
 implementando a interface [Comparable][comparableDocs], que obriga à implementação
-do metodo [compareTo][compareToDocs].
+do método [compareTo][compareToDocs].
 ```Java
 public class Aluno implements Comparable<Aluno> {
     private String nome;
@@ -107,6 +107,7 @@ public class Aluno implements Comparable<Aluno> {
     public int compareTo(Aluno aluno){
         return this.nome.compareTo(aluno.getNome());
     }
+} 
 ```
 **Nota:** As strings são `Comparable`.
 

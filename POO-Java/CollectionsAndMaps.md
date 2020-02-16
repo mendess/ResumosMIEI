@@ -46,7 +46,7 @@ Legenda:
 +----+                         |
 ```
 
-Podemos consultar a documentação de todas estas para saber que metodos temos disponiveis:
+Podemos consultar a documentação de todas estas para saber que métodos temos disponíveis:
 
 * [Collection][CollectionDocs]
 * [List][ListDocs]
@@ -62,7 +62,7 @@ Podemos consultar a documentação de todas estas para saber que metodos temos d
 
 ### Collection
 A interface `Collection` garante que todas as classes que a implementam disponibilizam,
- entre outros, metodos para adicionar, verificar a existencia e remover elementos.
+ entre outros, métodos para adicionar, verificar a existência e remover elementos.
 
 * `boolean add(E e)`
 * `boolean remove(E e)`
@@ -74,19 +74,19 @@ Ambos retornando `true` se o estado da collection foi alterado.
 Que retorna `true` case o objecto esteja contido na coleção.
 
 ### List
-Esta interface que estende a `Collection` adiciona, entre outros, metodos com a noção de indice,
+Esta interface que estende a `Collection` adiciona, entre outros, métodos com a noção de índice,
  muito analogo a um array:
 
-* `int indexOf(Object o)` Que retorna o indice de um determinado objecto
-* `E get(int index)` Que retorna o objecto que está num dado indice
-* `boolean remove(int index)` Que remove um objecto num dado indice
+* `int indexOf(Object o)` Que retorna o índice de um determinado objeto
+* `E get(int index)` Que retorna o objeto que está num dado índice
+* `boolean remove(int index)` Que remove um objeto num dado índice
 
 ### ArrayList
 A implementação de lista mais usada é o ArrayList. Este exibe o comportamento de um array dinâmico.
- Disponibilizando assim metodos que esperamos encontrar numa lista que herda.
+ Disponibilizando assim métodos que esperamos encontrar numa lista que herda.
 
 # Map
-Um map, ou dicionario, servem para guardar pares chave-valor. Efetivamente são uma Hash Table.
+Um map, ou dicionário, server para guardar pares chave-valor. Efetivamente são uma Hash Table.
 
 ## Hierarquia de classes do Map
 A API do Map disponibiliza as seguintes classes: (Existem mais, este é apenas um pequeno exemplo)
@@ -109,7 +109,7 @@ A API do Map disponibiliza as seguintes classes: (Existem mais, este é apenas u
                                                 ||   TreeMap<K,V>  ||
                                                 ++=================++
 ```
-Podemos consultar a documentação de todas estas para saber que metodos temos disponiveis:
+Podemos consultar a documentação de todas estas para saber que métodos temos disponíveis:
  * [Map][MapDocs]
  * [HashMap][HashMapDocs]
  * [LinkedHashMap][LinkedHashMapDocs]
@@ -119,7 +119,7 @@ Podemos consultar a documentação de todas estas para saber que metodos temos d
 
 ### Map API
 A interface `Map` garante que todas as classes que a implementam disponibilizam,
- entre outros, metodos para adicionar, verificar a existenciai, obter e remover
+ entre outros, métodos para adicionar, verificar a existência, obter e remover
  elementos
 
  * `boolean put(K key, V value)`
@@ -127,15 +127,15 @@ A interface `Map` garante que todas as classes que a implementam disponibilizam,
  * `V get(K key)`
  * `V remove(K key)`
 
-Outros metodos importantes são:
+Outros métodos importantes são:
 
  * `Set<K> keySet()` para obter o conjunto das chaves.
  * `Collection<V> values()` para obter uma coleção de valores do map.
  * `Set<Map.Entry<K,V>> entrySet()` que devolve um conjunto de pares chave-valor.
 
-Importante notar que estes metodos podem ter fraco desempenho em algumas
- implementações da interface, por exemplo `HashMap`, devido à ineficiencia
- de interar sobre este tipo de estruturas. Por esta razão, Map não implementa
+Importante notar que estes métodos podem ter fraco desempenho em algumas
+ implementações da interface, por exemplo `HashMap`, devido à ineficiência
+ de iterar sobre este tipo de estruturas. Por esta razão, Map não implementa
  `Iterable`.
 
 

@@ -30,7 +30,7 @@ for(ListElem l: list){
     l.doStuff();
 }
 ```
-Pode até ser lido, em liguagem natural, "For each `ListElem l` in list do \<this\>"
+Pode até ser lido, em linguagem natural, "For each `ListElem l` in list do \<this\>"
 
 Alternativamente, este código pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
  *(mais sobre estes numa [secção][ItInternos] mais à frente)*:
@@ -39,7 +39,7 @@ list.foreach(l -> l.doStuff());
 ```
 
 Mas este `for` tem, potencialmente, um problema: _"Temos sempre de percorrer a lista toda,
- visto que não temos a condição de paragem explicíta"_. [<sup>\[1\]</sup>][extraNotes]
+ visto que não temos a condição de paragem explícita"_. [<sup>\[1\]</sup>][extraNotes]
 
 # Iteradores externos
 Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
@@ -89,7 +89,7 @@ while(flag && it.hasNext()){
 ```
 
 Como cada classe `Iterable` implementa o seu próprio método `iterator()` podemos ter a certeza que estamos a
-iterar de forma correcta sobre a `Collecion` (O `foreach` também garante isto).
+iterar de forma correta sobre a `Collecion` (O `foreach` também garante isto).
 
 # Iteradores Internos
 Os iteradoes internos tentam emular programação funcional para iterar sobre as `Collections`.
@@ -98,13 +98,13 @@ Estas implementam (desde o Java 8) o método [stream][streamMethod] que retorna 
  da `Collection` e sobre este podemos fazer uma imensas operações.
 
 Importante notar que, como acontece em Programação Funcional, os streams apresentam Imutabilidade, ou seja,
- equanto que nos [iteradores externos][iteradoresExternos] podiamos remover elementos da `Collection` enquanto
- iteravamos sobre estes, com streams isto não é possivel. Podemos, no entanto, criar uma lista sem os elementos
- que queremos remover e substituimos a lista antiga com a nova.
+ enquanto que nos [iteradores externos][iteradoresExternos] podíamos remover elementos da `Collection` enquanto
+ iterávamos sobre estes, com streams isto não é possível. Podemos, no entanto, criar uma lista sem os elementos
+ que queremos remover e substituímos a lista antiga com a nova.
 
-*(Nota: A lista é "imutavel" apenas no sentido em não é possivel alterar que elementos que a lista original tem,
- mas podemos alterar os objectos nela contidos e isto vai afetar a lista original, bem como todas as instacias do
- objecto em questão. Vou tentar explicar isto melhor com alguns exemplos mais a frente)*
+*(Nota: A lista é "imutável" apenas no sentido em não é possível alterar que elementos que a lista original tem,
+ mas podemos alterar os objetos nela contidos e isto vai afetar a lista original, bem como todas as instâncias do
+ objeto em questão. Vou tentar explicar isto melhor com alguns exemplos mais a frente)*
 
 A estrutura usual de uma iteração usando `stream` é a seguinte:
 ```Java
@@ -148,7 +148,7 @@ public List<ListElem> getAbove(int x){
 ```
 
 Este método irá então retornar uma lista dos `ListElem` com valor superior a `x` mas **atenção!**, pode, se `ListElem` não for
- imutavel, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este método.
+ imutável, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este método.
  Podemos, no entanto, resolver este problema facilmente, usando o `map`.
 
 ```Java
@@ -164,7 +164,7 @@ public List<ListElem> getAbove(int x){
 Quando o lambda que passamos a um destes métodos apenas chama outro método, como é o exemplo do `l -> l.getId()` podemos
  utilizar uma `Method Reference` com a seguinte sintaxe: `<Class>::<method>`
 
-Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguinte alteração.
+Olhando para o [Exemplo 1][ItInternosEx1] novamente, o código sofreria a seguinte alteração.
 ```Java
     List<Integer> ids = list.stream()
         .map(ListElem::getId)
@@ -172,8 +172,8 @@ Olhando para o [Exemplo 1][ItInternosEx1] novamente, o codigo sofreria a seguint
 ```
 
 ## Lambda mais complexos
-Por vezes o código que temos de implementar é muito complexo para ser escrito numa só linha. Nestes casos podemos, "espandir"
- o lambda para que seja mais legivel o que estámos a fazer.
+Por vezes o código que temos de implementar é muito complexo para ser escrito numa só linha. Nestes casos podemos, "expandir"
+ o lambda para que seja mais legível o que estamos a fazer.
 
 ```Java
 public List<ListElem> getAbove(int x){
@@ -196,8 +196,8 @@ public List<ListElem> getAbove(int x){
 
 ---
 # Extra Notes
-1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a precorrer toda
- mas os stores são contra isto, justificando que fica menos legivel. (Pessoalmente acho que depende e tem de ser visto caso a caso)
+1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a percorrer toda
+ mas os stores são contra isto, justificando que fica menos legível. (Pessoalmente acho que depende e tem de ser visto caso a caso)
    ```Java
         for(ListElem l: list){
             if(someCondition()) break;
@@ -208,7 +208,7 @@ public List<ListElem> getAbove(int x){
    Por exemplo, o `next()` de um `Iterator<String>` vai retornar `String`. A isto chamam-se genéricos e saem muito
    fora do ambito do que é esperado nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
 3. Existem também "especializações" do `map` como o [mapToInt][mapToIntMethod] que retorna um [IntStream][IntStream] em
-   vez de um `Stream` normal. Sobre este podemos fazer [somatorios][sumMethod], [médias][averageMethod], etc.
+   vez de um `Stream` normal. Sobre este podemos fazer [somatório][sumMethod], [médias][averageMethod], etc.
    ```Java
    int totalValue = list.stream()
         .mapToInt(l -> l.getId())
