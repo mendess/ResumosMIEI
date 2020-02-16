@@ -36,17 +36,17 @@ seguida retoma a execução dos dois.
 #include <stdio.h>
 
 int main(void) {
-    puts("Ola, estou sozinho!");
+    puts("Olá, estou sozinho!");
     fork();
-    puts("Ola, não estou sozinho.");
+    puts("Olá, não estou sozinho.");
     return 0;
 }
 ```
 O output deste programa é o seguinte:
 ```
-Ola, estou sozinho!
-Ola, não estou sozinho.
-Ola, não estou sozinho.
+Olá, estou sozinho!
+Olá, não estou sozinho.
+Olá, não estou sozinho.
 ```
 ### Utilidade do fork
 ```c
@@ -283,7 +283,7 @@ int main(int argc, char const* argv[]) {
    pai, mas por exemplo a grande maioria das *shells* colocam os processos que o
    utilizador inicia em grupos diferentes da própria *shell*. Os grupos são
    importantes para a propagação de sinais, sendo possível enviar
-   [sinais](./Ficha7_Signals.md) a um grupo e não apenas a um processo.
+   [sinais](./Ficha7.md) a um grupo e não apenas a um processo.
 
 
 [cowSpace]: ./Ficha2.md#extra-notes
