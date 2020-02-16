@@ -27,7 +27,7 @@ dos seu filhos, mas há outras formas de conseguir isto.
 ## Forking
 Para criar um processo novo, em sistemas Unix like, faz se uso da *system call*
 fork. Quando um processo faz `fork` o sistema operativo cria uma copia de toda a
-memoria [<sup>\[1\]</sup>](cowSpace) do *forking process* para um novo, e de
+memoria [<sup>\[1\]</sup>][cowSpace] do *forking process* para um novo, e de
 seguida retoma a execução dos dois.
 
 **Exemplo**
@@ -161,7 +161,7 @@ O `waitpid` por outro lado, permite um ter mais controlo sobre quando retornar.
 
 O parâmetro `pid` pode tomar valores que não `pid`s, mas para além de `-1` (que
 significa "qualquer processo"), estes saem fora da matéria da cadeira
-[<sup>\[2\]</sup>](processGroups).
+[<sup>\[2\]</sup>][processGroups].
 
 Ao parâmetro `options` pode ser passado `0` para não ativar nenhuma opção ou
 as opções especificadas na *man page*, das quais a mais útil é `WNOHANG` que
