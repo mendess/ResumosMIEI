@@ -38,7 +38,6 @@ acabam de executar.
 Os periféricos avisam o processador no fim da sua exeução, através de
 interrupções.
 
-
 A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas
 as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis
 `user space` e `kernel space`.
@@ -126,8 +125,8 @@ CPU e a `store` faz a operação inversa.
 De notar que a unidade de memória apenas 've' uma série de endereços de memória,
 é totalmente agnostica à forma como foram criados ou o seu conteúdo.
 
-Idealmente os `processos` estariam todos presentes na memória virtual mas isso
-não é possivel.
+Idealmente os processos estariam todos em memória principal (RAM) mas isso não é
+possível.
 
 Surge então a memória virtual que simula um espaçõ de memória completo para cada
 `processo` sendo que na realidade apenas parte do `processo` se encontra na
