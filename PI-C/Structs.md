@@ -5,14 +5,14 @@ Estruturas permitem-nos guardar tipos de dados mais complexos que `int` ou
 ## Declaração
 Uma struct é declarada com a *keyword* do mesmo nome. Por exemplo, se quiser
 guardar um registo de uma pessoa posso declarar a seguinte estrutura:
-```C
+```c
 struct pessoa{
     int idade
     char* nome;
 };
 ```
 Podemos então usar esta esturtura no nosso codigo:
-```C
+```c
 int main(){
     struct pessoa p;
 
@@ -28,7 +28,7 @@ int main(){
 ### Typedef
 A keyword `typedef` permite-nos dar "alcunhas" aos nossos tipos, por exemplo
 se fizermos `typedef int inteiro` podemos escrever:
-```C
+```c
 typedef int inteiro;
 
 int main(){
@@ -37,7 +37,7 @@ int main(){
 ```
 O typedef é muito util quando usada em conjunto com structs para que não
 tenhamos de repetir a palavra `struct` tantas vezes.
-```C
+```c
 struct pessoa{
     int idade;
     char* nome;
@@ -45,17 +45,17 @@ struct pessoa{
 
 typedef struct pessoa Pessoa;
 
-int main(){
+int main() {
     Pessoa p;  // Usamos os typedef em vez do "nome completo" do tipo
     /* resto do código */
 }
 ```
 Isto pode ser ainda abreviado:
-```C
-typedef struct pessoa{
+```c
+typedef struct pessoa {
     int idade;
     char* nome;
-}Pessoa;
+} Pessoa;
 ```
 Que é equivalente.
 
@@ -64,18 +64,18 @@ As estruturas são apenas uma coleção de campos relacionados e, se podemos
 guardar um `int`, podemos também guardar outra estrutura.
 
 Imagine-se que queremos guardar a data de nascimento da nossa `Pessoa`.
-```C
-typedef struct data{
+```c
+typedef struct data {
     int dia;
     int mes;
     int ano;
-}Data;
+} Data;
 
-typedef struct pessoa{
+typedef struct pessoa {
     int idade;
     char* nome;
     Data nascimento;
-}Pessoa;
+} Pessoa;
 
 int main(){
     Pessoa p;
@@ -101,7 +101,7 @@ Por esta razão é costume declarar apontadores para as esturturas e trabalhar
 com estes.
 
 Por exemplo:
-```C
+```c
 int main(){
     Pessoa* p = malloc(sizeof(Pessoa)); // Alocamos memória para a
                                         // estrutura
@@ -113,7 +113,7 @@ alterarmos o conteudo. Mas como esta sintaxe é muito chata de escrever existe
 uma maneira equivalente de o fazer: `p->idade`.
 
 Pondo isto em pratica:
-```C
+```c
 void birthday(Pessoa p){
     p.idade += 1;
 }
@@ -121,8 +121,7 @@ void birthday_prt(Pessoa* p){
     p->idade += 1;
 }
 int main(){
-    Pessoa p;
-    p.idade = 18;
+    Pessoa p = (Pessoa) {.idade = 18};
     printf("%d\n", p.idade);
 
     birthday(p);
@@ -140,61 +139,27 @@ Este programa terá o seguinte output:
 18
 19
 ```
-### Typedef II
-No caso de querer-mos sempre trabalhar com um apontador para a nossa
-estrutura podemos mudar o `typedef` para nos facilitar a vida.
-```C
-struct pessoa{
-    int idade;
-    char* nome;
-}
-
-typedef struct pessoa * Pessoa;
-
-int main(){
-    Pessoa p = malloc(sizeof(struct pessoa));
-    p->idade = 18;
-
-    return 0;
-}
-```
-Diferenças importantes a notar com este typedef é que, apesar de nao estar
- explicito, o tipo `Pessoa` é um apontador, pelo que o `sizeof` tem de
- "medir" o tamanho da esturura para alocar tamanho certo. Daí o uso de
- `sizeof(struct pessoa)` e não `sizeof(Pessoa)`.
-
-Este `typedef` pode novamente ser abreviado para:
-```C
-typedef struct pessoa{
-    int idade;
-    char* nome;
-} * Pessoa;
-```
-Que é equivalente.
-
 ## Estruturas dentro de esturturas II
 Podemos então ter apontadores para estruturas dentro da nossa estrutura.
 
 Para ilustrar a diferença a data de nascimento será "normal" enquanto que a
 de obito será um apontador:
-```C
-typedef struct data{
+```c
+typedef struct data {
     int dia;
     int mes;
     int ano;
-}Data;
+} Data;
 
-typedef Data * Data_ptr;
-
-typedef struct pessoa{
+typedef struct pessoa {
     int idade;
     char* nome;
     Data nascimento;
-    Data_ptr morrimento;
-}*Pessoa;
+    Data* morrimento;
+} Pessoa;
 
 int main(){
-    Pessoa p = malloc(sizeof(struct pessoa));
+    Pessoa* p = malloc(sizeof(struct pessoa));
     p->idade = 18;
     p->nascimento.dia = 25;
     p->nascimento->ano = 2038;
