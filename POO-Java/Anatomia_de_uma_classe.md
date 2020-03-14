@@ -8,14 +8,14 @@ Notas:
 ### Declaração
 
 Nesta declaração indicamos o nome da nossa class, se estende uma classe e se, e quais, interfaces implementa.
-```Java
+```java
 public class MyClass [extends SuperClass] [implements InterfaceClass, ...] {
 ```
 
 ### Variáveis de instância
 Estas devem ser sempre `private` para garantir o encapsulamento do estado
 interno do objeto.
-```Java
+```java
     private int num;
     private String nome;
     private XClass outraCena;
@@ -27,7 +27,7 @@ Os contrutores permitem instanciar novos objetos da classe. Devem inicializar to
 
 #### Construtor vazio
 Este construtor inicializa as variáveis de instância com valores por defeito.
-```Java
+```java
     public MyClass(){
         this.num = 0;
         this.nome = "";
@@ -47,7 +47,7 @@ Este construtor recebe como parâmetro os valores que as variáveis de instânci
 
 As diferentes atribuições feitas neste construtor são explicadas através dos
  getters/setters mais à frente.
-```Java
+```java
     public MyClass(int num, String nome, XClass outraCena,
                     ArrayList<String> nomes, ArrayList<XClass> outrasCenas){
         this.num = num;
@@ -66,7 +66,7 @@ Este construtor permite criar uma cópia exata de outra instância deste objeto.
 
 *(Nota: Este construtor assume que todos os getters clonam corretamente as
  variáveis de instância que retornam.)*
-```Java
+```java
     public MyClass(MyClass myClass){
         this.num = myClass.getNum();
         this.nome = myClass.getNome();
@@ -84,7 +84,7 @@ Os getters permitem aceder às variáveis de instância de uma instância da nos
 As variáveis são 'passed by value', ou seja, o seu valor é copiado. Logo, este get é simples.
 
 (Irá ficar mais claro mais a frente.)
-```Java
+```java
     public int getNum(){
         return this.num;
     }
@@ -93,7 +93,7 @@ As variáveis são 'passed by value', ou seja, o seu valor é copiado. Logo, est
 #### Get de um objeto imutável
 Uma string é imutável, logo retornar um apontador para este objeto que pertence ao estado interno
 no nosso objeto não tem problema.
-```Java
+```java
     public String getNome(){
         return this.nome;
     }
@@ -104,7 +104,7 @@ Um objeto mutável deve ser clonado para manter o encapsulamento. Se este objeto
 fora da instância que o retornou, implicaria alterar o estado interno da mesma instância.
 
 (Porque a variável é 'passed by value' e esta, na verdade, é um apontador.)
-```Java
+```java
     public XClass getOutraCena(){
         return this.outraCena.clone();
     }
@@ -118,13 +118,13 @@ em si, não é imutável. Logo, se retornarmos a lista diretamente, novos valore
 Para isto, podemos fazer uso do construtor da `ArrayList` que recebe uma `Collection` e copia os valores.
 
 **_ATENÇÃO: SÓ PODEMOS USAR ESTE construtor PARA LISTAS DE objetos IMUTÁVEIS_**
-```Java
+```java
     public ArrayList<String> getNomes(){
         return new ArrayList<>(this.nomes);
     }
 ```
 Ou
-```Java
+```java
     public ArrayList<String> getNomes(){
         return this.nomes.clone();
     }
@@ -133,7 +133,7 @@ Ou
 #### Get de uma lista de objetos mutáveis
 Como no get anterior, tem que ser criada uma nova lista. Mas, os elementos ao serem adicionados à mesma,
 têm que ser clonados.
-```Java
+```java
     public ArrayList<XClass> getOutrasCenas(){
         ArrayList<XClass> newOCenas = new ArrayList<>();
         for(XClass cena: this.outrasCenas){
@@ -146,7 +146,7 @@ têm que ser clonados.
 ### Setters
 Os setters seguem o mesmo princípio dos getters. Objetos imutáveis e tipos primitivos
 não têm que ser clonados, tudo o resto sim.
-```Java
+```java
     public void setNum(int num){
         this.num = num;
     }
@@ -186,7 +186,7 @@ sejam inúteis.
 
 #### equals
 O equals é o mais importante, e raramente é inútil.
-```Java
+```java
     public boolean equals(Object o){
 /*[1]*/ if(this == o) return true;
 
@@ -212,7 +212,7 @@ Análise do código:
 
 #### toString
 O toString é importante para efeitos de debug. Pode também ser adaptado para aplicações de terminal.
-```Java
+```java
     public String toString(){
         StringBuffer sb = new StringBuffer("MyClass: ");
         sb.append("Num: ").append(this.num).append(", ");
@@ -227,7 +227,7 @@ O toString é importante para efeitos de debug. Pode também ser adaptado para a
 #### Clone
 O clone deve ser implementado porque o Nestor diz que sim. Objetos imutáveis não devem
  implementar este método.
-```Java
+```java
     public MyClass clone(){
         return new MyClass(this);
     }

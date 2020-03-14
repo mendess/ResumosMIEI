@@ -7,7 +7,7 @@ todas as instâncias independentemente do seu estado interno
 Para distinguir um variável ou método de classe dos de instância usa-se a
 _keyword_ `static`
 
-```Java
+```java
 public class MyClass{
 
     private static String foo = "Foo"; // Variável de classe
@@ -38,7 +38,7 @@ pode ser usada dentro de um contexto `static`, visto que não existe nenhuma
 instância para referenciar.
 
 #### Exemplo de como chamar os métodos
-```Java
+```java
 public static void main(String[] args){
     MyClass mc = MyClass();
     String bar = mc.getBar();
@@ -50,7 +50,7 @@ são criadas quando o programa é iniciado e existem durante todo o tempo
 de vida do programa.
 
 # Exemplo do comportamento da variável global
-```Java
+```java
 public class MyClass{
     private static int count = 0;
 
@@ -63,7 +63,7 @@ public class MyClass{
     }
 }
 ```
-```Java
+```java
 public static void main(String[] args){
     int a = -1;
     a = MyClass.getC();        // a == 0
@@ -79,7 +79,7 @@ variável `static` esta modificação é visível independente do contexto.
 Por vezes queremos garantir que existe apenas uma instância da nossa classe
 isto pode ser conseguido com métodos de classe.
 
-```Java
+```java
 public class Highlander{
     private static Highlander instance = null;
 
@@ -100,14 +100,14 @@ construtor é `private` e para obter uma instância temos de usar o método
 ## Interfaces
 As interfaces também podem ter métodos static funcionando como qualquer
 qualquer outro método de classe.
-```Java
+```java
 public interface MyInterface{
     public static foo(){
         System.out.println("Bar");
     }
 }
 ```
-```Java
+```java
 public class Main{
     public static void main(String[] args){
         MyInterface.foo();

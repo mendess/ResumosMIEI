@@ -13,7 +13,7 @@ Ao longo deste documento:
 
 # O 'for' que todos conhecemos
 De certeza já viste/escreveste um `for` assim.
-```Java
+```java
 for(int i=0; i<list.size(); i++){
     ListElem l = list.get(i);
     l.doStuff();
@@ -25,7 +25,7 @@ sobre o funcionamento da estrutura/classe.
 # Foreach
 Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
 
-```Java
+```java
 for(ListElem l: list){
     l.doStuff();
 }
@@ -34,7 +34,7 @@ Pode até ser lido, em linguagem natural, "For each `ListElem l` in list do \<th
 
 Alternativamente, este código pode ser implementado da seguinte forma, recorrendo ao uso de um lambda
  *(mais sobre estes numa [secção][ItInternos] mais à frente)*:
-```Java
+```java
 list.foreach(l -> l.doStuff());
 ```
 
@@ -47,21 +47,21 @@ Aqui entram os iteradores externos. [Iterable][iterable], como já referi acima,
  método `iterator()` que retorna um `Iterator` sobre a collection.
 
 Como podemos ver pelos [javaDocs][iterator] `Iterator` implementa 3 métodos muito simples.
-```Java
+```java
 boolean hasNext()
 ```
 Que retorna `true` se o iterador não chegou ao fim da lista.
-```Java
+```java
 E next()
 ```
 Que retorna um elemento da lista onde o iterador se encontra e avança o iterador para o próximo elemento. [<sup>\[2\]</sup>][extraNotes]
-```Java
+```java
 void remove()
 ```
 Que remove da lista o último elemento que o `next()` retornou.
 
 Vamos então pôr isto em prática.
-```Java
+```java
 Iterator<ListElem> it = list.iterator();
 while(it.hasNext()){
     ListElem l = it.next();
@@ -73,7 +73,7 @@ while(it.hasNext()){
 ```
 
 Podemos então aqui alterar o código para que o ciclo acabe quando uma condição se verificar.
-```Java
+```java
 boolean flag = true;
 Iterator<ListElem> it = list.iterator();
 while(flag && it.hasNext()){
@@ -107,7 +107,7 @@ Importante notar que, como acontece em Programação Funcional, os streams apres
  objeto em questão. Vou tentar explicar isto melhor com alguns exemplos mais a frente)*
 
 A estrutura usual de uma iteração usando `stream` é a seguinte:
-```Java
+```java
     list.stream()
         .operacões_sobre_a_estrutura()
         .converter_de_Stream_para_o_tipo_necessário();
@@ -118,7 +118,7 @@ Não vale a pena listar todas as operações mas vou apresentar alguns exemplos.
 Um caso muito frequente é querermos transformar uma lista de `A`s numa lista de `B`s.
 
 Assumindo que `ListElem` implementa `int getId()`, podemos converter uma lista de `ListElem` numa lista de `Integer`.
-```Java
+```java
     List<Integer> ids = list.stream()
    /*1*/.map(l -> l.getId())
    /*2*/.collect(Collectors.toList);
@@ -139,7 +139,7 @@ Outra das aplicações mais frequentes de streams é a filtragem de uma lista.
 Assumindo que `ListElem` implementa `int getValue()`, podemos então filtrar todos os elementos com valor inferior
  a `x`.
 
-```Java
+```java
 public List<ListElem> getAbove(int x){
     return this.list.stream()
         .filter(l -> l.getValue() > x)
@@ -151,7 +151,7 @@ Este método irá então retornar uma lista dos `ListElem` com valor superior a 
  imutável, ter o defeito de não garantir o [encapsulamento][getListMutaveis] da classe que implementa este método.
  Podemos, no entanto, resolver este problema facilmente, usando o `map`.
 
-```Java
+```java
 public List<ListElem> getAbove(int x){
     return this.list.stream()
         .filter(l -> l.getValue() > x)
@@ -165,7 +165,7 @@ Quando o lambda que passamos a um destes métodos apenas chama outro método, co
  utilizar uma `Method Reference` com a seguinte sintaxe: `<Class>::<method>`
 
 Olhando para o [Exemplo 1][ItInternosEx1] novamente, o código sofreria a seguinte alteração.
-```Java
+```java
     List<Integer> ids = list.stream()
         .map(ListElem::getId)
         .collect(Collectors.toList);
@@ -175,7 +175,7 @@ Olhando para o [Exemplo 1][ItInternosEx1] novamente, o código sofreria a seguin
 Por vezes o código que temos de implementar é muito complexo para ser escrito numa só linha. Nestes casos podemos, "expandir"
  o lambda para que seja mais legível o que estamos a fazer.
 
-```Java
+```java
 public List<ListElem> getAbove(int x){
     return this.list.stream()
         .filter(l -> {
@@ -198,7 +198,7 @@ public List<ListElem> getAbove(int x){
 # Extra Notes
 1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a percorrer toda
  mas os stores são contra isto, justificando que fica menos legível. (Pessoalmente acho que depende e tem de ser visto caso a caso)
-   ```Java
+   ```java
         for(ListElem l: list){
             if(someCondition()) break;
             l.doStuff();
@@ -209,7 +209,7 @@ public List<ListElem> getAbove(int x){
    fora do ambito do que é esperado nesta disciplina. (Logo é uma cena fixe de pesquisar quando tiveres tempo ;) )
 3. Existem também "especializações" do `map` como o [mapToInt][mapToIntMethod] que retorna um [IntStream][IntStream] em
    vez de um `Stream` normal. Sobre este podemos fazer [somatório][sumMethod], [médias][averageMethod], etc.
-   ```Java
+   ```java
    int totalValue = list.stream()
         .mapToInt(l -> l.getId())
         .sum();

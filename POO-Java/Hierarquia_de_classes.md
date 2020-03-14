@@ -9,7 +9,7 @@ variáveis de instância declaradas.
 ## Situação exemplo
 Imagina que precisamos de implementar um programa com alunos e professores.
 Poderíamos então implementar as seguintes classes:
-```Java
+```java
 public class Aluno{
 	private String num;
 	private String nome;
@@ -52,7 +52,7 @@ O equals e o toString vão ser extremamente parecidos também.
 ## Classe que agrupa o código comum
 Uma primeira solução para o nosso problema é então agrupar as partes comuns
 numa só classe.
-```Java
+```java
 public class Pessoa {
 	private String num;
 	private String nome;
@@ -69,7 +69,7 @@ public class Pessoa {
 Resta-nos apenas relacionar as nossas antigas classes com esta.
 Isto é muito simples. Mas tem alguns detalhes importantes a ter em conta,
 que falarei já a seguir.
-```Java
+```java
 public class Aluno extends Pessoa {
 	private ArrayList<String> cadeiras;
 
@@ -99,7 +99,7 @@ todas as subclasses de `Pessoa`.
 
 Podemos também usar o super para chamar métodos da superclasse. O clássico
 exemplo é o equals.
-```Java
+```java
 public class Aluno extends Pessoa {
 	/* igual ao de cima */
 	public boolean equals(Object o){
@@ -115,7 +115,7 @@ public class Aluno extends Pessoa {
 ### Implicações desta construção do código
 Pessoa é uma classe como outra qualquer. Podemos instancia-la e chamar-lhe
 os métodos que tem definido.
-```Java
+```java
 	Pessoa p = new Pessoa("D99999","JBB","god@ghci.com");
 	String num = p.getNum(); // funciona
 	ArrayList<String> cadeiras = p.getCadeiras(); // Não funciona, este getter não
@@ -123,7 +123,7 @@ os métodos que tem definido.
 ```
 `Aluno` (e `Prof`) podem também ser instanciados. E podemos chamar métodos
  definidos na superclasse e métodos definidos na própria classe.
-```Java
+```java
 	Aluno a = new Aluno("A12345","Mendes","mendes@mymail.com", new ArrayList<>());
 	String num = a.getNum(); // Funciona. O getter está definido na superclasse
 				 // que esta estende.
@@ -131,7 +131,7 @@ os métodos que tem definido.
 				// Funciona. O getter esta definido nesta classe.
 ```
 Mas a mais interessante consequência é a seguinte:
-```Java
+```java
 	Pessoa p = new Prof("D54321","Nestor","nestor@clone.com","DI");
 	String num = p.getNum(); //Funciona.
 	String departamento = p.getDepartamento();
@@ -146,7 +146,7 @@ Mas a mais interessante consequência é a seguinte:
 Este "malabarismo" de casts pode dar a entender que instanciar objetos desta
 forma é uma perda de tempo. Mas há uma muito boa razão para isto. Considere
 o seguinte exemplo:
-```Java
+```java
 	ArrayList<Aluno> alunos = new ArrayList<>();
 	alunos.add(new Aluno(...)); // Funciona.
 	alunos.add(new Prof(...)); // Não funciona.
@@ -156,7 +156,7 @@ o seguinte exemplo:
 	pessoas.add(new Prof(...)); // Funciona. Profs são Pessoas.
 ```
 Aqui vemos uma das mais comuns utilizações deste paradigma. Outro exemplo é o seguinte:
-```Java
+```java
 public class Cartao{
 	private Pessoa p;
 	public Cartao(Pessoa p){
@@ -168,7 +168,7 @@ Esta classe pode ter, na sua variável de instância, uma `Pessoa`, um `Aluno`
 ou um `Prof`.
 
 #### Atenção
-```Java
+```java
 	ArrayList<Pessoa> pessoas = new ArrayList<>();
 	// Adicionam-se montes de cenas a lista.
 	Pessoa p = pessoas.get(42);
@@ -178,7 +178,7 @@ Este código poderá lançar uma `ClassCastException`. Este tipo de erros não
 podem ser detetados pelo compilador mas quando ocorrem crasham o programa.
 
 Para evitar isto, simplesmente temos de fazer uma simples verificação:
-```Java
+```java
 	if(p instanceof Prof){
 		Prof prof = (Prof) p;
 		/* Fazer cenas de prof */
@@ -192,7 +192,7 @@ Aluno ou se é Prof)
 
 Este problema é facilmente resolvido adicionando uma palavra na declaração
 de `Pessoa`.
-```Java
+```java
 public abstract class Pessoa {
 	/* Tudo igual */
 }
@@ -201,7 +201,7 @@ Tudo que foi escrito acima deste parágrafo continua a ser verdade, exceto
 `new Pessoa(...)`, isto agora é inválido.
 
 Outra vantagem é que agora podemos definir métodos abstratos.
-```Java
+```java
 public abstract class Pessoa {
 	public abstract irParaAula(Aula a);
 }

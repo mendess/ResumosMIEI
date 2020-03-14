@@ -6,7 +6,7 @@ Um comparator serve para definir um critério pelo qual se podem
  procura.
 
 Durante este resumo vai ser varias vezes referenciada a seguinte classe:
-```Java
+```java
 public class Aluno{
     private String nome;
     private int nota;
@@ -20,7 +20,7 @@ Para criar um comparator temos apenas de definir uma classe que
  implemente [Comparator][comparatorDocs].
 
 Se quisermos ordenar por ordem de notas, criamos o seguinte comparator.
-```Java
+```java
 public class AlunoComparator implements Comparator<Aluno>{
     public int compare(Aluno a1, Aluno a2){
         return Integer.compare(a1.getNota(), a2.getNota());
@@ -36,7 +36,7 @@ respetiva classe métodos para os comparar.
 
 Para o utilizar apenas temos de o passar a algum método ou construtor
 que necessite de um.
-```Java
+```java
 List<Aluno> alunosPorNota = new ArrayList<>();
 // inserir montes de alunos
 alunosPorNota.sort(new AlunoComparator());
@@ -46,7 +46,7 @@ os alunos da lista.
 
 Se quisermos ordenar pela ordem inversa podemos utilizar o método
 [reversed][reversedDocs] disponibilizado por defeito em todos os `Comparator`s
-```Java
+```java
 alunosPorNota.sort(new AlunosComparator().reversed());
 ```
 
@@ -54,7 +54,7 @@ alunosPorNota.sort(new AlunosComparator().reversed());
 
 Para criar um [SortedSet][sortedSetDocs], neste caso, temos de passar um comparator
  ao criar uma instância.
-```Java
+```java
 SortedSet<Aluno> alunos = new TreeSet<>(new AlunoComparator());
 ```
 Assim sempre que for adicionado um novo aluno a este [TreeSet][treeSetDocs] este
@@ -76,18 +76,18 @@ Utilizando a classe da secção anterior, os alunos podem ser ordenados
  * Usando um comparator de inteiros pré-definido na classe comparator,
  ao qual temos apenas de passar um método que retorna o valor a
  comparar.
-```Java
+```java
 alunosPorNota.sort(Comparator.comparingInt(Aluno::getNota));
 alunosPorNome.sort(Comparator.comparing(Aluno::getNome)); //O resultado do método tem de ser
                                                           //comparable (ver secção seguinte)
 ```
  * Usando um lambda que compare dois objetos.
-```Java
+```java
 alunosPorNota.sort((a1, a2) -> Integer.compare(a1.getNota(), a2.getNota()));
 ```
 
 O primeiro pode também ser invertido. [<sup>\[1\]</sup>][extraNotes]
-```Java
+```java
 alunosPorNota.sort(Comparator.comparingInt(Aluno::getNota).reversed());
 ```
 
@@ -100,7 +100,7 @@ Outro método de comparar objetos de uma classe é fazer essa classe comparável
 Podemos definir que, por defeito, os Alunos podem ser comparados por nome
 implementando a interface [Comparable][comparableDocs], que obriga à implementação
 do método [compareTo][compareToDocs].
-```Java
+```java
 public class Aluno implements Comparable<Aluno> {
     private String nome;
 
@@ -112,7 +112,7 @@ public class Aluno implements Comparable<Aluno> {
 **Nota:** As strings são `Comparable`.
 
 Podemos agora ter uma lista ordenada por nome da seguinte forma:
-```Java
+```java
 alunosPorNome.sort(Comparator.naturalOrder());
 ```
 
@@ -120,14 +120,14 @@ alunosPorNome.sort(Comparator.naturalOrder());
 
 Agora que `Aluno` é [Comparable][comparableDocs] podemos criar uma estrutura ordenada
 sem nos preocuparmos com o comparator::
-```Java
+```java
 SortedSet<Aluno> alunos = new TreeSet<>();
 ```
 
 ## Extra Notes
 
 1. Para inverter o lambda temos de expandi-lo para o que ele verdadeiramente é:
-    ```Java
+    ```java
     alunosPorNome.sort((new Comparator<Aluno>() {
         @Override
         public int compare(Aluno a1, Aluno a2){

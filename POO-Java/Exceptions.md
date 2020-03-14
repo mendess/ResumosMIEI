@@ -28,7 +28,7 @@ A exceção mais comum é [NullPointerException][NullPointerDocs] que ocorre sem
 que se tenta aceder a uma variável cujo valor seja `null`.
 
 ### Exemplo:
-```Java
+```java
 1 public class ExampleClass{
 2     public static void main(String[] args){
 3         String s = null;
@@ -37,7 +37,7 @@ que se tenta aceder a uma variável cujo valor seja `null`.
 6 }
 ```
 Irá produzir o seguinte output no terminal:
-```Java
+```java
 Exception in thread "main" java.lang.NullPointerException
     at ExampleClass.main(ExampleClass.java:4)
 ```
@@ -51,7 +51,7 @@ método imediatamente e subir até que atinja um ponto em que seja tratada ou qu
 não possa subir mais, o que normalmente faz com que o programa termine, como
 foi o caso do exemplo anterior.
 
-```Java
+```java
   1 public class ExampleClass{
   2     public static void main(String[] args){
   3         String s = null;
@@ -68,7 +68,7 @@ foi o caso do exemplo anterior.
 
 Irá produzir o seguinte output no terminal:
 
-```Java
+```java
 Hello
 Exception in thread "main" java.lang.NullPointerException
     at ExampleClass.printStringLength(ExampleClass.java:9)
@@ -82,7 +82,7 @@ ponto a exceção não foi tratada causou a interrupção por completo do progra
 
 ## Try/catch
 Para tratar uma exceção temos ao nosso dispor a sintaxe do `try{}catch()`.
-```Java
+```java
 try{
     /* try block: código que possa produzir uma exceção */
 } catch (NullPointerException e) {
@@ -95,7 +95,7 @@ ira imediatamente saltar para o `catch` block e depois continuar pelo `/*Resto d
 método*/` sem que o interrompa.
 
 Aplicando isto ao exemplo anterior:
-```Java
+```java
   1 public class ExampleClass{
   2     public static void main(String[] args){
   3         String s = null;
@@ -128,7 +128,7 @@ nesse caso será boa ideia criar as nossas próprias exceções.
 
 Uma exceção é um objeto, e como todos os objetos é definido por uma classe.
 
-```Java
+```java
 public class MyException extends Exception{
 
 }
@@ -138,7 +138,7 @@ implícita.
 
 Para lançar esta exceção, assim como qualquer outra, usamos a _keyword_ `throw`.
 
-```Java
+```java
 public method() throws MyException{
     /* code */
     if(someError){
@@ -162,7 +162,7 @@ A nossa exceção pode ter qualquer construtor que seja necessário, no entanto,
 seguir os construtores implementados pela classe `Throwable` é o mais comum.
 
 ### Exemplo
-```Java
+```java
 public class MyException extends Exception{
 
     public MyException(){ // Se não incluirmos este constructor a nossa
@@ -176,7 +176,7 @@ public class MyException extends Exception{
 Fazendo assim uso de um dos [construtores][ThrowableMessageConst] da super
 classe.
 
-```Java
+```java
 public method() throws MyException{
     /* code */
     if(someError){

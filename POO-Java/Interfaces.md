@@ -8,7 +8,7 @@ interface.
 
 ### Situação exemplo
 Estamos a desenvolver uma API para reproduzir musica.
-```Java
+```java
 public class Radio {
     private ArrayList<Musica> musicas;
     public Radio(){
@@ -34,7 +34,7 @@ contrato são muito simples:
  * *"Se implementares estes metodos, eu posso reproduzir a tua musica"*
 
 Definimos a interface então da seguinte forma:
-```Java
+```java
 public interface Musica{
     void start();
 }
@@ -45,7 +45,7 @@ Isto é porque todos os métodos definidos numa interface são obrigatoriamente
 
 Assim um programador que queria usar a nossa API pode definir a sua classe
 de musica e utilizar o radio que nós já definimos.
-```Java
+```java
 public class MyMusic implements Musica{
     private byte[] song;
 
@@ -61,7 +61,7 @@ public class MyMusic implements Musica{
 
 E para utilizar a classe `Radio` podemos usar a nossa musica.
 
-```Java
+```java
 public static void main(String[] args) {
     Radio radio = new Radio();
     MyMusic m = new MyMusic(new byte[]{1, 2, 1, 4});
@@ -77,7 +77,7 @@ Alguns exemplos são:
  * [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
 
 Podemos utilizar estas interfaces para fazer o nosso código mais genérico.
-```Java
+```java
 public class MyClass{
     private List<String> nomes;
 
@@ -95,7 +95,7 @@ Esta classe aceita qualquer tipo de lista.
 E este sistema permite-nos também implementar as nossa próprias
 implementações de listas/maps/etc...
 
-```Java
+```java
 public class DBMap implements Map<String,Cena>{
 }
 ```
@@ -108,7 +108,7 @@ método `void start()`), pode ser definida através de um lambda.
 
 E para utilizar a classe `Radio` podemos fazer.
 
-```Java
+```java
 public static void main(String[] args) {
     Radio radio = new Radio();
     radio.queue(() -> System.audio(new byte[]{1, 2, 1, 4}));
@@ -122,7 +122,7 @@ Com o Java 8 foram introduzidos o métodos default. A ideia por traz destes é
 definir comportamento por defeito para as classes que implementam a nossa
 interface.
 
-```Java
+```java
 public interface Musica{
     void start();
     void stop();
