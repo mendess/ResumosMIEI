@@ -109,8 +109,8 @@ Importante notar que, como acontece em Programação Funcional, os streams apres
 A estrutura usual de uma iteração usando `stream` é a seguinte:
 ```java
     list.stream()
-        .operacões_sobre_a_estrutura()
-        .converter_de_Stream_para_o_tipo_necessário();
+        .operacoes_sobre_a_estrutura()
+        .converter_de_stream_para_o_tipo_necessario();
 ```
 Não vale a pena listar todas as operações mas vou apresentar alguns exemplos.
 
