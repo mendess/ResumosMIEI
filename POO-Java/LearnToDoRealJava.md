@@ -1,4 +1,4 @@
-# The stuff nestor doesn't tell you
+# The stuff Nestor doesn't tell you
 
 Neste "resumo" vou esclarecer umas coisas importantes sobre Programação
 Orientada a Objectos.
@@ -15,15 +15,15 @@ class Foo {
     void setBar(String bar) { this.bar = bar; }
 }
 ```
-O quão menos encapsulado ficava se `bar` fosse simplesmente `public`? E a mesma
-coisa! Ha duas principais razoes para encapsulamento:
+O quão menos encapsulado ficava se `bar` fosse simplesmente `public`? É a mesma
+coisa! Há duas principais razões para encapsulamento:
 
 - Mudar a representação interna do objecto não devia ser uma breaking change que
     implica mudar o codigo que o usa.
     - Se eu quiser mudar `Foo` para ter um `int` em vez de uma `String` vou ter
-    de mudar o `getter` e o `setter` que e uma breaking change.
+    de mudar o `getter` e o `setter`. Logo isto não está encapsulado. É uma breaking change.
 - Impedir uso incorrecto do objecto.
-    - Nem preciso de explicar esta, se podes diretamente alterar os campos do
+    - Nem preciso de explicar esta, se podes directamente alterar os campos do
         objecto nada te impede de o fazer mal.
 
 Efectivamente este código e equivalente a `public String bar`. Mas deu mais
