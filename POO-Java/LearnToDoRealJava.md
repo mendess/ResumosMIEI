@@ -70,13 +70,13 @@ para isso relembro te que tens um construtor: `ponto = new Ponto(x, y);`.
 Setters não servem para nada em 99% dos casos.
 
 Claro que há situações em que um `setter` faz sentido mas são muito raras e
-normalmente da para fazer uma API melhor. Olhem para os métodos do `ArrayList` por
+normalmente dá para fazer uma API melhor. Olhem para os métodos do `ArrayList` por
 exemplo? Quantos setters e que aquilo tem?
 
 
 ### Artigo
 
-- [Getter and setters are evil][https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html]
+- [Getter and setters are evil](https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html)
 
 
 ## Herança
@@ -89,8 +89,8 @@ Eu podia falar aqui de todas as maneiras em que herança é má ideia, mas há g
 mais inteligente que eu que já falou sobre isso.
 
 ### Artigos
-- [Why Extends is Evil][https://www.javaworld.com/article/2073649/why-extends-is-evil.html]
-- [Inheritance is a Procedural Technique for Code Reuse][https://www.yegor256.com/2016/09/13/inheritance-is-procedural.html]
+- [Why Extends is Evil](https://www.javaworld.com/article/2073649/why-extends-is-evil.html)
+- [Inheritance is a Procedural Technique for Code Reuse](https://www.yegor256.com/2016/09/13/inheritance-is-procedural.html)
 
 # Clones
 
