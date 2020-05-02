@@ -10,7 +10,7 @@ variáveis de instância declaradas.
 Imagina que precisamos de implementar um programa com alunos e professores.
 Poderíamos então implementar as seguintes classes:
 ```java
-public class Aluno{
+public class Aluno {
 	private String num;
 	private String nome;
 	private String email;
@@ -21,15 +21,15 @@ public class Aluno{
 		this.nome = nome;
 		this.email = email;
 		this.cadeiras = new ArrayList<>(cadeiras);
-		//Um dos construtores de arraylist permite passar uma Collection.
-		//No entanto, é preciso ter cuidado pois este construtor não
+		// Um dos construtores de arraylist permite passar uma Collection.
+		// No entanto, é preciso ter cuidado pois este construtor não
 		// clona os elementos da lista, ou seja, só pode ser usado para
 		// listas de objetos imutáveis.
 	}
 	/* Getters, Setters, etc */
 }
 
-public class Prof{
+public class Prof {
 	private String num;
 	private String nome;
 	private String email;
@@ -74,7 +74,7 @@ public class Aluno extends Pessoa {
 	private ArrayList<String> cadeiras;
 
 	public Aluno(String num, String nome, String email, List<String> cadeiras){
-		super(num,nome,email);
+		super(num, nome, email);
 		this.cadeiras = new ArrayList<>(cadeiras);
 	}
 	/* Getters, Setters, etc */
@@ -84,7 +84,7 @@ public class Prof extends Pessoa {
 	private String departamento;
 
 	public Prof(String num, String nome, String email, String departamento){
-		super(num,nome,email);
+		super(num, nome, email);
 		this.departamento = departamento;
 	}
 	/* Getters, Setters, etc */
