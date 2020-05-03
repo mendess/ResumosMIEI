@@ -8,7 +8,7 @@ Nesta secção irei explorar os conteúdos leccionados em POO.
 # Índice
 
  1. [Introdução ao Paradigma](./Introducao_ao_Paradigma.md)
- 1. [Anatomia de uma classe](./Anatomia_de_uma_classe.md)
+ 1. [Anatomia de uma classe](./Anatomia_de_uma_classe.md) « clones here
  2. [Hierarquia de classes](./Hierarquia_de_classes.md)
  3. [Interfaces](./Interfaces.md)
  4. [Collections And Maps](./CollectionsAndMaps.md)
