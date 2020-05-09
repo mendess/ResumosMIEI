@@ -1,5 +1,3 @@
-> Os resumos que se seguem são maioritariamente relativos a arquiteturas **IA-32** e, consequentemente, o que for dito não se verifica necessariamente para as outras arquiteturas.
-
 Um computador é constituído por diversos componentes, mas 
 aqueles que vou abordar são maioritariamente a **Unidade de 
 Processamento (PU)** e a **Memória Primária**.A unidade de 
