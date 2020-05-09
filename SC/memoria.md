@@ -30,7 +30,7 @@ Através da sua observação, podemos verificar que o endereço *0x00000000* apo
 
 ## **Banco de Registos**
 
-![image](registers.png)
+![image](registers.jpg)
 
 O **Banco de Registos** contém **8 registos** principais, cada um com **32 bits**. Esses registos são: **%eax**, **%ebx**, **%ecx**, **%edx**, **%esi**, **%edi**, **%esp** e **%ebp**. A unidade de processamento utiliza-os para armazenar valores aos quais pretende aceder mais rapidamente e com maior frequência.Os primeiros 6 registos, representados a amarelo, são registos *general-purpose* , isto é, podem ser utilizados para guardar qualquer tipo de informação e não têm um fim específico. Por outro lado, os registos **%esp** e **%ebp** contêm o apontador para o topo da [stack](stack.md) e a base da [stack](stack.md), respetivamente.
 Contudo, tal não se verifica sempre e mais à frente veremos que estes dois registos têm um papel extremamente importante na chamada de funções.
