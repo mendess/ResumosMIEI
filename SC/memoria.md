@@ -26,7 +26,7 @@ que vamos ao sítio certo e não a outro?
 A cada célula de memória está 
 associado um endereço, o qual funciona como a "morada" da célula. 
 Esta imagem representa a estrutura da memória e a forma como os endereços variam.
-Através da sua observação, podemos verificar que o endereço *0x00000000* aponta para o valor *0x0A*. Essencialmente, este endereço é um apontador para uma célula de memória. Além disso, podemos constatar que os endereços de uma célula são tanto menores quanto mais abaixo esta se encontrar na figura. 
+Através da sua observação, podemos verificar que o endereço *0x00000000* aponta para o valor *0x0A*. Essencialmente, este endereço é um apontador para uma célula de memória. Além disso, podemos constatar que os endereços de uma célula são tanto maiores quanto mais abaixo esta se encontrar na figura. 
 
 ## **Banco de Registos**
 
