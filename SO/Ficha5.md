@@ -156,26 +156,35 @@ int main() {
         exit(1);
     }
 
-    if(fork() == 0) { // Primeiro filho, irá executar `cat foo.txt` e enviar o seu output para o extremo de escrita do pipe.
+
+    if(fork() == 0) { // Primeiro filho, irá executar `cat foo.txt` e enviar o 
+                      // seu output para o extremo de escrita do pipe.
 
         close(pipefd[0]); // Este filho não irá ler do pipe.
 
-        dup2(pipefd[1], STDOUT_FILENO); // O standard output deste filho passa a ser o extremo de escrita do pipe.
+        dup2(pipefd[1], STDOUT_FILENO); // O standard output deste filho passa a
+                                        // ser o extremo de escrita do pipe.
 
-        close(pipefd[1]); // Este file descriptor já não é necessário, pois está agora duplicado no STDOUT_FILENO.
+        close(pipefd[1]); // Este file descriptor já não é necessário, pois está
+                          // agora duplicado no STDOUT_FILENO.
         
         execlp("cat", "cat", "foo.txt", NULL);
         _exit(1);
     }
 
+
     close(pipefd[1]); // Não iremos voltar a escrever no pipe, portanto podemos
                       // fechar o extremo de escrita.
 
-    if (fork() == 0) { // Segundo filho, irá executar `wc -l` usando como input o extremo de leitura do pipe.
 
-        dup2(pipefd[0], STDIN_FILENO); // O standard input deste filho passa a ser o extremo de leitura do pipe.
+    if (fork() == 0) { // Segundo filho, irá executar `wc -l` usando como input 
+                       // o extremo de leitura do pipe.
+
+        dup2(pipefd[0], STDIN_FILENO); // O standard input deste filho passa a 
+                                       // ser o extremo de leitura do pipe.
         
-        close(pipefd[0]); // Este file descriptor já não é necessário, pois está agora duplicado no STDIN_FILENO.
+        close(pipefd[0]); // Este file descriptor já não é necessário, pois está
+                          // agora duplicado no STDIN_FILENO.
         
         execlp("wc", "wc", "-l", NULL);
         _exit(1);
@@ -189,3 +198,6 @@ int main() {
     return 0;
 }
 ```
+
+O *output* deste programa será:
+> 3
