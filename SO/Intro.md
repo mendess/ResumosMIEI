@@ -10,93 +10,93 @@ Este capitulo tem como objectivos principais *resumir o contexto histórico* e
 # Contexto Histórico
 
 Os primeiros sistemas informáticos não tinham sistema operativo, nem nada
-semelhante, apenas quando o hardware começou a melhorar se começou a pensar em
-optimizações a nível do software. Foram criados os primeiros programas que
-simplificaram as operações do computador.
+semelhante, apenas quando o hardware começou a melhorar é que se começou a
+pensar em otimizações a nível do software. Foram criados os primeiros programas
+que simplificaram as operações do computador.
 
-Estes programas, chamados de `monitores de controlo` permitem ao utilizador
+Estes programas, chamados de `monitores de controlo`, permitem ao utilizador
 carregar programas para a memória, editá-los e verificar a sua execução.
 
-Cada utilizador tem um determinado tempo atribuído só para si, podem utilizar o
-computador exclusivamente.
+Cada utilizador tem um determinado tempo atribuído só para si, durante o qual
+pode utilizar o computador exclusivamente.
 
-**Durante maior parte do tempo o computador está parado a espera do input do
+**Durante a maior parte do tempo o computador está parado à espera de input do
 utilizador ou de operações Input/Output.**
 
 
-Seguiram-se então os sistemas de `tratamento em batch`. Sendo que **maior parte
-do tempo de processador era gasto em operações I/O (espera activa)**, a solução
-foi separar os periférico de I/O.
+Seguiram-se então os sistemas de `tratamento em batch`. Sendo que **a maior parte
+do tempo de processador era gasto em operações I/O (espera ativa)**, a solução
+foi separar os periféricos de I/O.
 Começaram também a surgir os primeiros dispositivos de memória secundária.
 
 Um computador auxiliar lia para a banda magnética os programas a executar,
-quando o trabalho em curso terminasse o sistema operativo ia a lista de trabalho
-e seleccionava o próximo a executar. Alem disso, em vez de imprimir o resultado
-dos programas diretamente, os ficheiros são enviados para uma impressora quando
+quando o trabalho em curso terminasse o sistema operativo ia à lista de trabalho
+e seleccionava o próximo a executar. Alem disso, em vez de imprimir diretamente
+o resultado dos programas, os ficheiros são enviados para uma impressora quando
 acabam de executar.
 
-Os periféricos avisam o processador no fim da sua exeução, através de
+Os periféricos avisam o processador no fim da sua execução, através de
 interrupções.
 
 A segurança do sistema operativo é assegurada pela gestão de memória. Nem todas
-as regiões de memória podem ser acedidas pelo user, existem portanto dois niveis
+as regiões de memória podem ser acedidas pelo user, existindo portanto dois niveis,
 `user space` e `kernel space`.
 
 ## Escalonamento
 
-Este sistema simples ja permite mecanismos de optimização de gestão do
+Este sistema simples já permite mecanismos de otimização de gestão do
 computador. Um utilizador pode indicar a duração máxima de uma operação, ou os
 recursos utilizados. As operações poderão ser escolhidas com base no tempo de
-execução. Vamos analisar estar 'escolha' mais à frente.
+execução. Vamos analisar esta 'escolha' mais à frente.
 
 ## Interrupções
 
-Interrupções/excepções podem ser geradas tanto a partir do software como do
+Interrupções/exceções podem ser geradas tanto a partir do software como do
 hardware.
 
 Alguns exemplos:
 1. Periféricos I/O
   * Quando acabam as suas operações "avisam" o sistema operativo através de uma
     chamada ao sistema (que gera uma interrupção).
-2. Excepções
+2. Exceções
   * Quando uma instrução executa uma operação inválida, e.g: dividir por zero,
     aceder a uma zona de memória não permitida.
 3. Timers do CPU.
 
-A interrupção transfere o contexto de execução para a rotina apropriada que vai
+A interrupção transfere o contexto de execução para a rotina apropriada, que vai
 lidar com o "problema". Visto que apenas algumas interrupções são permitidas
-existe uma tabela de apontadores, chamada de `interrupt vector` para as rotinas
-de tratamento de excepções. Cada rotina é chamada indiretamente através da
+existe uma tabela de apontadores, chamada de `interrupt vector`, para as rotinas
+de tratamento de exceções. Cada rotina é chamada indiretamente através da
 tabela, sem nenhuma rotina/programa intermédia/o. Lidar com interrupções fica
 menos custoso, em termos de tempo, para o sistema operativo.
 
 O controlo de interrupções é mais ou menos o seguinte:
-1. Um processo do utilizador gera uma interrupção e o Program Counter e o estado
-   do processador são guardados num stack especial do kernel, ficando o processo
-   bloqueado.
+1. Um processo do utilizador gera uma interrupção e tanto o Program Counter como
+   o estado do processador são guardados num stack especial do kernel, ficando
+   o processo bloqueado.
 2. O controlador de interrupções decide que tipo de interrupção foi gerada e
    chama a rotina apropriada do kernel para lidar com ela.
 3. O estado geral do processador é guardado (visto que mudamos de contexto).
 4. O kernel executa a rotina apropriada para lidar com a interrupção.
-5. Se esta rotina foi rapida o kernel volta para o proesso que estava a
+5. Se esta rotina foi rápida o kernel volta para o processo que estava a
    executar, se não o processo entra para a lista de processos candidatos a CPU.
-  * Assumindo que o processo não foi morto
-6. O Estado do processo é carregado para o registos e o controlo é novamente
+  * Assumindo que o processo não foi morto.
+6. O estado do processo é carregado para o registos e o controlo é novamente
    transferido para o processo.
 
 De notar que o CPU muda o contexto entre user space e kernel space, onde todas
 as operações são permitidas. Esta mudança é feita internamente pelo hardware.
 
-Dado as excepções serem assíncronas tem que haver forma de lidar com
-aparecimento de várias excepções em simultaneo. Este controlo é feito com dois
+Dado as exceções serem assíncronas, tem que haver forma de lidar com
+aparecimento de várias exceções em simultâneo. Este controlo é feito com dois
 mecanismos.
-O primeiro inibe interrupções depois de uma ter sido aceite. Assim se uma
-interrupção tiver a ser tratada, nao é possível mudança de contexto ao aparecer
+O primeiro inibe interrupções depois de uma ter sido aceite. Assim, se uma
+interrupção estiver a ser tratada, não pode haver mudança de contexto ao aparecer
 outra.
 O segundo inibe interrupções dado a sua gravidade, podendo interromper rotinas
-de tratamento de excepções com menor prioridade.
+de tratamento de exceções com menor prioridade.
 
-O returno a modo de user é feito pela instrução de terno de interrupção  `RIT`.
+O retorno a modo de user é feito pela instrução de terno de interrupção  `RIT`.
 
 ## Multiprogramação
 
@@ -105,36 +105,36 @@ A capacidade de alternar a execução **não** é limitada a `um programa e
 periféricos I/O` mas pode ser estendida a **vários programas em memória**.
 
 Um programa que queira aceder a um ficheiro em disco fica bloqueada enquanto o
-controlador de disco actua. Durante este tempo outro programa pode ser executado
+controlador de disco atua. Durante este tempo outro programa pode ser executado
 pelo processador.
-Desta forma conseguimos optimizar a utilização do processador, tendo sempre algo
+Desta forma conseguimos otimizar a utilização do processador, tendo sempre algo
 para fazer.
 
 ## Memória virtual
 
-O CPU carrega instruções apenas a partir da memória, o que impllica que para que
-os programas corram tenham que estar em memória. A grande maioria dos programas
-correm os programas numa memória volatil, a RAM, que vai ser chamada de memória
+O CPU carrega instruções apenas a partir da memória, o que implica que para os
+programas correrem estes têm de estar em memória. A grande maioria dos programas
+correm os processos numa memória volátil, a RAM, que vai ser chamada de memória
 principal.
 
 Esta, e outras formas de memória, disponibilizam um `array de bytes`. Cada byte
-tem o seu endereço. Os bytes interegarem entre si atravez de instruções de
-`load` ou `store` referidas a endereços de memória especificos.
+tem o seu endereço. Os bytes interagem entre si através de instruções de
+`load` ou `store` referentes a endereços de memória especificos.
 A `load` move um byte, ou uma `word`, da memória principal para um registo do
 CPU e a `store` faz a operação inversa.
-De notar que a unidade de memória apenas 've' uma série de endereços de memória,
-é totalmente agnostica à forma como foram criados ou o seu conteúdo.
+De notar que a unidade de memória apenas 'vê' uma série de endereços de memória,
+é totalmente agnóstica à forma como foram criados ou o seu conteúdo.
 
 Idealmente os processos estariam todos em memória principal (RAM) mas isso não é
 possível.
 
-Surge então a memória virtual que simula um espaçõ de memória completo para cada
-`processo` sendo que na realidade apenas parte do `processo` se encontra na
+Surge então a memória virtual que simula um espaço de memória completo para cada
+`processo`, sendo que na realidade apenas parte do `processo` se encontra na
 `memória principal`. Vai ser mais analisada mais a frente.
 
 # Papel do Sistema Operativo
 
-O papel do sistema operativo pode ser visto de várias ópticas.
+O papel do sistema operativo pode ser visto de várias óticas.
 
 ## 1. Gestor de recursos
 O sistema operativo gere recursos lógicos, mapeando-os para os seus
@@ -147,13 +147,13 @@ Desta forma o sistema operativo torna os recursos lógicos **genéricos** e
 reutilizáveis;
 
 Lista de recursos lógicos geridos pelo sistema operativo;
- 1. Processos (estudados detalhadamente nos próximos capitulos);
- 2. Memória virtual (estudada também mais a frente);
+ 1. Processos (estudados detalhadamente nos próximos capítulos);
+ 2. Memória virtual (estudada também mais à frente);
     * Gestão de espaços de endereçamento.
  3. Sistema de ficheiros;
  4. Periféricos;
     * Gere qualquer periférico através de `periféricos digitais`, obtendo um
-      grau de abstracção.
+      grau de abstração.
  5. Utilizadores.
     * Identidade;
     * Privilégios.
@@ -163,20 +163,20 @@ Lista de recursos lógicos geridos pelo sistema operativo;
    * Shell (bash, zsh, etc);
    * GUI (Linux, Apple, Windows).
 * System calls
-   * Permitem executar operações associadas aos objectos do sistema;
-   * Os objectos do sistema representa os recrusos lógicos e os seus metodos
+   * Permitem executar operações associadas aos objetos do sistema;
+   * Os objetos do sistema representam os recursos lógicos e os seus métodos
      associados.
-   * Fazem parte do modelo computacional dos sistemas opertativos.
+   * Fazem parte do modelo computacional dos sistemas operativos.
 
 ## 3. Máquina virtual
- * O sistema operativo é uma maquina virtual sobre a máquina fisica.
+ * O sistema operativo é uma máquina virtual sobre a máquina fisica.
  * Facilidade na sua utilização.
 
 # Definição de Sistema Operativo
 
-Como reparamos podemos ver o papel do Sistema Operativo de vários angulos
-levando a várias definições, todas correctas.
+Como reparamos, podemos ver o papel do Sistema Operativo de vários ângulos,
+levando a várias definições, todas elas corretas.
 
 Podemos pensar no sistema operativo como uma máquina virtual que abstrai os
-detalhes da máquina física, disponibiliza também um conjunto de recursos lógicos
+detalhes da máquina física, e disponibiliza também um conjunto de recursos lógicos
 e interfaces para os gerir e programar.
