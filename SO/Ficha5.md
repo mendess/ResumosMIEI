@@ -21,7 +21,7 @@ A função retorna `0` em caso de sucesso e `-1` caso tenha ocorrido algum erro 
 tenha sido possível criar o pipe.
 
 Exemplo de utilização da função `pipe`:
-```C
+```c
 #include <unistd.h>
 
 int main() {
@@ -78,7 +78,7 @@ ter pelo menos um extremo de leitura aberto.
 Neste exemplo, um processo-pai envia a um processo filho a mensagem "Bom dia",
 que a imprime no terminal.
 
-```C
+```c
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -93,23 +93,23 @@ int main() {
 
     if(fork() == 0) { // Processo-filho
 
-        // O processo-filho não vai escrever no pipe, portanto podemos fechar o extremo de escrita.
+        // O processo-filho não vai escrever no pipe, portanto temos de fechar o extremo de escrita.
         close(pipefd[1]);
 
         char buf[10];
-        int bytes_read = read(pipefd[0], buf, 10); // Estamos a ler do extremo de leitura do pipe.
+        ssize_t const bytes_read = read(pipefd[0], buf, 10); // Estamos a ler do extremo de leitura do pipe.
         close(pipefd[0]); // Podemos fechar o extremo de leitura pois já não precisamos de ler do pipe.
 
-        write(STDOUT_FILENO, buf, bytes_read);
+        if(bytes_read > 0) write(STDOUT_FILENO, buf, bytes_read);
         _exit(0);
     } 
 
     else { // Processo-pai
 
-        // O processo-pai não vai ler do pipe, portanto podemos fechar o extremo de leitura.
+        // O processo-pai não vai ler do pipe, portanto temos de fechar o extremo de leitura.
         close(pipefd[0]);
 
-        char * str = "Bom dia";
+        char const * str = "Bom dia";
         write(pipefd[1], str, strlen(str)); // Estamos a escrever para o extremo de escrita do pipe.
         close(pipefd[1]); // Podemos fechar o extremo de leitura pois não vamos voltar a escrever no pipe.
 
@@ -139,11 +139,11 @@ $ cat foo.txt | wc -l
 que, na verdade, é a combinação de dois comandos, um que dá como *output* o conteúdo
 do ficheiro `foo.txt` e outro que determina o número de linhas do *input* fornecido.
 
-Aquele `|` permite-nos usar o *output* de um comando como *input* de outro. É 
-possível emular esse comportamento em C com o uso de pipes.
+Aquele `|` permite-nos usar o *output* de um comando como *input* de outro. A shell
+implementa esta funcionalidade com pipes.
 
-Este exemplo mostra como tal é possível.
-```C
+Este exemplo mostra como tal é possível em C.
+```c
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -169,11 +169,12 @@ int main() {
                           // agora duplicado no STDOUT_FILENO.
         
         execlp("cat", "cat", "foo.txt", NULL);
+        perror("Couldn't start process cat.");
         _exit(1);
     }
 
 
-    close(pipefd[1]); // Não iremos voltar a escrever no pipe, portanto podemos
+    close(pipefd[1]); // Não iremos voltar a escrever no pipe, portanto temos de
                       // fechar o extremo de escrita.
 
 
@@ -187,6 +188,7 @@ int main() {
                           // agora duplicado no STDIN_FILENO.
         
         execlp("wc", "wc", "-l", NULL);
+        perror("Couldn't start process wc");
         _exit(1);
     }
 
