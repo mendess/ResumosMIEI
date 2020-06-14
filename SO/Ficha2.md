@@ -187,6 +187,10 @@ este pode ter terminado por receber um sinal, por exemplo, `SIGSEGV`
 (segmentation fault), e neste caso o valor que vem em `status` não é um exit
 status valido.
 
+**Nota:** É importantíssimo que nunca se observe o valor do `status`
+diretamente, isto deve ser feito **sempre** com recurso às macros definidas no
+`wait.h`.
+
 ### Emitir um exit status
 
 Do lado do processo filho, as formas de comunicar este valor para o seu pai pode
