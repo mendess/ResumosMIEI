@@ -179,7 +179,7 @@ if(pid != -1 && WIFEXITED(status)) {
     puts("Child exited normally");
     int const exit_status = WEXITSTATUS(status); // Esta macro so pode ser usada nas
                                                  // condições que o `if` acima garante
-    printf("Exit status: %d\n", status);
+    printf("Exit status: %d\n", exit_status);
 }
 ```
 A razão para a ter de ser verificar se o processo terminou normalmente, é que
