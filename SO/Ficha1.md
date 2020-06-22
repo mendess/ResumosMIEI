@@ -206,3 +206,10 @@ As system calls `read` e `write` são das mais lentas e mais utilizadas pelo que
 - Sempre que uma função mecionadas assima retorna um erro, o tipo de erro que
     ocorreu pode ser visto na variavel global `errno`. `man errno` para aprender
     a usar a variavel.
+
+## Extra reading
+
+(https://fasterthanli.me/blog/2019/reading-files-the-hard-way/)[Reading files]
+(https://fasterthanli.me/blog/2019/reading-files-the-hard-way-2/)[the hard]
+(https://fasterthanli.me/blog/2019/reading-files-the-hard-way-3/)[way]
+
