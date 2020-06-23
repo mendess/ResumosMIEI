@@ -206,7 +206,7 @@ int main(void) {
 Este número, apesar de "ser um `int`", tem de ser um número não negativo entre 0 e
 255 (inclusive). Qualquer número que não esteja dentro deste intervalo vai ser
 reinterpretado dessa forma. Por exemplo, `-1` pode ser interpretado como `255` se
-a se forem apenas considerados os *low 8 bits* do número.
+forem apenas considerados os *low 8 bits* do número.
 
 #### `exit` e/ou `_exit`
 As outras duas formas de terminar um processo com um *exit status* são com as
