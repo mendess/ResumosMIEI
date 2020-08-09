@@ -36,4 +36,4 @@ corpo docente.
 
 Servem apenas para condensar a informação que achamos mais importante.
 
-O mais importante é praticar e fazer os exercicios que os professores disponiblizam.
+O mais importante é praticar e fazer os exercicios que os professores disponibilizam.
