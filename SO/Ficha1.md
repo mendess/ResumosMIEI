@@ -203,6 +203,6 @@ As system calls `read` e `write` são das mais lentas e mais utilizadas pelo que
     respetivamente, podem ser substituidos pelas macros `STDIN_FILENO`,
     `STDOUT_FILENO` e `STDERR_FILENO` respectivamente.
 
-- Sempre que uma função mecionadas assima retorna um erro, o tipo de erro que
+- Sempre que uma função mecionadas acima retorna um erro, o tipo de erro que
     ocorreu pode ser visto na variavel global `errno`. `man errno` para aprender
     a usar a variavel.
