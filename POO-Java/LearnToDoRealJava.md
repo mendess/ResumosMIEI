@@ -222,8 +222,8 @@ implementação é a seguinte:
     ```java
     public interface Cloneable {}
     ```
-    Poderás pensar "Espera aí, então isso significa que eu posso fazer com que
-a minha class seja `Cloneable`, e não ter nenhum método `.clone()`!".\
+    Poderás pensar "*Espera aí, então isso significa que eu posso fazer com que
+a minha class seja `Cloneable`, e não ter nenhum método `.clone()`!*".\
 Yep, estás
 completamente correto! Dizeres que a tua class implementa a interface
 `Cloneable` não significa absolutamente nada, e não traz nenhuma garantia sobre
