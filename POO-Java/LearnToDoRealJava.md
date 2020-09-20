@@ -278,7 +278,7 @@ int main(void) {
     zero_array(values, 10);  // invalid, modifying 'values'
 }
 ```
-Curiosamente, esta keyword já existem em C desde 1989. Considerando que Java foi
+Curiosamente, esta keyword já existe em C desde 1989. Considerando que Java foi
 criado em 1996, parece que conseguimos regredir.
 
 Adiante, a nossa estratégia aqui é, para cada class que definirmos, definimos
