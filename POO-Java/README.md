@@ -19,6 +19,6 @@ Nesta secção irei explorar os conteúdos leccionados em POO.
 
 # Read more
  Isto esta aqui por descarga de consciência. Muitas das coisas que são ensinadas
- nesta cadeira são antiquadas ou apenas erradas. Por isso criei esta linguagem.
+ nesta cadeira são antiquadas ou apenas erradas.
 
  - [The major issues](./LearnToDoRealJava.md)
