@@ -88,6 +88,8 @@ Pela observação da imagem podemos constatar que existem várias formas de dete
  Os parênteses, salvo na instrução `leal`, representam acessos à memória. Supondo que `(%ebx)` é um dos operandos de uma dada instrução, então o valor do registo `%ebx` será um apontador e para calcular o operando teremos que ver para que local de memória esse endereço aponta.
 
  Para facilitar a compreensão segue-se uma demonstração do modo como os operandos são calculados, recorrendo a uma espécie de "pseudo-código" de **C** e **Assembly**.
+ Não se trata de um código válido em nenhuma das linguagens, tem apenas a
+ finalidade de expôr de forma mais fácil o cálculo dos operandos. 
 
 ```
 0x4 -> valor imediato
