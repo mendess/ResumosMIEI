@@ -2,7 +2,7 @@
 
 **Assembly** é uma linguagem de programação de baixo nível (*low-level*). Programar e interpretar código maquina (binário) é algo bastante trabalhoso e de difícil compreensão para o ser humano. Consequentemente, foi criado o Assembly, uma vez que é uma
 representação muito mais inteligível das instruções que um computador
-executa. Além disso, a sua conversão para linguagém máquina é bastante simples devido à existência do **Assembler**. Esta linguagem é muitas vezes utilizada para aceder diretamente às instruções do processador, para a manipulação direta de *Hardware* e para corrigir problemas de *performance*.
+executa. Além disso, a sua conversão para linguagem máquina é bastante simples devido à existência do **Assembler**. Esta linguagem é muitas vezes utilizada para aceder diretamente às instruções do processador, para a manipulação direta de *Hardware* e para corrigir problemas de *performance*.
 
 
 Como já devem ter visto na explicação da [stack](stack.md), **push** e
@@ -32,8 +32,10 @@ A instrução **mov** copia o valor da fonte (*source*) para o destino. (A fonte
 
 ```mov (%eax), %ebx```  
 
-Copia o valor apontado pelo conteúdo do **%eax** para **%ebx**.
-Nesta instrução, o que estiver no registo **%eax** é um apontador para um local de memória. O valor apontado será um operando num dado local da memória. Os `()` representam uma acesso à memória em que se obtem o valor apontado.
+Copia o valor apontado pelo conteúdo de **%eax** para **%ebx**.
+Nesta instrução, o que estiver no registo **%eax** é um apontador para um local de memória. O valor apontado será um operando num dado local da memória. 
+
+Explicação mais detalhada das diversas formas de endereçamento [aqui](#modos-de-endereçamento)
 
 <br>
 
@@ -72,5 +74,29 @@ Nestea instrução é realizada esta operação: (%eax + %edx * 4 ) - 4 e o seu 
 
 <br>
 
-
 Existem muitas outras intruções de Assembly que podem ser consultas no [Instruction Set](http://gec.di.uminho.pt/lei/sc/InstrSet_IA32.pdf).
+
+## Modos de Endereçamento:
+
+
+
+![image](modos-endereçamento.png)
+
+
+Pela observação da imagem podemos constatar que existem várias formas de determinar os operandos utilizados pelas instruções **Assembly**.
+
+ Os parênteses, salvo na instrução `leal`, representam acessos à memória. Supondo que `(%ebx)` é um dos operandos de uma dada instrução, então o valor do registo `%ebx` será um apontador e para calcular o operando teremos que ver para que local de memória esse endereço aponta.
+
+ Para facilitar a compreensão segue-se uma demonstração do modo como os operandos são calculados, recorrendo a uma espécie de "pseudo-código" de **C** e **Assembly**.
+
+```
+0x4 -> valor imediato
+
+(%eax) -> *eax
+
+0x8(%eax) -> *(%eax + 0x8)
+
+0x10(%eax,%ebx,4) -> *(%eax + 4 * %ebx + 0x10)
+
+```
+

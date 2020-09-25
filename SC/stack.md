@@ -10,7 +10,7 @@ A instrução **push** adiciona um valor ao topo da **stack**.
 
 Analisemos a instrução `push %eax` :
 
-* O **%esp** (stack pointer) é decrementado, uma vez que, ao ser adicionado um valor, o topo da stack altera-se.
+* O **%esp** (stack pointer) é **decrementado**, uma vez que, ao ser adicionado um valor, o topo da stack altera-se.
 
 * O valor que se encontra no registo **%eax** é colocado no local apontado pelo novo **%esp**. 
 
