@@ -5,5 +5,6 @@ Nesta secção vamos explorar os conteúdos lecionados na Unidade Curricular de 
 
 1. [Memória Primária e Banco de Registos](memoria.md)
 2. [Stack](stack.md)
+3. [Instruções Assembly](assembly.md)
 
 

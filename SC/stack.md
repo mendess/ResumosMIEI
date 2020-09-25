@@ -39,7 +39,7 @@ indicado. Contudo, o valor que se encontra no topo da stack não é exatamente
 removido. Aquilo que se verifica é que o apontador para o topo da pilha
 (**%esp**) é incrementando 4 unidades, o que faz com que o valor que
 pretendemos remover deixe de pertencer à **stack**. A explicação do **pop** é
-análoga à do **push** e esta instrução é equivalente a realizar estas duas
+simétrica à do **push** e esta instrução é equivalente a realizar estas duas
 instruções:
 
 ```mov (%esp), %eax```
