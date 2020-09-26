@@ -12,6 +12,7 @@ Para guardarem este repositório podem fazer `star`.
 ## Primeiro ano
  * [PF](PF-Haskell/README.md)
  * [PI](PI-C/README.md)
+ * [SC](SC/README.md)
 
 ## Segundo ano
   * [Java](POO-Java/README.md)
