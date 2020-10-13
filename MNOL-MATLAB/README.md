@@ -3,8 +3,8 @@ Nesta secção vamos explorar a parte de MATLAB lecionada em MNOL.
 
 # Índice
 
-* [Introducao ao MATLAB](introducao.md)
-* [Resolver equacoes e sistemas de equações](#Resolver-sistemas-de-equações)
+* [Introdução ao MATLAB](introducao.md)
+* [Resolver equações e sistemas de equações](equacoes.md)
 * [Estimar valores](estimar_valores.md)
 * [Valor do Integral](integral.md)
 * [Mínimos Quadrados](minimos_quadrados.md)
