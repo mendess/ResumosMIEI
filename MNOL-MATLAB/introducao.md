@@ -1,5 +1,11 @@
 # Introdução
 
+## Alterar a precisão
+```matlab
+format long  % 15 casas decimais
+format short %  5 casas decimais
+```
+
 ## Variáveis
 MATLAB e dinamicamente tipado o que significa que não se indica qual e o tipo da
 variável. Desta forma, para declarar uma variável utiliza-se o operador `=`:
@@ -61,14 +67,7 @@ ans =
 
 - - - -
 
-## Utilitários
-### Alterar a precisão
-```matlab
-format long  % 15 casas decimais
-format short %  5 casas decimais
-```
-
-### Funções importantes
+## Funções pré-definidas importantes
 * ones(n) -> matriz de 1s tamanho nxn
 * zeros(n) -> matriz nula de ordem n
 * eye(n) -> matriz identidade de ordem n
@@ -81,7 +80,7 @@ format short %  5 casas decimais
 * norm(A,1), norm(A,inf)-> normas (1 e inf) da matriz A
 * A \ b -> resolução do sistema linear Ax = b
 
-#### Exemplo
+### Exemplo
 ```matlab
 >> b=[1; 3; -6]
 >> A=[1 -3 4; 2 5 -2; 3 8 10]
