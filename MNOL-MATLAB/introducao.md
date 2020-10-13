@@ -1,11 +1,5 @@
 # Introdução
 
-## Alterar a precisão
-```matlab
-format long  % 15 casas decimais
-format short %  5 casas decimais
-```
-
 ## Variáveis
 MATLAB e dinamicamente tipado o que significa que não se indica qual e o tipo da
 variável. Desta forma, para declarar uma variável utiliza-se o operador `=`:
@@ -42,7 +36,7 @@ array =
 
 ## Matrizes
 Para declarar uma matriz fila a fila, separando os elementos de cada fila com um
-`;` ou com um `\n` e a lista de elementos deve ser rodeada de `[]`
+`;` ou com `\n` e a lista de elementos deve ser rodeada de `[]`
 ```matlab
 >> A = [ 1:4 ; 5 6 7 8 ; 9:12 ; 14:17]
 A = 
@@ -68,17 +62,21 @@ ans =
 - - - -
 
 ## Funções pré-definidas importantes
-* ones(n) -> matriz de 1s tamanho nxn
-* zeros(n) -> matriz nula de ordem n
-* eye(n) -> matriz identidade de ordem n
-* (A)’ -> transposta da matriz A
-* det(A) -> determinante da matriz A
-* rank(A) -> característica da matriz A
-* inv(A) -> inversa da matriz A
-* diag(A)-> diagonal da matriz A
-* triu(A), tril(A) -> matriz triangular superior/inferior da matriz A
-* norm(A,1), norm(A,inf)-> normas (1 e inf) da matriz A
-* A \ b -> resolução do sistema linear Ax = b
+| funcao      | descricão                              |
+| ----------- | -------------------------------------- |
+| ones(n)     | matriz de 1s tamanho nxn               |
+| zeros(n)    | matriz nula de ordem n                 |
+| eye(n)      | matriz identidade de ordem n           |
+| (A)’        | transposta da matriz A                 |
+| det(A)      | determinante da matriz A               |
+| rank(A)     | característica da matriz A             |
+| inv(A)      | inversa da matriz A                    |
+| diag(A)     | diagonal da matriz A                   |
+| triu(A)     | matriz triangular superior da matriz A |
+| tril(A)     | matriz triangular inferior da matriz A |
+| norm(A,1)   | norma 1 da matriz A                    | 
+| norm(A,inf) | norma inf da matriz A                  | 
+| A \ b       | resolução do sistema linear Ax = b     |
 
 ### Exemplo
 ```matlab
@@ -98,7 +96,7 @@ ans =
 function [output] = function_name(input)
 output = operation_on_input
 ```
-NOTA: definir na Function Window
+**NOTA:** definir na *Function Window*
 
 ### Exemplos
 * definir uma função "normal"
@@ -114,4 +112,11 @@ f(1) = x
 f(2) = x^2
 ```
 
-NOTA: é possível definir lambdas com `@(x) operation_on_x`
+**NOTA:** é possível definir lambdas com `@(x) operation_on_x`
+
+
+## Alterar precisão
+```matlab
+format long  % 15 casas decimais
+format short %  5 casas decimais
+```
