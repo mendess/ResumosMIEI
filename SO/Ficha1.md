@@ -159,39 +159,80 @@ standard output.
 Programa que copia no máximo 10 bytes de um ficheiro para outro. Tendo o cuidado
 de verificar se algum erro ocorre e terminar o programa nesse caso.
 ```c
-#include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+
+// Esta macro e so para poupar o trabalho de escrever o mesmo if muitas vezes
+// Tem um aspeto esquisito mas é a melhor forma de o fazer.
+#define RETURN_IF_ERROR(e, msg) \
+    do {                        \
+        if ((e) == -1) {        \
+            perror(msg);        \
+            return 1;           \
+        }                       \
+    } while (0)
+
+enum { BUF_SIZE = 10 };
 
 int main(void) {
     int const source = open("file1", O_RDONLY);
-    if (source == -1) {
-        perror("Error opening file1");
-        return 1;
-    }
+    RETURN_IF_ERROR(source, "Error opening file1");
+
     int const dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (dest == -1) {
-        perror("Error opening file2");
-        return 1;
+    RETURN_IF_ERROR(dest, "Error opening file2");
+
+    char buf[BUF_SIZE];
+    size_t amount_read = 0;
+    while (amount_read < BUF_SIZE) {
+        ssize_t aread = read(source, buf, BUF_SIZE - amount_read);
+        RETURN_IF_ERROR(aread, "Error reading file1");
+        if (aread == 0) { // EOF
+            break
+        }
+        amount_read += aread;
     }
-    char buf[10];
-    size_t const amount_read = read(source, buf, 10);
-    if (amount == -1) {
-        perror("Error reading file1");
-        return 1;
+
+    size_t amount_written = 0;
+    while (amount_written < amount_read) {
+        ssize_t const written = write(dest, buf + amount_written, amount_read - amount_written);
+        RETURN_IF_ERROR(written, "Error writing file2");
+        amount_written += written;
     }
-    size_t const amount_written = write(dest, buf, amount_read);
-    if (amount == -1) {
-        perror("Error writting file2");
-        return 1;
-    }
-    if (amount_written < amount_read) {
-        perror("Couldn't write everything");
-        return 1;
-    }
-    close(source);
-    close(dest);
+
+    close(source); // we could check the return value of close
+    close(dest);   // but there is nothing meaningful we can do about it
 }
 ```
+
+### Nota importante sobre read and write
+
+Como se pode ver no exemplo acima, escrever e ler corretamente é complicado.
+
+Podíamos nos sentir tentados a fazer algo assim.
+
+```c
+ssize_t const r = read(source, buf, BUF_SIZE);
+RETURN_IF_ERROR(r, "Error reading");
+ssize_t const w = write(dest, buf, r);
+RETURN_IF_ERROR(w, "Error writing");
+```
+
+Estamos correctos na medida em que:
+ - não vamos ler mais do que queremos
+ - não vamos escrever mais do que o buf vai ter correctamente inicializado (i.e.
+   não vamos escrever mais do que lemos)
+
+Mas estamos errados no sentido em que assumimos que:
+ - se pedimos para para ler X, X bytes vão ser lidos.
+ - se pedimos para escrever X, X bytes vão ser escritos.
+
+Há muitas situações em que o sistema operativo pode decidir ler/escrever menos e
+fazer a _system call_ retornar mais cedo. Isto não indica um erro, só quer dizer
+"tente mais tarde" (Uma destas razões será falada no [guião 7](./Ficha7.md)).
+
+Para saber mais `man 2 write` e procura por secções que falem de "interrupt".
+
 
 ## Nota sobre performance
 As system calls `read` e `write` são das mais lentas e mais utilizadas pelo que
