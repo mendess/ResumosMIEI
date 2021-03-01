@@ -54,9 +54,10 @@ seguinte forma.
 open("file", O_CREAT | O_WRONLY, 0644);
 ```
 
-**Nota:** Se não forem especificadas as permissões quão é criado um ficheiro as
-permissões com que ele é criado não são especificadas, podendo ser qualquer
-coisa.
+**Nota:** Se não forem especificadas as permissões aquando da criação do
+ficheiro, as permissões com que ele é criado não são especificadas, podendo ser
+qualquer coisa. Se o ficheiro já existir, então o mode não é relevante, pois
+não irá alterar as permissões existentes.
 
 #### Valor de retorno
 O valor de retorno pode ter 2 significados.
