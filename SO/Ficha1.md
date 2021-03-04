@@ -186,10 +186,10 @@ int main(void) {
     char buf[BUF_SIZE];
     size_t amount_read = 0;
     while (amount_read < BUF_SIZE) {
-        ssize_t aread = read(source, buf, BUF_SIZE - amount_read);
+        ssize_t const aread = read(source, buf, BUF_SIZE - amount_read);
         RETURN_IF_ERROR(aread, "Error reading file1");
         if (aread == 0) { // EOF
-            break
+            break;
         }
         amount_read += aread;
     }
