@@ -174,7 +174,7 @@ de verificar se algum erro ocorre e terminar o programa nesse caso.
         }                       \
     } while (0)
 
-enum { BUF_SIZE = 10 };
+#define BUF_SIZE 10
 
 int main(void) {
     int const source = open("file1", O_RDONLY);
