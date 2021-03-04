@@ -164,30 +164,27 @@ de verificar se algum erro ocorre e terminar o programa nesse caso.
 #include <stdio.h>
 #include <unistd.h>
 
-// Esta macro e so para poupar o trabalho de escrever o mesmo if muitas vezes
-// Tem um aspeto esquisito mas é a melhor forma de o fazer.
-#define RETURN_IF_ERROR(e, msg) \
-    do {                        \
-        if ((e) == -1) {        \
-            perror(msg);        \
-            return 1;           \
-        }                       \
-    } while (0)
+void exit_if_error(ssize_t const e, char const* msg) {
+    if (e == -1) {
+        perror(msg);
+        exit(1);
+    }
+}
 
 #define BUF_SIZE 10
 
 int main(void) {
     int const source = open("file1", O_RDONLY);
-    RETURN_IF_ERROR(source, "Error opening file1");
+    exit_if_error(source, "Error opening file1");
 
     int const dest = open("file2", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    RETURN_IF_ERROR(dest, "Error opening file2");
+    exit_if_error(dest, "Error opening file2");
 
     char buf[BUF_SIZE];
     size_t amount_read = 0;
     while (amount_read < BUF_SIZE) {
         ssize_t const aread = read(source, buf, BUF_SIZE - amount_read);
-        RETURN_IF_ERROR(aread, "Error reading file1");
+        exit_if_error(aread, "Error reading file1");
         if (aread == 0) { // EOF
             break;
         }
@@ -197,12 +194,16 @@ int main(void) {
     size_t amount_written = 0;
     while (amount_written < amount_read) {
         ssize_t const written = write(dest, buf + amount_written, amount_read - amount_written);
-        RETURN_IF_ERROR(written, "Error writing file2");
+        exit_if_error(written, "Error writing file2");
         amount_written += written;
     }
 
-    close(source); // we could check the return value of close
-    close(dest);   // but there is nothing meaningful we can do about it
+    if (close(source) == -1) { // we could check the return value of close
+        perror("Failed to close source file");
+    }
+    if (close(dest) == -1) { // but there is nothing meaningful we can do about it
+        perror("Failed to close dest file");
+    }
 }
 ```
 
@@ -214,9 +215,9 @@ Podíamos nos sentir tentados a fazer algo assim.
 
 ```c
 ssize_t const r = read(source, buf, BUF_SIZE);
-RETURN_IF_ERROR(r, "Error reading");
+exit_if_error(r, "Error reading");
 ssize_t const w = write(dest, buf, r);
-RETURN_IF_ERROR(w, "Error writing");
+exit_if_error(w, "Error writing");
 ```
 
 Estamos correctos na medida em que:
