@@ -14,7 +14,7 @@ Ao longo deste documento:
 # O 'for' que todos conhecemos
 De certeza já viste/escreveste um `for` assim.
 ```java
-for(int i=0; i<list.size(); i++){
+for (int i=0; i<list.size(); i++) {
     ListElem l = list.get(i);
     l.doStuff();
 }
@@ -26,7 +26,7 @@ sobre o funcionamento da estrutura/classe.
 Collections que implementem [Iterable][iterable] podem ser iteradas com este estilo de `for`, chamado "foreach".
 
 ```java
-for(ListElem l: list){
+for (ListElem l: list) {
     l.doStuff();
 }
 ```
@@ -66,7 +66,7 @@ Iterator<ListElem> it = list.iterator();
 while(it.hasNext()){
     ListElem l = it.next();
     l.doStuff();
-    if(l.isSomething()){
+    if (l.isSomething()) {
         it.remove();
     }
 }
@@ -76,13 +76,13 @@ Podemos então aqui alterar o código para que o ciclo acabe quando uma condiç�
 ```java
 boolean flag = true;
 Iterator<ListElem> it = list.iterator();
-while(flag && it.hasNext()){
+while (flag && it.hasNext()) {
     ListElem l = it.next();
     l.doStuff();
-    if(l.isSomething()){
+    if (l.isSomething()) {
         it.remove();
     }
-    if(someCondition){
+    if (someCondition) {
         flag = false;
     }
 }
@@ -176,16 +176,16 @@ Por vezes o código que temos de implementar é muito complexo para ser escrito 
  o lambda para que seja mais legível o que estamos a fazer.
 
 ```java
-public List<ListElem> getAbove(int x){
+public List<ListElem> getAbove(int x) {
     return this.list.stream()
         .filter(l -> {
                 int i = l.getValue();
-                if(someCondition(i)){
+                if (someCondition(i)) {
                     return true;
-                }else{
-                    if(someOtherCondition(i)){
+                } else {
+                    if (someOtherCondition(i)) {
                         return false;
-                    }else{
+                    } else {
                         return true;
                     }
                 }
@@ -199,8 +199,8 @@ public List<ListElem> getAbove(int x){
 1. Tecnicamente podemos colocar um `if` que faça `break` para sair da lista antes de a percorrer toda
  mas os stores são contra isto, justificando que fica menos legível. (Pessoalmente acho que depende e tem de ser visto caso a caso)
    ```java
-        for(ListElem l: list){
-            if(someCondition()) break;
+        for (ListElem l: list) {
+            if (someCondition()) break;
             l.doStuff();
         }
     ```
