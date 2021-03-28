@@ -225,13 +225,17 @@ O toString é importante para efeitos de debug. Pode também ser adaptado para a
 ```
 
 #### Clone
-O clone deve ser implementado porque o Nestor diz que sim. Objetos imutáveis não devem
- implementar este método.
+
+O clone pode ser implementado tirando partido do
+[construtor de cópia](#construtor-de-cópia).
+
 ```java
     public MyClass clone(){
         return new MyClass(this);
     }
 ```
+
+**Nota:** Objetos imutáveis não devem implementar este método.
 
 
 ---
