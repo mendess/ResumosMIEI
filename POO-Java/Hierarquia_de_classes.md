@@ -198,7 +198,12 @@ public abstract class Pessoa {
 }
 ```
 Tudo que foi escrito acima deste parágrafo continua a ser verdade, exceto
-`new Pessoa(...)`, isto agora é inválido.
+`new Pessoa(...)`, isto agora é inválido. Deve-se ao facto de uma classe
+abstrata não poder ser instanciada, isto é, não podermos criar um
+objeto da mesma. Significará isto que a classe abstrata não tem construtores?
+Não. As classes abstratas devem ter construtores porque as suas subclasses(não
+abstratas) podem ser instanciadas e provavalmente e poderão invocar o construtor da
+superclass abstrata.
 
 Outra vantagem é que agora podemos definir métodos abstratos.
 ```java
@@ -214,11 +219,16 @@ subclasses da mesma. Isto é, na classe abstrata dizemos que todas as suas
 subclasses vão ter aquele comportamento (leia-se método) mas cada subclasse
 é que escolhe como o implementa.
 
-**Um método abstrato é obrigatório implementar.**
-
 Isto é útil quando faz sentido que todas a subclasses implementem um certo
 comportamento mas este depende de fatores que não conhecemos na superclasse,
 por exemplo.
+
+**É obrigatório implementar um método abstrato.**
+
+**Nota** : A subclasse de uma classe abstrata pode ela mesma ser abstrata e,
+nesse caso, não é obrigada a implementar os métodos que a superclasse declarou como abstratos
+se, também os tiver declarado como abstratos. Passa, mais uma vez, a ser
+responsabilidade da subclasse dessa classe, a implementação dos mesmos.
 
 Em Java cada classe pode apenas estender uma superclasse. (C++, por exemplo,
 permite herança múltipla)
