@@ -54,7 +54,7 @@ Y tem valor -1
 Como o `if` não tem chavetas a unica linha de código condicionada pelo `if` é `x += 3;`.
 Visto que `x == 0`é falso, `x += 3;` nunca corre!
 
-De facto, o código como está escrito não é muito simpático para a leitura. Podia, E DEVIA, ser melhorado atravez de identação e/ou `{  }`, apesar destas não serem precisas.
+De facto, o código como está escrito não é muito simpático para a leitura. Podia, E DEVIA, ser melhorado através de indentação e/ou `{  }`, apesar destas não serem precisas.
 ```C
 int x = 4;
 int y = 0;
@@ -76,13 +76,11 @@ if(x==0){
 y--; // y = y - 1
 ```
 
-Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Nunca fase incial é a melhor estratégia. Se não colocarmos chavetas e mais tarde alterarmos
- adicionarmos codigo dentro do `if`, podemos nos esquecer destas e o codigo não faz o que esperamos. É um dos tipos de erros mais dificil de detetar
- (falo por experiência!).
+Recomendamos então usarem sempre chavetas mesmo sendo estas redundantes. Numa fase incial é a melhor estratégia. Se não colocarmos chavetas e mais tarde adicionarmos codigo dentro do `if`, podemos nos esquecer destas e o código não faz o que esperamos. É um dos tipos de erros mais dificil de detetar (falo por experiência!).
 
 ### Else
 
-Vamos acrescentar o `else` agora. Este indica um bloco de codigo que irá executar sempre que a condição do `if` for falsa.
+Vamos acrescentar o `else` agora. Este indica um bloco de código que irá executar sempre que a condição do `if` for falsa.
 ```C
 int x = 4;
 int y = 0;
@@ -97,7 +95,7 @@ X tem valor 4
 Y tem valor -1
 ```
 Tal como o `if`, o `else` pode ser seguido de chavetas e as mesma regras se aplicam.
-Quando é seguido de chavetas, corre esse bloco do cógido.
+Quando é seguido de chavetas, corre esse bloco do código.
 Quando não é seguido de chavetas corre apenas uma linha.
 ```C
 int x = 4;
@@ -153,13 +151,13 @@ void menu(char opcao){
 ```
 Mas este é muito mais chato de escrever e de ler. E caso o nosso menu tenha 10 opções diferentes a condição do ultimo `if` irá ser gigantesca.
 
-Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fara muitas mais comparações. Enquanto que no 1º excerto se a condição do
+Para além disso, o segundo excerto de codigo é menos eficiente, visto que o nosso codigo fará muitas mais comparações. Enquanto que no 1º excerto se a condição do
  primeiro `if` for verdadeira apenas o corpo deste é executado. Por outro lado, no 2º excerto, apesar de já termos entrado no primeiro `if` o computador vai ter de
  fazer todas as outras comparações.
 
  ### Operador ternário
 
-Existe uma forma de escrever um `if else` de forma mais concisa mas à custa de perda de ligivelidade.
+Existe uma forma de escrever um `if else` de forma mais concisa mas à custa de perda de legibilidade.
 
 ```c
 condição ? operaçãoCasoSejaVerdade : operaçãoCasoSejaFalso;
