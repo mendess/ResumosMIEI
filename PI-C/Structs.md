@@ -11,7 +11,7 @@ struct pessoa{
     char* nome;
 };
 ```
-Podemos então usar esta esturtura no nosso codigo:
+Podemos então usar esta estrutura no nosso codigo:
 ```c
 int main(){
     struct pessoa p;
@@ -21,7 +21,7 @@ int main(){
     char* nome = "Jbb";
     p.nome = nome;
 
-    printf("Idade: %d, Nome: %s", e.idade, e.nome);
+    printf("Idade: %d, Nome: %s", p.idade, p.nome);
     return 0;
 }
 ```
@@ -59,7 +59,7 @@ typedef struct pessoa {
 ```
 Que é equivalente.
 
-## Estruturas dentro de esturturas
+## Estruturas dentro de estruturas
 As estruturas são apenas uma coleção de campos relacionados e, se podemos
 guardar um `int`, podemos também guardar outra estrutura.
 
@@ -93,11 +93,11 @@ Quando passamos uma instância da nossa estrutura para uma função podemos
 faze-lo por copia ou por referencia. Isto tem as mesmas consequencias de
 passar qualquer outra variavel por copia ou referencia.
 
-Uma diferença importante é que se passarmos a esturtura por copia esta vai
+Uma diferença importante é que se passarmos a estrutura por copia esta vai
 ter de ser completamente copiada para a função que a recebe tendo um
 desempenho menor.
 
-Por esta razão é costume declarar apontadores para as esturturas e trabalhar
+Por esta razão é costume declarar apontadores para as estrutura e trabalhar
 com estes.
 
 Por exemplo:
@@ -139,7 +139,7 @@ Este programa terá o seguinte output:
 18
 19
 ```
-## Estruturas dentro de esturturas II
+## Estruturas dentro de estruturas II
 Podemos então ter apontadores para estruturas dentro da nossa estrutura.
 
 Para ilustrar a diferença a data de nascimento será "normal" enquanto que a
