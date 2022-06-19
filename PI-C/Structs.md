@@ -162,7 +162,7 @@ int main(){
     Pessoa* p = malloc(sizeof(struct pessoa));
     p->idade = 18;
     p->nascimento.dia = 25;
-    p->nascimento->ano = 2038;
+    p->morrimento->ano = 2038;
 
     return 0;
 }
