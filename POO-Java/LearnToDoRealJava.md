@@ -40,7 +40,7 @@ mais nada.
 Por exemplo, pegando no clássico `Point`.
 
 ```java
-class Ponto {
+class Point {
     private int x;
     private int y;
 
