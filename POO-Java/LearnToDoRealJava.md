@@ -388,9 +388,7 @@ ergonomia do código. Conseguimos reduzir significativamente a quantidade de
 legível.
 
 No entanto, isto nem sempre é possível. Pode acontecer que `Bar` e `Foo` façam
-parte de uma biblioteca externa que não possamos modificar. Neste caso, temos
-que recorrer a uma destas soluções, e escolher aquela que nos trará menos dor no
-futuro.
+parte de uma biblioteca externa que não possamos modificar. Neste caso, temos de nos conformar com a interface já existente.
 
 [GettersSettersEvil]:https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html
 [ExtendsisEvil]:https://www.javaworld.com/article/2073649/why-extends-is-evil.html
