@@ -343,6 +343,8 @@ compilação:\
 '`The method clear_strings() is undefined for the type BarView`', que faz todo o
 sentido, porque `BarView` não define esse método.
 
+Este é um padrão tão útil que Kotlin, outra linguagem baseada na JVM, o integrou na sua *standard library*. Ver [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/) e [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) como alguns dos muitos exemplos desse padrão.
+
 ### Nada disto seria necessário
 
 Embora a solução descrita esteja a resolver o problema, está a resolver um
